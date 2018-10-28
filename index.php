@@ -32,8 +32,8 @@
 						</div>
 						<div class="card-body pt-0">
 							<div class="row">
-								<img class="col-12 col-md-6 p-0" src="images/city.png" alt="Image of City">
-								<img class="col-12 col-md-6 p-0" src="images/map.png" alt="Map of City">
+								<img class="col-12 col-md-6 p-0" src="images/town.jpg" alt="Image of City">
+								<img class="col-12 col-md-6 p-0" src="images/town-map.png" alt="Map of City">
 							</div>
 							<hr>
 							<div>
@@ -63,14 +63,18 @@
 									</thead>
 									<tbody>
 										<tr>
-											<td><button class="btn btn-secondary">View</button></td>
+											<td>
+												<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#personViewModal">View </button>
+											</td>
 											<td>George Macdonald</td>
 											<td>Blacksmith</td>
 											<td class="d-none d-md-table-cell">Human</td>
 											<td class="d-none d-md-table-cell">54</td>
 										</tr>
 										<tr>
-											<td><button class="btn btn-secondary">View</button></td>
+											<td>
+												<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#personViewModal">View </button>
+											</td>
 											<td>Tom Bloggs</td>
 											<td>innkeeper</td>
 											<td class="d-none d-md-table-cell">Human</td>
@@ -97,6 +101,77 @@
 				</div>
 			</div>
 			<br>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="personViewModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Person's Name</h5>
+						<button type="button" class="close" data-dismiss="modal"> <span>&times;</span> </button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-12 d-md-none">
+								<img class="img-fluid" src="images/human-woman.jpg">
+							</div>
+							<div class="col-12 col-md-6">
+								<ul class="list-group">
+									<div class="row">
+										<li class="list-group-item col-6">Race: Human</li>
+										<li class="list-group-item col-6">Age: 28</li>
+										<li class="list-group-item col-6"><i class="fas fa-hammer"></i> Job: Merchant</li>
+										<li class="list-group-item col-6"><i class="fas fa-comment"></i> Lan: Common</li>
+										<li class="list-group-item col-4"><i class="fas fa-shield-alt"></i> AC: 10</li>
+										<li class="list-group-item col-4"><i class="fas fa-heart"></i> HP: 4</li>
+										<li class="list-group-item col-4"><i class="fas fa-shoe-prints"></i> SP: 30</li>
+										<hr class="col-12">
+										<li class="list-group-item col-4"><i class="fas fa-fist-raised"></i> STR: 10</li>
+										<li class="list-group-item col-4"><i class="fas fa-running"></i> DEX: 10</li>
+										<li class="list-group-item col-4"><i class="fas fa-paw"></i> CON: 10</li>
+										<li class="list-group-item col-4"><i class="fas fa-book"></i> INT: 10</li>
+										<li class="list-group-item col-4"><i class="fas fa-tree"></i> WIS: 10</li>
+										<li class="list-group-item col-4"><i class="fas fa-comments"></i> CHA: 10</li>
+									</div>
+								</ul>
+							</div>
+							<div class="col-6 d-none d-md-inline">
+								<img class="img-fluid" src="images/human-woman.jpg">
+							</div>
+							<hr class="col-12">
+							<div class="col-12">
+								<h6 class="text-center"><i class="fas fa-box-open"></i> Inventory:</h6>
+								<table class="table">
+									<tr>
+										<td class="text-center">
+											<span class="fa-stack fa-lg">
+												<i class="fa fa-circle-thin fa-stack-2x"></i>
+												<i class="fas fa-dollar-sign fa-stack-1x"></i>
+											</span> 10 Copper
+										</td>
+										<td class="text-center">test</td>
+										<td class="text-center">test</td>
+									</tr>
+									<tr>
+										<td class="text-center">test</td>
+										<td class="text-center">test</td>
+										<td class="text-center">test</td>
+									</tr>
+									<tr>
+										<td class="text-center">test</td>
+										<td class="text-center">test</td>
+										<td class="text-center">test</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
