@@ -144,9 +144,9 @@
 								<table class="table">
 									<tr>
 										<td class="text-center">
-											<span class="fa-stack fa-lg">
-												<i class="fa fa-circle-thin fa-stack-2x"></i>
-												<i class="fas fa-dollar-sign fa-stack-1x"></i>
+											<span class="fa-stack fa-1x">
+											  <i class="fas fa-circle fa-stack-2x"></i>
+											  <i class="fas fa-dollar-sign fa-stack-1x fa-inverse"></i>
 											</span> 10 Copper
 										</td>
 										<td class="text-center">test</td>
