@@ -38,7 +38,12 @@
 					<br class="d-md-none">
 					<div class="card">
 						<div class="card-header">
-							<h3 class="text-center">Town-Name</h3>
+							<h3 class="text-center">
+								<script>
+								document.write(townData.name);
+								</script>
+								<div id="testDiv">{{message}}</div>
+							</h3>
 						</div>
 						<div class="card-body p-0">
 							<div class="row mx-0">
@@ -54,14 +59,18 @@
 					<div class="card">
 						<div class="card-header">
 							<h5 class="text-center">Buildings</h5>
-							
 						</div>
 						<div class="card-body">
-							
-							<ul class="list-group">
-								<li class="list-group-item">Large Bank</li>
-								<li class="list-group-item">Haunted Bridge</li>
-								<li class="list-group-item">Hunters Lodge</li>
+							<ul class="list-group" id="buildingList">
+								<script>
+									var buildingList = document.getElementById('buildingList')
+									townData.buildings.forEach((building)=>{
+										var newBuilding = document.createElement('li');
+										newBuilding.classList.add('list-group-item');
+										newBuilding.innerHTML=building;
+											buildingList.appendChild(newBuilding)
+									})
+								</script>
 							</ul>
 						</div>
 					</div>
@@ -161,24 +170,23 @@
 								<h6 class="text-center"><i class="fas fa-box-open"></i> Inventory:</h6>
 								<table class="table">
 									<tr>
-										<td class="text-center">
-											<span class="fa-stack fa-1x">
-												<i class="fas fa-circle fa-stack-2x"></i>
-												<i class="fas fa-dollar-sign fa-stack-1x fa-inverse"></i>
-											</span> 10 Copper
+										<td class="">
+											<i class="fas fa-dollar-sign"></i> 10 Copper
 										</td>
-										<td class="text-center">test</td>
-										<td class="text-center">test</td>
+										<td class="">
+											<i class="fas fa-tshirt"></i> Leather Armor
+										</td>
+										<td class="">test</td>
 									</tr>
 									<tr>
-										<td class="text-center">test</td>
-										<td class="text-center">test</td>
-										<td class="text-center">test</td>
+										<td class="">test</td>
+										<td class="">test</td>
+										<td class="">test</td>
 									</tr>
 									<tr>
-										<td class="text-center">test</td>
-										<td class="text-center">test</td>
-										<td class="text-center">test</td>
+										<td class="">test</td>
+										<td class="">test</td>
+										<td class="">test</td>
 									</tr>
 								</table>
 							</div>
@@ -191,5 +199,6 @@
 				</div>
 			</div>
 		</div>
+	<script src="js/townData.js"></script>
 	</body>
 </html>
