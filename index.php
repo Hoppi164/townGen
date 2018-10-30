@@ -1,4 +1,4 @@
-<html>
+<html ng-app="townApp">
 	<?php include 'templateFiles/head.php';?>
 	<style>
 		.attributeBox{
@@ -10,7 +10,7 @@
 			border: 1px solid rgba(0, 0, 0, 0.125);
 		}
 	</style>
-	<body>
+	<body ng-controller="townController">
 		<?php include 'templateFiles/navbar.php';?>
 		<div class="container-fluid">
 			<div class="row">
@@ -39,10 +39,7 @@
 					<div class="card">
 						<div class="card-header">
 							<h3 class="text-center">
-								<script>
-								document.write(townData.name);
-								</script>
-								<div id="testDiv">{{message}}</div>
+							{{townData.name}}
 							</h3>
 						</div>
 						<div class="card-body p-0">
@@ -52,7 +49,7 @@
 							</div>
 						</div>
 						<div class="card-footer">
-							<p>Brief Description of city</p>
+							<p>{{townData.description}}</p>
 						</div>
 					</div>
 					<br>
@@ -61,16 +58,8 @@
 							<h5 class="text-center">Buildings</h5>
 						</div>
 						<div class="card-body">
-							<ul class="list-group" id="buildingList">
-								<script>
-									var buildingList = document.getElementById('buildingList')
-									townData.buildings.forEach((building)=>{
-										var newBuilding = document.createElement('li');
-										newBuilding.classList.add('list-group-item');
-										newBuilding.innerHTML=building;
-											buildingList.appendChild(newBuilding)
-									})
-								</script>
+							<ul class="list-group">
+								<li class="list-group-item" ng-repeat="building in townData.buildings">{{building}}</li>
 							</ul>
 						</div>
 					</div>
@@ -92,23 +81,14 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
+									<tr ng-repeat="person in townData.people">
 										<td>
-											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#personViewModal">View </button>
+											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#personViewModal" ng-click="viewPerson($index)">View</button>
 										</td>
-										<td>George Macdonald</td>
-										<td>Blacksmith</td>
-										<td class="d-none d-md-table-cell">Human</td>
-										<td class="d-none d-md-table-cell">54</td>
-									</tr>
-									<tr>
-										<td>
-											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#personViewModal">View </button>
-										</td>
-										<td>Tom Bloggs</td>
-										<td>innkeeper</td>
-										<td class="d-none d-md-table-cell">Human</td>
-										<td class="d-none d-md-table-cell">23</td>
+										<td>{{person.name}}</td>
+										<td>{{person.job}}</td>
+										<td class="d-none d-md-table-cell">{{person.race}}</td>
+										<td class="d-none d-md-table-cell">{{person.age}}</td>
 									</tr>
 								</tbody>
 							</table>
@@ -136,7 +116,7 @@
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">Person's Name</h5>
+						<h5 class="modal-title">{{townData.people[currentPerson].name}}</h5>
 						<button type="button" class="close" data-dismiss="modal"> <span>&times;</span> </button>
 					</div>
 					<div class="modal-body">
@@ -146,20 +126,20 @@
 							</div>
 							<div class="col-12 col-md-6">
 								<div class="row pl-md-3">
-									<li class="attributeBox col-6">Race: Human</li>
-									<li class="attributeBox col-6">Age: 28</li>
-									<li class="attributeBox col-6"><i class="fas fa-hammer"></i> Job: Merchant</li>
-									<li class="attributeBox col-6"><i class="fas fa-comment"></i> Lan: Common</li>
-									<li class="attributeBox col-4"><i class="fas fa-shield-alt"></i> AC: 10</li>
-									<li class="attributeBox col-4"><i class="fas fa-heart"></i> HP: 4</li>
-									<li class="attributeBox col-4"><i class="fas fa-shoe-prints"></i> SP: 30</li>
+									<li class="attributeBox col-6">Race: {{townData.people[currentPerson].race}}</li>
+									<li class="attributeBox col-6">Age: {{townData.people[currentPerson].age}}</li>
+									<li class="attributeBox col-6"><i class="fas fa-hammer"></i> Job: {{townData.people[currentPerson].job}}</li>
+									<li class="attributeBox col-6"><i class="fas fa-comment"></i> Lng: {{townData.people[currentPerson].lng}}</li>
+									<li class="attributeBox col-4"><i class="fas fa-shield-alt"></i> AC: {{townData.people[currentPerson].AC}}</li>
+									<li class="attributeBox col-4"><i class="fas fa-heart"></i> HP: {{townData.people[currentPerson].HP}}</li>
+									<li class="attributeBox col-4"><i class="fas fa-shoe-prints"></i> SP: {{townData.people[currentPerson].SP}}</li>
 									<hr class="col-12">
-									<li class="attributeBox col-4"><i class="fas fa-fist-raised"></i> STR: 10</li>
-									<li class="attributeBox col-4"><i class="fas fa-running"></i> DEX: 10</li>
-									<li class="attributeBox col-4"><i class="fas fa-paw"></i> CON: 10</li>
-									<li class="attributeBox col-4"><i class="fas fa-book"></i> INT: 10</li>
-									<li class="attributeBox col-4"><i class="fas fa-tree"></i> WIS: 10</li>
-									<li class="attributeBox col-4"><i class="fas fa-comments"></i> CHA: 10</li>
+									<li class="attributeBox col-4"><i class="fas fa-fist-raised"></i> STR: {{townData.people[currentPerson].STR}}</li>
+									<li class="attributeBox col-4"><i class="fas fa-running"></i> DEX: {{townData.people[currentPerson].DEX}}</li>
+									<li class="attributeBox col-4"><i class="fas fa-paw"></i> CON: {{townData.people[currentPerson].CON}}</li>
+									<li class="attributeBox col-4"><i class="fas fa-book"></i> INT: {{townData.people[currentPerson].INT}}</li>
+									<li class="attributeBox col-4"><i class="fas fa-tree"></i> WIS: {{townData.people[currentPerson].WIS}}</li>
+									<li class="attributeBox col-4"><i class="fas fa-comments"></i> CHA: {{townData.people[currentPerson].CHA}}</li>
 								</div>
 							</div>
 							<div class="col-6 d-none d-md-inline">
@@ -167,28 +147,18 @@
 							</div>
 							<hr class="col-12">
 							<div class="col-12">
-								<h6 class="text-center"><i class="fas fa-box-open"></i> Inventory:</h6>
-								<table class="table">
-									<tr>
-										<td class="">
-											<i class="fas fa-dollar-sign"></i> 10 Copper
-										</td>
-										<td class="">
-											<i class="fas fa-tshirt"></i> Leather Armor
-										</td>
-										<td class="">test</td>
-									</tr>
-									<tr>
-										<td class="">test</td>
-										<td class="">test</td>
-										<td class="">test</td>
-									</tr>
-									<tr>
-										<td class="">test</td>
-										<td class="">test</td>
-										<td class="">test</td>
-									</tr>
-								</table>
+								<div class="card">
+									<div class="card-header"><h6 class="text-center"><i class="fas fa-box-open"></i> Inventory:</h6></div>
+									<div class="card-body p-0">
+										<div class="row mx-0">
+											<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.people[currentPerson].inventory">
+												<i ng-if="item.type == 'money'" class="fas fa-dollar-sign"></i> 
+												<i ng-if="item.type == 'armor'" class="fas fa-tshirt"></i>
+												{{item.value}}
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -199,6 +169,6 @@
 				</div>
 			</div>
 		</div>
-	<script src="js/townData.js"></script>
+		<script src="js/townData.js"></script>
 	</body>
 </html>
