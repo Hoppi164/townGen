@@ -1,3 +1,6 @@
+<!-- NOTE TO SELF: HAVE USER DOWNLOAD JSON FILE OF SCOPE -->
+<!-- This is how they 'save' and 'load' their towndata -->
+
 <html ng-app="townApp">
 	<?php include 'templateFiles/head.php';?>
 	<style>
@@ -67,9 +70,10 @@
 					<div class="card">
 						<div class="card-header">
 							<h5 class="text-center">People:</h5>
-							
 						</div>
 						<div class="card-body">
+							<input type="search" class="form-control" placeholder="Search for person" ng-model="searchInput">
+							<br>
 							<table class="table">
 								<thead>
 									<tr>
@@ -81,7 +85,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="person in townData.people">
+									<tr ng-repeat="person in townData.people" ng-if="searchInput=='' || (person.name | lowercase).includes((searchInput|lowercase)) || (person.job | lowercase).includes((searchInput|lowercase)) || (person.race | lowercase).includes((searchInput|lowercase)) || (person.lng | lowercase).includes((searchInput|lowercase)) || (person.age | lowercase).includes((searchInput|lowercase))">
 										<td>
 											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#personViewModal" ng-click="viewPerson($index)">View</button>
 										</td>

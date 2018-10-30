@@ -57,8 +57,10 @@ townApp.controller('townController', function($scope) {
 		}],
 		buildings: ['Bakery', 'Hunting Lodge', 'Chapel', 'Bank']
 	};
-	$scope.viewPerson = function(argument) {
-		$scope.currentPerson = argument;
+	$scope.viewPerson = function(arrayIndex) {
+		$scope.currentPerson = arrayIndex;
 	};
 	$scope.currentPerson = 0;
+	$scope.searchInput = "";
+
 });
