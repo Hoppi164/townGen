@@ -55,12 +55,90 @@ townApp.controller('townController', function($scope) {
 				value: 'Brass Key'
 			}]
 		}],
-		buildings: ['Bakery', 'Hunting Lodge', 'Chapel', 'Bank']
+		buildings: [{
+				type: 'Bakery',
+				inventory: [{
+					type: 'money',
+					value: '155 Silver'
+				}, {
+					type: 'food',
+					value: 'Bread'
+				}]
+			}, {
+				type: 'Hunting Lodge',
+				inventory: [{
+					type: 'money',
+					value: '95 Silver'
+				}, {
+					type: 'food',
+					value: 'Venison'
+				}, {
+					type: 'food',
+					value: 'Rabbit'
+				}, {
+					type: 'crafting',
+					value: 'Leather'
+				}]
+			}, {
+				type: 'Chapel',
+				name: 'Esphille Community Church'
+			}, {
+				type: 'Bank'
+			}, {
+				type: 'Tavern',
+				name: 'The Winking Skeever',
+				inventory: [{
+					type: 'money',
+					value: '95 Silver'
+				}, {
+					type: 'food',
+					value: 'Venison'
+				}, {
+					type: 'food',
+					value: 'Rabbit'
+				}],
+				description: 'A rawdy Inn, bustling with drunkards and nobodies.'
+			}
+
+		]
 	};
+	$scope.currentPerson = 0;
 	$scope.viewPerson = function(arrayIndex) {
 		$scope.currentPerson = arrayIndex;
 	};
-	$scope.currentPerson = 0;
-	$scope.searchInput = "";
+	$scope.currentBuilding = 0;
+	$scope.viewBuilding = function(arrayIndex) {
+		$scope.currentBuilding = arrayIndex;
+	};
+	$scope.peopleSearchInput = "";
+	$scope.buildingSearchInput = "";
+	$scope.townDataDownload = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify($scope.townData));
 
+	$scope.saveFile = function() {
+		var exportName = $scope.townData.name;
+		var exportObj = $scope.townData;
+		var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
+		var downloadAnchorNode = document.createElement('a');
+		downloadAnchorNode.setAttribute("href", dataStr);
+		downloadAnchorNode.setAttribute("download", exportName + ".json");
+		document.body.appendChild(downloadAnchorNode); // required for firefox
+		downloadAnchorNode.click();
+		downloadAnchorNode.remove();
+	};
+	$scope.loadFile = function() {
+		var files = document.getElementById('selectFiles').files;
+		console.log(files);
+		if (files.length <= 0) {
+			return false;
+		}
+
+		var fr = new FileReader();
+
+		fr.onload = function(e) {
+			var result = JSON.parse(e.target.result);
+			$scope.townData = result;
+		}
+
+		fr.readAsText(files.item(0));
+	}
 });
