@@ -7,11 +7,11 @@
 			position: relative;
 			display: block;
 			padding:5px;
-/*			padding-top: 0.8rem;
+																											/*			padding-top: 0.8rem;
 			padding-bottom: 0.8rem;
 			padding-left: 0.5rem;
 			padding-right: 0.5rem;
-*/			margin-bottom: -1px;
+																											*/			margin-bottom: -1px;
 			background-color: #fff;
 			border: 1px solid rgba(0, 0, 0, 0.125);
 		}
@@ -30,7 +30,6 @@
 		.editable{
 			border: 2px solid #17a2b8 !important;
 			resize: vertical;
-
 		}
 		.smallText{
 			font-size: 0.8rem;
@@ -48,19 +47,6 @@
 					</div>
 				</div>
 				<div class="col-12 col-md-8">
-					<div class="card">
-						<div class="card-body">
-							<button class="btn btn-info" ng-click="saveFile()">Save <i class="fas fa-download"></i></button>
-							<label class="btn btn-info mb-0">
-								Load <i class="fas fa-upload"></i></i>
-								<input type="file" class="d-none" onchange="loadFile()" id="fileUpload">
-								<input type="checkbox" class="d-none" id="triggerLoadFileCheckbox" ng-change="loadFile()" ng-model="triggerLoadFile">
-							</label>
-							<button class="btn btn-info" ng-click="toggleEdit()">Edit<i class="fas fa-edit px-2"></i></button>
-							<button class="btn btn-info">New Town<i class="fas fa-sync px-2"></i></button>
-						</div>
-					</div>
-					<br>
 					<div class="card d-md-none">
 						<div class="card-body">
 							ADVERTISEMENT MOBILE
@@ -177,8 +163,6 @@
 							</div>
 							<div class="col-12 col-md-6">
 								<div class="row pl-md-3">
-
-
 									<div class="attributeBox col-6">
 										<div class="row">
 											<div class="col-5">Race: </div>
@@ -187,8 +171,6 @@
 											</div>
 										</div>
 									</div>
-
-
 									<div class="attributeBox col-6">
 										<div class="row">
 											<div class="col-5">Age: </div>
@@ -197,8 +179,6 @@
 											</div>
 										</div>
 									</div>
-
-
 									<div class="attributeBox col-6">
 										<div class="row">
 											<div class="col-5"><i class="fas fa-hammer"></i> Job: </div>
@@ -207,8 +187,6 @@
 											</div>
 										</div>
 									</div>
-
-
 									<div class="attributeBox col-6">
 										<div class="row">
 											<div class="col-5"><i class="fas fa-comment"></i> Lng: </div>
@@ -217,8 +195,6 @@
 											</div>
 										</div>
 									</div>
-
-
 									<div class="attributeBox col-4">
 										<div class="row">
 											<div class="col-7 smallText"><i class="fas fa-shield-alt"></i> AC: </div>
@@ -227,8 +203,6 @@
 											</div>
 										</div>
 									</div>
-
-
 									<div class="attributeBox col-4">
 										<div class="row">
 											<div class="col-7 smallText"><i class="fas fa-heart"></i> HP: </div>
@@ -237,8 +211,6 @@
 											</div>
 										</div>
 									</div>
-
-
 									<div class="attributeBox col-4">
 										<div class="row">
 											<div class="col-7 smallText"><i class="fas fa-shoe-prints"></i> SP: </div>
@@ -247,8 +219,6 @@
 											</div>
 										</div>
 									</div>
-
-
 									<div class="attributeBox col-4">
 										<div class="row">
 											<div class="col-7 smallText"><i class="fas fa-fist-raised"></i> STR: </div>
@@ -257,8 +227,6 @@
 											</div>
 										</div>
 									</div>
-
-
 									<div class="attributeBox col-4">
 										<div class="row">
 											<div class="col-7 smallText"><i class="fas fa-running"></i> DEX: </div>
@@ -267,8 +235,6 @@
 											</div>
 										</div>
 									</div>
-
-
 									<div class="attributeBox col-4">
 										<div class="row">
 											<div class="col-7 smallText"><i class="fas fa-paw"></i> CON: </div>
@@ -277,8 +243,6 @@
 											</div>
 										</div>
 									</div>
-
-
 									<div class="attributeBox col-4">
 										<div class="row">
 											<div class="col-7 smallText"><i class="fas fa-book"></i> INT: </div>
@@ -287,8 +251,6 @@
 											</div>
 										</div>
 									</div>
-
-
 									<div class="attributeBox col-4">
 										<div class="row">
 											<div class="col-7 smallText"><i class="fas fa-tree"></i> WIS: </div>
@@ -297,8 +259,6 @@
 											</div>
 										</div>
 									</div>
-
-
 									<div class="attributeBox col-4">
 										<div class="row">
 											<div class="col-7 smallText"><i class="fas fa-comments"></i> CHA: </div>
@@ -307,9 +267,6 @@
 											</div>
 										</div>
 									</div>
-
-
-
 								</div>
 							</div>
 							<div class="col-6 d-none d-md-inline">
@@ -322,9 +279,15 @@
 									<div class="card-body p-0">
 										<div class="row mx-0">
 											<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.people[currentPerson].inventory">
-												<i ng-if="item.type == 'money'" class="fas fa-dollar-sign"></i>
-												<i ng-if="item.type == 'armor'" class="fas fa-tshirt"></i>
-												{{item.value}}
+												<div class="row">
+													<div class="col-2">
+														<i ng-if="item.type == 'money'" class="fas fa-dollar-sign"></i>
+														<i ng-if="item.type == 'armor'" class="fas fa-tshirt"></i>
+													</div>
+													<div class="col-10">
+														<textarea ng-model="item.value" class="townData" readonly='true'> </textarea>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -334,7 +297,6 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
 					</div>
 				</div>
 			</div>
@@ -344,8 +306,24 @@
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">{{townData.buildings[currentBuilding].type}}
-						<span ng-if="townData.buildings[currentBuilding].name"> -- {{townData.buildings[currentBuilding].name}}</span></h5>
+						<h5 class="modal-title">
+						<div class="row">
+							<div class="col-4">
+								<textarea ng-model="townData.buildings[currentBuilding].type" class="townData" readonly='true'> </textarea>
+								
+							</div>
+							<div class="col-8" ng-if="townData.buildings[currentBuilding].name">
+								<div class="row">
+									<div class="col-2">
+										--
+									</div>
+									<div class="col-10">
+										<textarea ng-model="townData.buildings[currentBuilding].name" class="townData" readonly='true'> </textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						</h5>
 						<button type="button" class="close" data-dismiss="modal"> <span>&times;</span> </button>
 					</div>
 					<div class="modal-body">
@@ -354,9 +332,7 @@
 								<img class="img-fluid" src="images/tavern.jpg">
 							</div>
 							<div class="col-12" ng-if="townData.buildings[currentBuilding].description">
-								<div class="text-center bg-light rounded p-2">
-									<i>{{townData.buildings[currentBuilding].description}}</i>
-								</div>
+								<textarea ng-model="townData.buildings[currentBuilding].description" class="townData font-italic text-center bg-light rounded p-2" readonly='true'> </textarea>
 							</div>
 							<hr class="col-12">
 							<div class="col-12">
@@ -365,9 +341,15 @@
 									<div class="card-body p-0">
 										<div class="row mx-0">
 											<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.buildings[currentBuilding].inventory">
-												<i ng-if="item.type == 'money'" class="fas fa-dollar-sign"></i>
-												<i ng-if="item.type == 'armor'" class="fas fa-tshirt"></i>
-												{{item.value}}
+												<div class="row">
+													<div class="col-2">
+														<i ng-if="item.type == 'money'" class="fas fa-dollar-sign"></i>
+														<i ng-if="item.type == 'armor'" class="fas fa-tshirt"></i>
+													</div>
+													<div class="col-10">
+														<textarea ng-model="item.value" class="townData" readonly='true'> </textarea>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -377,7 +359,6 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
 					</div>
 				</div>
 			</div>
