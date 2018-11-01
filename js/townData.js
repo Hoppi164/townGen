@@ -113,7 +113,7 @@ townApp.controller('townController', function($scope) {
 	$scope.peopleSearchInput = "";
 	$scope.buildingSearchInput = "";
 	$scope.townDataDownload = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify($scope.townData));
-
+	$scope.triggerLoadFile = false;
 	$scope.saveFile = function() {
 		var exportName = $scope.townData.name;
 		var exportObj = $scope.townData;
@@ -126,8 +126,7 @@ townApp.controller('townController', function($scope) {
 		downloadAnchorNode.remove();
 	};
 	$scope.loadFile = function() {
-		var files = document.getElementById('selectFiles').files;
-		console.log(files);
+		var files = document.getElementById('fileUpload').files;
 		if (files.length <= 0) {
 			return false;
 		}
@@ -137,8 +136,31 @@ townApp.controller('townController', function($scope) {
 		fr.onload = function(e) {
 			var result = JSON.parse(e.target.result);
 			$scope.townData = result;
+			$scope.$apply();
 		}
 
 		fr.readAsText(files.item(0));
 	}
+
+	$scope.toggleEdit = function() {
+		var fields = document.getElementsByClassName('townData');
+		for (var i = 0; i < fields.length; i++) {
+			var field = fields[i];
+			field.classList.toggle('editable');
+			field.getAttribute('readonly') ? field.removeAttribute('readonly') : field.setAttribute('readonly', true);
+		}
+	}
+});
+
+function loadFile() {
+
+	var checkbox = document.getElementById('triggerLoadFileCheckbox');
+	checkbox.click();
+}
+
+$('textarea').each(function() {
+	this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+}).on('input', function() {
+	this.style.height = 'auto';
+	this.style.height = (this.scrollHeight) + 'px';
 });

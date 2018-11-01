@@ -6,10 +6,27 @@
 		.attributeBox{
 			position: relative;
 			display: block;
-			padding: 0.75rem 1.25rem;
+			padding-top: 0.8rem;
+			padding-bottom: 0.8rem;
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
 			margin-bottom: -1px;
 			background-color: #fff;
 			border: 1px solid rgba(0, 0, 0, 0.125);
+			font-size: 0.8rem;
+		}
+		.townData{
+			resize: none;
+			width: 100% !important;
+			border-radius: 0.25rem !important;
+			border: 0;
+			background-color: transparent !important;
+			max-height: 100%;
+			height: 0px;
+			min-height: 30px;
+		}
+		.editable{
+			border: 2px solid #17a2b8 !important;
 		}
 	</style>
 	<body ng-controller="townController">
@@ -27,9 +44,12 @@
 					<div class="card">
 						<div class="card-body">
 							<button class="btn btn-info" ng-click="saveFile()">Save <i class="fas fa-download"></i></button>
-							<input type="file" id="selectFiles" value="Import" /><br />
-							<button class="btn btn-info" ng-click="loadFile()">Load <i class="fas fa-upload"></i></i></button>
-							<button class="btn btn-info">Edit<i class="fas fa-edit px-2"></i></button>
+							<label class="btn btn-info mb-0">
+								Load <i class="fas fa-upload"></i></i>
+								<input type="file" class="d-none" onchange="loadFile()" id="fileUpload">
+								<input type="checkbox" class="d-none" id="triggerLoadFileCheckbox" ng-change="loadFile()" ng-model="triggerLoadFile">
+							</label>
+							<button class="btn btn-info" ng-click="toggleEdit()">Edit<i class="fas fa-edit px-2"></i></button>
 							<button class="btn btn-info">New Town<i class="fas fa-sync px-2"></i></button>
 						</div>
 					</div>
@@ -42,8 +62,8 @@
 					<br class="d-md-none">
 					<div class="card">
 						<div class="card-header">
-							<h3 class="text-center">
-							{{townData.name}}
+							<h3 class="text-center m-0">
+							<textarea ng-model="townData.name" class="townData text-center" readonly='true'></textarea>
 							</h3>
 						</div>
 						<div class="card-body p-0">
@@ -53,7 +73,7 @@
 							</div>
 						</div>
 						<div class="card-footer">
-							<p>{{townData.description}}</p>
+							<textarea ng-model="townData.description" class="townData text-center" readonly='true'></textarea>
 						</div>
 					</div>
 					<br>
@@ -77,8 +97,8 @@
 										<td>
 											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#buildingViewModal" ng-click="viewBuilding($index)">View</button>
 										</td>
-										<td>{{building.type}}</td>
-										<td>{{building.name}}</td>
+										<td><textarea ng-model="building.type" class="townData" readonly='true'></textarea></td>
+										<td><textarea ng-model="building.name" class="townData" readonly='true'></textarea></td>
 									</tr>
 								</tbody>
 							</table>
@@ -107,10 +127,10 @@
 										<td>
 											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#personViewModal" ng-click="viewPerson($index)">View</button>
 										</td>
-										<td>{{person.name}}</td>
-										<td>{{person.job}}</td>
-										<td class="d-none d-md-table-cell">{{person.race}}</td>
-										<td class="d-none d-md-table-cell">{{person.age}}</td>
+										<td><textarea ng-model="person.name" class="townData" readonly='true'></textarea></td>
+										<td><textarea ng-model="person.job" class="townData" readonly='true'></textarea></td>
+										<td class="d-none d-md-table-cell"><textarea ng-model="person.race" class="townData" readonly='true'></textarea></td>
+										<td class="d-none d-md-table-cell"><textarea ng-model="person.age" class="townData" readonly='true'></textarea></td>
 									</tr>
 								</tbody>
 							</table>
@@ -138,7 +158,9 @@
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">{{townData.people[currentPerson].name}}</h5>
+						<h5 class="modal-title">
+						<textarea ng-model="townData.people[currentPerson].name" class="townData" readonly='true'></textarea>
+						</h5>
 						<button type="button" class="close" data-dismiss="modal"> <span>&times;</span> </button>
 					</div>
 					<div class="modal-body">
@@ -148,20 +170,139 @@
 							</div>
 							<div class="col-12 col-md-6">
 								<div class="row pl-md-3">
-									<li class="attributeBox col-6">Race: {{townData.people[currentPerson].race}}</li>
-									<li class="attributeBox col-6">Age: {{townData.people[currentPerson].age}}</li>
-									<li class="attributeBox col-6"><i class="fas fa-hammer"></i> Job: {{townData.people[currentPerson].job}}</li>
-									<li class="attributeBox col-6"><i class="fas fa-comment"></i> Lng: {{townData.people[currentPerson].lng}}</li>
-									<li class="attributeBox col-4"><i class="fas fa-shield-alt"></i> AC: {{townData.people[currentPerson].AC}}</li>
-									<li class="attributeBox col-4"><i class="fas fa-heart"></i> HP: {{townData.people[currentPerson].HP}}</li>
-									<li class="attributeBox col-4"><i class="fas fa-shoe-prints"></i> SP: {{townData.people[currentPerson].SP}}</li>
-									<hr class="col-12">
-									<li class="attributeBox col-4"><i class="fas fa-fist-raised"></i> STR: {{townData.people[currentPerson].STR}}</li>
-									<li class="attributeBox col-4"><i class="fas fa-running"></i> DEX: {{townData.people[currentPerson].DEX}}</li>
-									<li class="attributeBox col-4"><i class="fas fa-paw"></i> CON: {{townData.people[currentPerson].CON}}</li>
-									<li class="attributeBox col-4"><i class="fas fa-book"></i> INT: {{townData.people[currentPerson].INT}}</li>
-									<li class="attributeBox col-4"><i class="fas fa-tree"></i> WIS: {{townData.people[currentPerson].WIS}}</li>
-									<li class="attributeBox col-4"><i class="fas fa-comments"></i> CHA: {{townData.people[currentPerson].CHA}}</li>
+
+
+									<div class="attributeBox col-6">
+										<div class="row">
+											<div class="col-6">Race: </div>
+											<div class="col-6">
+												<textarea ng-model="townData.people[currentPerson].race" class="townData" readonly='true'></textarea>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="attributeBox col-6">
+										<div class="row">
+											<div class="col-6">Age: </div>
+											<div class="col-6">
+												<textarea ng-model="townData.people[currentPerson].age" class="townData" readonly='true'></textarea>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="attributeBox col-6">
+										<div class="row">
+											<div class="col-6"><i class="fas fa-hammer"></i> Job: </div>
+											<div class="col-6">
+												<textarea ng-model="townData.people[currentPerson].job" class="townData" readonly='true'></textarea>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="attributeBox col-6">
+										<div class="row">
+											<div class="col-6"><i class="fas fa-comment"></i> Lng: </div>
+											<div class="col-6">
+												<textarea ng-model="townData.people[currentPerson].lng" class="townData" readonly='true'></textarea>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="attributeBox col-4">
+										<div class="row">
+											<div class="col-6 pl-2 pr-2"><i class="fas fa-shield-alt"></i> AC: </div>
+											<div class="col-6 pl-2 pr-2">
+												<textarea ng-model="townData.people[currentPerson].AC" class="townData" readonly='true'></textarea>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="attributeBox col-4">
+										<div class="row">
+											<div class="col-6 pl-2 pr-2"><i class="fas fa-heart"></i> HP: </div>
+											<div class="col-6 pl-2 pr-2">
+												<textarea ng-model="townData.people[currentPerson].HP" class="townData" readonly='true'></textarea>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="attributeBox col-4">
+										<div class="row">
+											<div class="col-6 pl-2 pr-2"><i class="fas fa-shoe-prints"></i> SP: </div>
+											<div class="col-6 pl-2 pr-2">
+												<textarea ng-model="townData.people[currentPerson].SP" class="townData" readonly='true'></textarea>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="attributeBox col-4">
+										<div class="row">
+											<div class="col-6 pl-2 pr-2"><i class="fas fa-fist-raised"></i> STR: </div>
+											<div class="col-6 pl-2 pr-2">
+												<textarea ng-model="townData.people[currentPerson].STR" class="townData" readonly='true'></textarea>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="attributeBox col-4">
+										<div class="row">
+											<div class="col-6 pl-2 pr-2"><i class="fas fa-running"></i> DEX: </div>
+											<div class="col-6 pl-2 pr-2">
+												<textarea ng-model="townData.people[currentPerson].DEX" class="townData" readonly='true'></textarea>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="attributeBox col-4">
+										<div class="row">
+											<div class="col-6 pl-2 pr-2"><i class="fas fa-paw"></i> CON: </div>
+											<div class="col-6 pl-2 pr-2">
+												<textarea ng-model="townData.people[currentPerson].CON" class="townData" readonly='true'></textarea>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="attributeBox col-4">
+										<div class="row">
+											<div class="col-6 pl-2 pr-2"><i class="fas fa-book"></i> INT: </div>
+											<div class="col-6 pl-2 pr-2">
+												<textarea ng-model="townData.people[currentPerson].INT" class="townData" readonly='true'></textarea>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="attributeBox col-4">
+										<div class="row">
+											<div class="col-6 pl-2 pr-2"><i class="fas fa-tree"></i> WIS: </div>
+											<div class="col-6 pl-2 pr-2">
+												<textarea ng-model="townData.people[currentPerson].WIS" class="townData" readonly='true'></textarea>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="attributeBox col-4">
+										<div class="row">
+											<div class="col-6 pl-2 pr-2"><i class="fas fa-comments"></i> CHA: </div>
+											<div class="col-6 pl-2 pr-2">
+												<textarea ng-model="townData.people[currentPerson].CHA" class="townData" readonly='true'></textarea>
+											</div>
+										</div>
+									</div>
+
+
+
 								</div>
 							</div>
 							<div class="col-6 d-none d-md-inline">
