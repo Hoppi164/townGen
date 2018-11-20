@@ -2,8 +2,8 @@
 <!-- This is how they 'save' and 'load' their towndata -->
 <html ng-app="townApp">
 	<head>
-	    <meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="assets/bootstrap-4.1.3-dist/css/bootstrap.css">
 		<script src="assets/bootstrap-4.1.3-dist/js/jquery331.js"></script>
 		<script src="assets/bootstrap-4.1.3-dist/js/bootstrap.js"></script>
@@ -14,17 +14,20 @@
 		<script src="js/map.js"></script>
 		<script src="assets/angularjs-1-7-5.js"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"></script>
 	</head>
 	<style>
+		.zoomableImage {
+			/*width: 100%;*/
+			height: 300px;
+			/*border: 1px solid #ccc;*/
+			/*margin-bottom: 10px;*/
+		}
 		.attributeBox{
 			position: relative;
 			display: block;
 			padding:5px;
-																											/*			padding-top: 0.8rem;
-			padding-bottom: 0.8rem;
-			padding-left: 0.5rem;
-			padding-right: 0.5rem;
-																											*/			margin-bottom: -1px;
+			margin-bottom: -1px;
 			background-color: #fff;
 			border: 1px solid rgba(0, 0, 0, 0.125);
 		}
@@ -49,7 +52,6 @@
 		}
 	</style>
 	<body ng-controller="townController">
-
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<a class="navbar-brand" href="#">Town Generator</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,8 +86,6 @@
 			</div>
 		</nav>
 		<br>
-
-
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-2 d-none d-md-block">
@@ -110,8 +110,10 @@
 						</div>
 						<div class="card-body p-0">
 							<div class="row mx-0">
-								<img class="col-12 col-md-6 p-0" src="images/town.jpg" alt="Image of City">
-								<img class="col-12 col-md-6 p-0" src="images/town-map.jpg" alt="Map of City">
+								<div value="images/town.jpg" class="col-12 col-md-6 p-0 zoomableImage" alt="Image Of City"></div>
+								<div value="images/town-map.jpg" class="col-12 col-md-6 p-0 zoomableImage" alt="Map of City"></div>
+								<!-- <img class="col-12 col-md-6 p-0" src="images/town.jpg" alt="Image of City"> -->
+								<!-- <img class="col-12 col-md-6 p-0" src="images/town-map.jpg" alt="Map of City"> -->
 							</div>
 						</div>
 						<div class="card-footer">
@@ -413,5 +415,39 @@
 			</div>
 		</div>
 		<script src="js/townData.js"></script>
+		</style>
+		<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+		<script>
+		// Using leaflet.js to pan and zoom a big image.
+		// See also: http://kempe.net/blog/2014/06/14/leaflet-pan-zoom-image.html
+		// create the slippy map
+		var zoomableImages = document.getElementsByClassName('zoomableImage');
+		for (var i = 0; i < zoomableImages.length; i++) {
+			zImage = zoomableImages[i];
+			var mapurl = zImage.getAttribute('value');
+			var map = L.map(zImage, {
+			minZoom: 1,
+			maxZoom: 4,
+			center: [0, 0],
+			zoom: 1,
+			zoomControl:false,
+			attributionControl: false,
+			crs: L.CRS.Simple
+			});
+			// dimensions of the image
+			var w = 1600,
+			h = 1200,
+			url = mapurl;
+			// calculate the edges of the image, in coordinate space
+			var southWest = map.unproject([0, h], map.getMaxZoom()-1);
+			var northEast = map.unproject([w, 0], map.getMaxZoom()-1);
+			var bounds = new L.LatLngBounds(southWest, northEast);
+			// add the image overlay,
+			// so that it covers the entire map
+			L.imageOverlay(url, bounds).addTo(map);
+			// tell leaflet that the map is exactly as big as the image
+			map.setMaxBounds(bounds);
+		}
+		</script>
 	</body>
 </html>
