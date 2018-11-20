@@ -150,6 +150,12 @@ townApp.controller('townController', function($scope) {
 			field.getAttribute('readonly') ? field.removeAttribute('readonly') : field.setAttribute('readonly', true);
 		}
 	}
+
+	$scope.newTown = function() {
+			$scope.townData.name = getRandomTownName();
+			$scope.$apply();
+		}
+		// $scope.newTown();
 });
 
 function loadFile() {

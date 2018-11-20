@@ -407,3 +407,8 @@ var townNames = [
 	"Lalage",
 	"Lamber"
 ]
+
+function getRandomTownName() {
+	newTownName = townNames[Math.floor(Math.random() * townNames.length)];
+	return newTownName;
+}
