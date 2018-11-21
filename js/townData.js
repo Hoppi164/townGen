@@ -103,6 +103,13 @@ townApp.controller('townController', function($scope) {
 		]
 	};
 	$scope.currentPerson = 0;
+	$scope.showFullScreenImage = false;
+	$scope.fullscreenSource = '';
+	$scope.toggleFullscreenImage = function(url) {
+		$scope.fullscreenSource = url;
+		$scope.showFullScreenImage = !$scope.showFullScreenImage;
+	};
+
 	$scope.viewPerson = function(arrayIndex) {
 		$scope.currentPerson = arrayIndex;
 	};

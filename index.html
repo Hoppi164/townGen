@@ -50,6 +50,25 @@
 		.smallText{
 			font-size: 0.8rem;
 		}
+		#mapofcity{
+			position: fixed;
+			z-index: 1000;
+			top: 0px;
+			left: 0px;
+			width: 100vw;
+			height: 100vh;
+		}
+		.imageOverlay{
+			position: absolute;
+			right: 5px;
+			top: 2px;
+			font-size: 30px;
+			color: black;
+			transition: color 0.5s;
+		}
+		.imageOverlay:hover{
+			color: white;			
+		}
 	</style>
 	<body ng-controller="townController">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -110,10 +129,16 @@
 						</div>
 						<div class="card-body p-0">
 							<div class="row mx-0">
-								<div value="images/town.jpg" class="col-12 col-md-6 p-0 zoomableImage" alt="Image Of City"></div>
-								<div value="images/town-map.jpg" class="col-12 col-md-6 p-0 zoomableImage" alt="Map of City"></div>
-								<!-- <img class="col-12 col-md-6 p-0" src="images/town.jpg" alt="Image of City"> -->
-								<!-- <img class="col-12 col-md-6 p-0" src="images/town-map.jpg" alt="Map of City"> -->
+								<!-- <div value="images/town.jpg" class="col-12 col-md-6 p-0 zoomableImage" alt="Image Of City"></div> -->
+								<!-- <div id="mapofcity" value="images/town-map.jpg" class="col-12 col-md-6 p-0 zoomableImage" alt="Map of City"></div> -->
+								<div class="col-12 col-md-6 p-0">
+								<img class="col-12 p-0" src="images/town.jpg" alt="Image of City">
+								<!-- <span class="imageOverlay" ng-click="toggleFullscreenImage('images/town.jpg')"><i class="fas fa-expand"></i></span> -->
+								</div>
+								<div class="col-12 col-md-6 p-0">
+								<img class="col-12 p-0" src="images/town-map.jpg" alt="Map of City">
+								<span class="imageOverlay" ng-click="toggleFullscreenImage('images/town-map.jpg')"><i class="fas fa-expand"></i></span>
+								</div>
 							</div>
 						</div>
 						<div class="card-footer">
@@ -414,6 +439,10 @@
 				</div>
 			</div>
 		</div>
+		<div id="mapofcity" value="{{fullscreenSource}}" class="zoomableImage" alt="Map of City" ng-show="showFullScreenImage">
+		</div>
+		<span class="imageOverlay" style="z-index: 1001" ng-click="toggleFullscreenImage()" ng-show="showFullScreenImage"><i class="far fa-times-circle"></i></span>
+
 		<script src="js/townData.js"></script>
 		</style>
 		<script src="assets/leaflet/leaflet.js"></script>
@@ -427,16 +456,16 @@
 			var mapurl = zImage.getAttribute('value');
 			var map = L.map(zImage, {
 			minZoom: 1,
-			maxZoom: 4,
+			maxZoom: 10,
 			center: [0, 0],
 			zoom: 1,
-			zoomControl:false,
+			zoomControl:true,
 			attributionControl: false,
 			crs: L.CRS.Simple
 			});
 			// dimensions of the image
-			var w = 1800,
-			h = 1200,
+			var w = 320000,
+			h = 150000,
 			url = mapurl;
 			// calculate the edges of the image, in coordinate space
 			var southWest = map.unproject([0, h], map.getMaxZoom()-1);
