@@ -6,7 +6,7 @@ for (var i = 0; i < zoomableImages.length; i++) {
 	zImage = zoomableImages[i];
 	var mapurl = zImage.getAttribute('value');
 	var map = L.map(zImage, {
-		minZoom: 1,
+		minZoom: -1,
 		maxZoom: 10,
 		center: [0, 0],
 		zoom: 1,
