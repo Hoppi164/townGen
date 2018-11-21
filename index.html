@@ -8,68 +8,15 @@
 		<script src="assets/bootstrap-4.1.3-dist/js/jquery331.js"></script>
 		<script src="assets/bootstrap-4.1.3-dist/js/bootstrap.js"></script>
 		<script src="js/nameLists/townNameList.js"></script>
-		<script src="js/nameLists/F.js"></script>
+		<script src="j	s/nameLists/F.js"></script>
 		<script src="js/nameLists/M.js"></script>
 		<script src="js/nameLists/S.js"></script>
 		<script src="js/map.js"></script>
 		<script src="assets/angularjs-1-7-5.js"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 		<link rel="stylesheet" href="assets/leaflet/leaflet.css"></script>
+		<link rel="stylesheet" href="css/custom.css"></script>
 	</head>
-	<style>
-		.zoomableImage {
-			/*width: 100%;*/
-			height: 300px;
-			/*border: 1px solid #ccc;*/
-			/*margin-bottom: 10px;*/
-		}
-		.attributeBox{
-			position: relative;
-			display: block;
-			padding:5px;
-			margin-bottom: -1px;
-			background-color: #fff;
-			border: 1px solid rgba(0, 0, 0, 0.125);
-		}
-		.townData{
-			resize: none;
-			/*overflow: scroll !important;*/
-			line-height: 1;
-			width: 100% !important;
-			border-radius: 0.25rem !important;
-			border: 0;
-			background-color: transparent !important;
-			/*max-height: 100%;*/
-			/*height: 0px;*/
-			min-height: 30px;
-		}
-		.editable{
-			border: 2px solid #17a2b8 !important;
-			resize: vertical;
-		}
-		.smallText{
-			font-size: 0.8rem;
-		}
-		#mapofcity{
-			position: fixed;
-			z-index: 1000;
-			top: 0px;
-			left: 0px;
-			width: 100vw;
-			height: 100vh;
-		}
-		.imageOverlay{
-			position: absolute;
-			right: 5px;
-			top: 2px;
-			font-size: 30px;
-			color: black;
-			transition: color 0.5s;
-		}
-		.imageOverlay:hover{
-			color: white;			
-		}
-	</style>
 	<body ng-controller="townController">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<a class="navbar-brand" href="#">Town Generator</a>
@@ -98,10 +45,6 @@
 						<button class="btn btn-info w-100" ng-click="newTown()">New Town<i class="fas fa-sync px-2"></i></button>
 					</li>
 				</ul>
-				<!-- 		<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-				</form> -->
 			</div>
 		</nav>
 		<br>
@@ -129,11 +72,8 @@
 						</div>
 						<div class="card-body p-0">
 							<div class="row mx-0">
-								<!-- <div value="images/town.jpg" class="col-12 col-md-6 p-0 zoomableImage" alt="Image Of City"></div> -->
-								<!-- <div id="mapofcity" value="images/town-map.jpg" class="col-12 col-md-6 p-0 zoomableImage" alt="Map of City"></div> -->
 								<div class="col-12 col-md-6 p-0">
 								<img class="col-12 p-0" src="images/town.jpg" alt="Image of City">
-								<!-- <span class="imageOverlay" ng-click="toggleFullscreenImage('images/town.jpg')"><i class="fas fa-expand"></i></span> -->
 								</div>
 								<div class="col-12 col-md-6 p-0">
 								<img class="col-12 p-0" src="images/town-map.jpg" alt="Map of City">
@@ -444,39 +384,7 @@
 		<span class="imageOverlay" style="z-index: 1001" ng-click="toggleFullscreenImage()" ng-show="showFullScreenImage"><i class="far fa-times-circle"></i></span>
 
 		<script src="js/townData.js"></script>
-		</style>
 		<script src="assets/leaflet/leaflet.js"></script>
-		<script>
-		// Using leaflet.js to pan and zoom a big image.
-		// See also: http://kempe.net/blog/2014/06/14/leaflet-pan-zoom-image.html
-		// create the slippy map
-		var zoomableImages = document.getElementsByClassName('zoomableImage');
-		for (var i = 0; i < zoomableImages.length; i++) {
-			zImage = zoomableImages[i];
-			var mapurl = zImage.getAttribute('value');
-			var map = L.map(zImage, {
-			minZoom: 1,
-			maxZoom: 10,
-			center: [0, 0],
-			zoom: 1,
-			zoomControl:true,
-			attributionControl: false,
-			crs: L.CRS.Simple
-			});
-			// dimensions of the image
-			var w = 320000,
-			h = 150000,
-			url = mapurl;
-			// calculate the edges of the image, in coordinate space
-			var southWest = map.unproject([0, h], map.getMaxZoom()-1);
-			var northEast = map.unproject([w, 0], map.getMaxZoom()-1);
-			var bounds = new L.LatLngBounds(southWest, northEast);
-			// add the image overlay,
-			// so that it covers the entire map
-			L.imageOverlay(url, bounds).addTo(map);
-			// tell leaflet that the map is exactly as big as the image
-			map.setMaxBounds(bounds);
-		}
-		</script>
+		<script src="js/zoomImages.js"></script>
 	</body>
 </html>
