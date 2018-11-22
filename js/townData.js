@@ -165,8 +165,8 @@ townApp.controller('townController', function($scope) {
 		// $scope.newTown();
 });
 
-function loadFile() {
 
+function loadFile() {
 	var checkbox = document.getElementById('triggerLoadFileCheckbox');
 	checkbox.click();
 }
