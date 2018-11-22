@@ -58,7 +58,7 @@ var buildingTypes = [
 	'Hall',
 	'Villa',
 	'Bungalow',
-	'Alchemist'
+	'Alchemist',
 	'manor',
 	'Hall',
 	'Abode'
@@ -66,12 +66,24 @@ var buildingTypes = [
 
 
 
+// {
+// 	type: 'Bakery',
+// 	inventory: [{
+// 		type: 'money',
+// 		value: '155 Silver'
+// 	}, {
+// 		type: 'food',
+// 		value: 'Bread'
+// 	}]
+// }
 
 
 
 
-getRandomBuilding() {
-	var randomType = buildingTypes[Math.floor(Math.random() * buildingTypes.length)];
-	var randomInventory getBuildingInv();
+function getRandomBuilding() {
+	// var randomInventory getBuildingInv();
+	var newbuilding = {
+		type: buildingTypes[Math.floor(Math.random() * buildingTypes.length)]
+	}
 	return newbuilding;
 }

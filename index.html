@@ -102,7 +102,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="building in townData.buildings | filter:buildingSearchInput" >
+									<tr ng-repeat="building in townData.buildings | filter:buildingSearchInput|limitTo:4" >
 										<td>
 											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#buildingViewModal" ng-click="viewBuilding($index)">View</button>
 										</td>
@@ -382,6 +382,8 @@
 		<div id="mapofcity" value="{{fullscreenSource}}" class="zoomableImage" alt="Map of City" ng-show="showFullScreenImage">
 		</div>
 		<span class="imageOverlay" style="z-index: 1001; position: fixed;" ng-click="toggleFullscreenImage()" ng-show="showFullScreenImage"><i class="far fa-times-circle"></i></span>
+
+		<script src="js/buildings.js"></script>
 
 		<script src="js/townData.js"></script>
 		<script src="assets/leaflet/leaflet.js"></script>

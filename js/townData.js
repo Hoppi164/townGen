@@ -55,50 +55,51 @@ townApp.controller('townController', function($scope) {
 				value: 'Brass Key'
 			}]
 		}],
-		buildings: [{
-				type: 'Bakery',
-				inventory: [{
-					type: 'money',
-					value: '155 Silver'
-				}, {
-					type: 'food',
-					value: 'Bread'
-				}]
-			}, {
-				type: 'Hunting Lodge',
-				inventory: [{
-					type: 'money',
-					value: '95 Silver'
-				}, {
-					type: 'food',
-					value: 'Venison'
-				}, {
-					type: 'food',
-					value: 'Rabbit'
-				}, {
-					type: 'crafting',
-					value: 'Leather'
-				}]
-			}, {
-				type: 'Chapel',
-				name: 'Esphille Community Church'
-			}, {
-				type: 'Bank'
-			}, {
-				type: 'Tavern',
-				name: 'The Winking Skeever',
-				inventory: [{
-					type: 'money',
-					value: '95 Silver'
-				}, {
-					type: 'food',
-					value: 'Venison'
-				}, {
-					type: 'food',
-					value: 'Rabbit'
-				}],
-				description: 'A rawdy Inn, bustling with drunkards and nobodies.'
-			}
+		buildings: [
+		// {
+		// 		type: 'Bakery',
+		// 		inventory: [{
+		// 			type: 'money',
+		// 			value: '155 Silver'
+		// 		}, {
+		// 			type: 'food',
+		// 			value: 'Bread'
+		// 		}]
+		// 	}, {
+		// 		type: 'Hunting Lodge',
+		// 		inventory: [{
+		// 			type: 'money',
+		// 			value: '95 Silver'
+		// 		}, {
+		// 			type: 'food',
+		// 			value: 'Venison'
+		// 		}, {
+		// 			type: 'food',
+		// 			value: 'Rabbit'
+		// 		}, {
+		// 			type: 'crafting',
+		// 			value: 'Leather'
+		// 		}]
+		// 	}, {
+		// 		type: 'Chapel',
+		// 		name: 'Esphille Community Church'
+		// 	}, {
+		// 		type: 'Bank'
+		// 	}, {
+		// 		type: 'Tavern',
+		// 		name: 'The Winking Skeever',
+		// 		inventory: [{
+		// 			type: 'money',
+		// 			value: '95 Silver'
+		// 		}, {
+		// 			type: 'food',
+		// 			value: 'Venison'
+		// 		}, {
+		// 			type: 'food',
+		// 			value: 'Rabbit'
+		// 		}],
+		// 		description: 'A rawdy Inn, bustling with drunkards and nobodies.'
+		// 	}
 
 		]
 	};
@@ -160,7 +161,13 @@ townApp.controller('townController', function($scope) {
 
 	$scope.newTown = function() {
 			$scope.townData.name = getRandomTownName();
-			$scope.$apply();
+			var numbuildings = Math.floor(Math.random() * 30);
+			for (var i = 0; i < numbuildings; i++) {
+				// console.log(getRandomBuilding());
+				$scope.townData.buildings.push(getRandomBuilding());
+			}
+			// console.log($scope.townData.buildings);
+			// $scope.$apply();
 		}
 		// $scope.newTown();
 });
