@@ -56,53 +56,54 @@ townApp.controller('townController', function($scope) {
 			}]
 		}],
 		buildings: [
-		// {
-		// 		type: 'Bakery',
-		// 		inventory: [{
-		// 			type: 'money',
-		// 			value: '155 Silver'
-		// 		}, {
-		// 			type: 'food',
-		// 			value: 'Bread'
-		// 		}]
-		// 	}, {
-		// 		type: 'Hunting Lodge',
-		// 		inventory: [{
-		// 			type: 'money',
-		// 			value: '95 Silver'
-		// 		}, {
-		// 			type: 'food',
-		// 			value: 'Venison'
-		// 		}, {
-		// 			type: 'food',
-		// 			value: 'Rabbit'
-		// 		}, {
-		// 			type: 'crafting',
-		// 			value: 'Leather'
-		// 		}]
-		// 	}, {
-		// 		type: 'Chapel',
-		// 		name: 'Esphille Community Church'
-		// 	}, {
-		// 		type: 'Bank'
-		// 	}, {
-		// 		type: 'Tavern',
-		// 		name: 'The Winking Skeever',
-		// 		inventory: [{
-		// 			type: 'money',
-		// 			value: '95 Silver'
-		// 		}, {
-		// 			type: 'food',
-		// 			value: 'Venison'
-		// 		}, {
-		// 			type: 'food',
-		// 			value: 'Rabbit'
-		// 		}],
-		// 		description: 'A rawdy Inn, bustling with drunkards and nobodies.'
-		// 	}
+			// {
+			// 		type: 'Bakery',
+			// 		inventory: [{
+			// 			type: 'money',
+			// 			value: '155 Silver'
+			// 		}, {
+			// 			type: 'food',
+			// 			value: 'Bread'
+			// 		}]
+			// 	}, {
+			// 		type: 'Hunting Lodge',
+			// 		inventory: [{
+			// 			type: 'money',
+			// 			value: '95 Silver'
+			// 		}, {
+			// 			type: 'food',
+			// 			value: 'Venison'
+			// 		}, {
+			// 			type: 'food',
+			// 			value: 'Rabbit'
+			// 		}, {
+			// 			type: 'crafting',
+			// 			value: 'Leather'
+			// 		}]
+			// 	}, {
+			// 		type: 'Chapel',
+			// 		name: 'Esphille Community Church'
+			// 	}, {
+			// 		type: 'Bank'
+			// 	}, {
+			// 		type: 'Tavern',
+			// 		name: 'The Winking Skeever',
+			// 		inventory: [{
+			// 			type: 'money',
+			// 			value: '95 Silver'
+			// 		}, {
+			// 			type: 'food',
+			// 			value: 'Venison'
+			// 		}, {
+			// 			type: 'food',
+			// 			value: 'Rabbit'
+			// 		}],
+			// 		description: 'A rawdy Inn, bustling with drunkards and nobodies.'
+			// 	}
 
 		]
 	};
+	$scope.editmode = false;
 	$scope.currentPerson = 0;
 	$scope.showFullScreenImage = false;
 	$scope.fullscreenSource = '';
@@ -151,12 +152,7 @@ townApp.controller('townController', function($scope) {
 	}
 
 	$scope.toggleEdit = function() {
-		var fields = document.getElementsByClassName('townData');
-		for (var i = 0; i < fields.length; i++) {
-			var field = fields[i];
-			field.classList.toggle('editable');
-			field.getAttribute('readonly') ? field.removeAttribute('readonly') : field.setAttribute('readonly', true);
-		}
+		$scope.editmode = !$scope.editmode;
 	}
 
 	$scope.newTown = function() {
