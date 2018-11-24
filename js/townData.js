@@ -57,38 +57,7 @@ townApp.controller('townController', function($scope) {
 				value: 'Brass Key'
 			}]
 		}],
-		buildings: [
-			// {
-			// 		type: 'Bakery',
-			// 		inventory: [{
-			// 			type: 'money',
-			// 			value: '155 Silver'
-			// 		}, {
-			// 			type: 'food',
-			// 			value: 'Bread'
-			// 		}]
-			// 	}, {
-			// 		type: 'Hunting Lodge',
-			// 		inventory: [{
-			// 			type: 'money',
-			// 			value: '95 Silver'
-			// 		}, {
-			// 			type: 'food',
-			// 			value: 'Venison'
-			// 		}, {
-			// 			type: 'food',
-			// 			value: 'Rabbit'
-			// 		}, {
-			// 			type: 'crafting',
-			// 			value: 'Leather'
-			// 		}]
-			// 	}, {
-			// 		type: 'Chapel',
-			// 		name: 'Esphille Community Church'
-			// 	}, {
-			// 		type: 'Bank'
-			// 	}, 
-		]
+		buildings: []
 	};
 	$scope.editmode = false;
 	$scope.currentPerson = 0;
@@ -148,11 +117,7 @@ townApp.controller('townController', function($scope) {
 
 		$scope.townData.buildings = [];
 		var numbuildings = Math.floor(Math.random() * 30) + 10;
-		for (var i = 0; i < numbuildings; i++) {
-			var randomBuilding = getRandomBuilding();
-			randomBuilding.index = i;
-			$scope.townData.buildings.push(randomBuilding);
-		}
+		$scope.townData.buildings = getTownBuildings(numbuildings);
 		// $scope.$apply();
 	}
 });
