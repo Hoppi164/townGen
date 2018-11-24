@@ -407,8 +407,36 @@ var townNames = [
 	"Lalage",
 	"Lamber"
 ]
+var townDescList = [
+	'a quaint village',
+	'a small town',
+	'a big town',
+	'a starving village',
+	'a mining village',
+	'a fishing village'
+]
+var townLocationList = [
+	'on the side of a sauntering river',
+	'blocking the mouth of a large cave',
+	'in the middle of a desert',
+	'nestled in a clearing, in the middle of the woods',
+	'on the outskirts of a much larger city',
+	'on the border of the nation',
+	'by the seaside',
+	'atop a mountain'
+]
 
 function getRandomTownName() {
 	newTownName = townNames[Math.floor(Math.random() * townNames.length)];
 	return newTownName;
+}
+
+function getTownShortDesc() {
+	shortDescription = townDescList[Math.floor(Math.random() * townDescList.length)];
+	return shortDescription;
+}
+
+function getTownLocation() {
+	townLocation = townLocationList[Math.floor(Math.random() * townLocationList.length)];
+	return townLocation;
 }

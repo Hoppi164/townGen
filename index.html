@@ -104,9 +104,9 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="building in townData.buildings | filter:buildingSearchInput|limitTo:4" >
+									<tr ng-repeat="building in townData.buildings | filter:buildingSearchInput|limitTo:10" >
 										<td>
-											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#buildingViewModal" ng-click="viewBuilding($index)">View</button>
+											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#buildingViewModal" ng-click="viewBuilding(building.index)">View</button>
 										</td>
 										<td>
 											<label ng-bind="building.type" ng-hide="editmode"></label>
@@ -142,7 +142,7 @@
 								<tbody>
 									<tr ng-repeat="person in townData.people | filter:peopleSearchInput" >
 										<td>
-											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#personViewModal" ng-click="viewPerson($index)">View</button>
+											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#personViewModal" ng-click="viewPerson(person.index)">View</button>
 										</td>
 										<td>
 											<label ng-bind="person.name" ng-hide="editmode"></label>

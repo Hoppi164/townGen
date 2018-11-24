@@ -2,9 +2,10 @@ var townApp = angular.module('townApp', []);
 
 townApp.controller('townController', function($scope) {
 	$scope.townData = {
-		name: 'Esphille Village',
-		description: 'Esphille is a quaint village on the side of a slauntering river',
+		name: 'Create a town by clicking the "New Town" button',
+		// description: 'Esphille is a quaint village on the side of a slauntering river',
 		people: [{
+			index: 0,
 			name: 'Tom Timmy Bloggs',
 			race: 'Human',
 			age: '25',
@@ -30,6 +31,7 @@ townApp.controller('townController', function($scope) {
 				value: 'iron Key'
 			}]
 		}, {
+			index: 1,
 			name: 'JIM JEFFREYS',
 			race: 'Dwarf',
 			age: '222',
@@ -86,21 +88,6 @@ townApp.controller('townController', function($scope) {
 			// 	}, {
 			// 		type: 'Bank'
 			// 	}, 
-			{
-				type: 'Tavern',
-				name: 'The Winking Skeever',
-				inventory: [{
-					type: 'money',
-					value: '95 Silver'
-				}, {
-					type: 'food',
-					value: 'Venison'
-				}, {
-					type: 'food',
-					value: 'Rabbit'
-				}],
-				description: 'A rawdy Inn, bustling with drunkards and nobodies.'
-			}
 		]
 	};
 	$scope.editmode = false;
@@ -156,17 +143,18 @@ townApp.controller('townController', function($scope) {
 	}
 
 	$scope.newTown = function() {
-			$scope.townData.name = getRandomTownName();
-			$scope.townData.buildings = [];
-			var numbuildings = Math.floor(Math.random() * 30);
-			for (var i = 0; i < numbuildings; i++) {
-				// console.log(getRandomBuilding());
-				$scope.townData.buildings.push(getRandomBuilding());
-			}
-			// console.log($scope.townData.buildings);
-			// $scope.$apply();
+		$scope.townData.name = getRandomTownName();
+		$scope.townData.description = $scope.townData.name + ' is ' + getTownShortDesc() + ' ' + getTownLocation();
+
+		$scope.townData.buildings = [];
+		var numbuildings = Math.floor(Math.random() * 30) + 10;
+		for (var i = 0; i < numbuildings; i++) {
+			var randomBuilding = getRandomBuilding();
+			randomBuilding.index = i;
+			$scope.townData.buildings.push(randomBuilding);
 		}
-		// $scope.newTown();
+		// $scope.$apply();
+	}
 });
 
 
