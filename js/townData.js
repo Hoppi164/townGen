@@ -85,22 +85,22 @@ townApp.controller('townController', function($scope) {
 			// 		name: 'Esphille Community Church'
 			// 	}, {
 			// 		type: 'Bank'
-			// 	}, {
-			// 		type: 'Tavern',
-			// 		name: 'The Winking Skeever',
-			// 		inventory: [{
-			// 			type: 'money',
-			// 			value: '95 Silver'
-			// 		}, {
-			// 			type: 'food',
-			// 			value: 'Venison'
-			// 		}, {
-			// 			type: 'food',
-			// 			value: 'Rabbit'
-			// 		}],
-			// 		description: 'A rawdy Inn, bustling with drunkards and nobodies.'
-			// 	}
-
+			// 	}, 
+			{
+				type: 'Tavern',
+				name: 'The Winking Skeever',
+				inventory: [{
+					type: 'money',
+					value: '95 Silver'
+				}, {
+					type: 'food',
+					value: 'Venison'
+				}, {
+					type: 'food',
+					value: 'Rabbit'
+				}],
+				description: 'A rawdy Inn, bustling with drunkards and nobodies.'
+			}
 		]
 	};
 	$scope.editmode = false;
@@ -157,6 +157,7 @@ townApp.controller('townController', function($scope) {
 
 	$scope.newTown = function() {
 			$scope.townData.name = getRandomTownName();
+			$scope.townData.buildings = [];
 			var numbuildings = Math.floor(Math.random() * 30);
 			for (var i = 0; i < numbuildings; i++) {
 				// console.log(getRandomBuilding());

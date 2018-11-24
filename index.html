@@ -302,22 +302,11 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title">
-						<div class="row">
-							<div class="col-4">
-								<textarea ng-model="townData.buildings[currentBuilding].type" class="townData" readonly='true'> </textarea>
-								
-							</div>
-							<div class="col-8" ng-if="townData.buildings[currentBuilding].name">
-								<div class="row">
-									<div class="col-2">
-										--
-									</div>
-									<div class="col-10">
-										<textarea ng-model="townData.buildings[currentBuilding].name" class="townData" readonly='true'> </textarea>
-									</div>
-								</div>
-							</div>
-						</div>
+							<label ng-bind="townData.buildings[currentBuilding].type" ng-hide="editmode"></label>
+							<textarea ng-model="townData.buildings[currentBuilding].type" class="townData" ng-show="editmode"> </textarea>								
+							<b ng-show="townData.buildings[currentBuilding].name"> -- </b>
+							<label ng-bind="townData.buildings[currentBuilding].name" ng-hide="editmode"></label>
+							<textarea ng-model="townData.buildings[currentBuilding].name" class="townData" ng-show="editmode"> </textarea>
 						</h5>
 						<button type="button" class="close" data-dismiss="modal"> <span>&times;</span> </button>
 					</div>
@@ -326,9 +315,8 @@
 							<div class="col-12">
 								<img class="img-fluid" src="images/tavern.jpg">
 							</div>
-							<div class="col-12" ng-if="townData.buildings[currentBuilding].description">
-								<textarea ng-model="townData.buildings[currentBuilding].description" class="townData font-italic text-center bg-light rounded p-2" readonly='true'> </textarea>
-							</div>
+							<label ng-bind="townData.buildings[currentBuilding].description" class="text-center w-100" ng-hide="editmode"></label>
+							<textarea ng-model="townData.buildings[currentBuilding].description" class="townData text-center" ng-show="editmode"> </textarea>
 							<hr class="col-12">
 							<div class="col-12">
 								<div class="card">
@@ -336,15 +324,12 @@
 									<div class="card-body p-0">
 										<div class="row mx-0">
 											<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.buildings[currentBuilding].inventory">
-												<div class="row">
-													<div class="col-2">
-														<i ng-if="item.type == 'money'" class="fas fa-dollar-sign"></i>
-														<i ng-if="item.type == 'armor'" class="fas fa-tshirt"></i>
-													</div>
-													<div class="col-10">
-														<textarea ng-model="item.value" class="townData" readonly='true'> </textarea>
-													</div>
-												</div>
+												<b>												
+													<i ng-if="item.type == 'money'" class="fas fa-dollar-sign"></i>
+													<i ng-if="item.type == 'armor'" class="fas fa-tshirt"></i>
+												</b>
+												<label ng-bind="item.value" ng-hide="editmode"></label>
+												<textarea ng-model="item.value" class="townData" ng-show="editmode"> </textarea>
 											</div>
 										</div>
 									</div>
