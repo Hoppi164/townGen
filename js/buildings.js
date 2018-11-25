@@ -59,18 +59,24 @@ var buildingTypes = [{
 
 function getTownBuildings(numBuildings) {
 	townBuildings = [];
-	for (var i = 0; i < buildingTypes; i++) {
+	var index = 0;
+	for (var i = 0; i < buildingTypes.length; i++) {
 		var numberOfThisType = numBuildings * (buildingTypes[i].percentageOfTown / 100);
 		for (var j = 0; j < numberOfThisType; j++) {
-			var thisBuildingAliases = building[i].variants
+			var thisBuildingAliases = buildingTypes[i].variants
 			var thisBuildingType = thisBuildingAliases[Math.floor(Math.random() * thisBuildingAliases.length)];
-			var thisBuildingName = buildingTypes[i].names[Math.floor(Math.random() * buildingTypes[i].names.length)];
+			var thisBuildingName = null;
+			if (typeof buildingTypes[i].names !== 'undefined') {
+				var thisBuildingName = buildingTypes[i].names[Math.floor(Math.random() * buildingTypes[i].names.length)];
+			}
 			var thisBuilding = {
 				type: thisBuildingType,
 				name: thisBuildingName,
-				aliases: thisBuildingAliases
+				aliases: thisBuildingAliases,
+				index: index
 			}
 			townBuildings.push(thisBuilding);
+			index++;
 		}
 	}
 	return townBuildings;
