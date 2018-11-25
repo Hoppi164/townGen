@@ -10,7 +10,7 @@ var buildingTypes = [{
 	names: ['The Busty Noble', 'The winking rabbit', 'Hostel Chimera', 'Elvish Bedroom', 'High Comfort', 'The lovely lady', 'The Raunchy Goblin', 'The soverign goblin', 'The Lucky Hippo', 'The wet hawk', 'Queens Comfort', 'Kings Comfort', 'The gentlemans axehead']
 }, {
 	type: 'Shop',
-	variants: ['Blacksmith', 'Barber', 'Stonemason', 'Tannery', 'Furrier', 'Butcher', 'Book store', 'Travelling Merchant', 'Merchant', 'Marketplace', 'General Store', 'Carpenter', 'Tailor', 'Cobbler', 'Bakery', 'Fishery', 'Sweets Merchant', 'Music Store'],
+	variants: ['Shop', 'Blacksmith', 'Barber', 'Stonemason', 'Tannery', 'Furrier', 'Butcher', 'Book store', 'Travelling Merchant', 'Merchant', 'Marketplace', 'General Store', 'Carpenter', 'Tailor', 'Cobbler', 'Bakery', 'Fishery', 'Sweets Merchant', 'Music Store'],
 	percentageOfTown: 15
 }, {
 	type: 'Church',
@@ -18,23 +18,23 @@ var buildingTypes = [{
 	percentageOfTown: 5
 }, {
 	type: 'Storage Yard',
-	variants: ['Armory', 'Barn', 'Stables', 'Granary', 'Cattle Barn', 'Warehouse'],
+	variants: ['Storage Yard', 'Armory', 'Barn', 'Stables', 'Granary', 'Cattle Barn', 'Warehouse'],
 	percentageOfTown: 5
 }, {
 	type: 'Factory',
-	variants: ['Lumber Mill', 'Grain Mill', 'Woodcutter', 'Water Well', 'Oil Well', 'Mine'],
+	variants: ['Factory', 'Lumber Mill', 'Grain Mill', 'Woodcutter', 'Water Well', 'Oil Well', 'Mine'],
 	percentageOfTown: 5
 }, {
-	type: 'Defence',
+	type: 'Barracks',
 	variants: ['Guard Tower', 'Watch Tower', 'Barracks', 'Guard House', 'Gate house'],
 	percentageOfTown: 5
 }, {
-	type: 'medical',
-	variants: ['Doctors office', 'Alchemist', 'Apothecary', 'Potions Merchant'],
+	type: 'Medical Office',
+	variants: ['Medical Office', 'Doctors office', 'Alchemist', 'Apothecary', 'Potions Merchant'],
 	percentageOfTown: 5
 }, {
 	type: 'other',
-	variants: ['Theater', 'School', 'University', 'Prison'],
+	variants: ['Theater', 'School', 'University', 'College', 'Prison'],
 	percentageOfTown: 5
 }]
 

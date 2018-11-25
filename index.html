@@ -93,7 +93,7 @@
 							<h5 class="text-center">Buildings</h5>
 						</div>
 						<div class="card-body">
-							<input type="search" class="form-control" placeholder="Search for building" ng-model="buildingSearchInput">
+							<input type="search" class="form-control" placeholder="Search for building types. EG: (House, Tavern, Shop, Church, Storage, Factory, Barracks, Medical, School)"ng-model="buildingSearchInput">
 							<br>
 							<table class="table">
 								<thead>
@@ -104,7 +104,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="building in townData.buildings | filter:buildingSearchInput|limitTo:10" >
+									<tr ng-repeat="building in townData.buildings | filter:buildingSearchInput|orderBy:relevanceSort|limitTo:10" >
 										<td>
 											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#buildingViewModal" ng-click="viewBuilding(building.index)">View</button>
 										</td>

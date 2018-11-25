@@ -118,14 +118,10 @@ townApp.controller('townController', function($scope) {
 		$scope.townData.buildings = [];
 		var numbuildings = Math.floor(Math.random() * 30) + 10;
 		$scope.townData.buildings = getTownBuildings(numbuildings);
-		// alert(getTownBuildings(numbuildings));
-		// for (var i = 0; i < numbuildings; i++) {
-		// 	var randomBuilding = getRandomBuilding();
-		// 	randomBuilding.index = i;
-		// 	$scope.townData.buildings.push(randomBuilding);
-		// }
-		// $scope.$apply();
 	}
+	$scope.relevanceSort = function(item) {
+		return !item.type.toLowerCase().includes($scope.buildingSearchInput.toLowerCase());
+	};
 });
 
 
