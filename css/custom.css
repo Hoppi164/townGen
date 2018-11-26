@@ -7,6 +7,9 @@
 .maxHeight180{
 	max-height: 180px;
 }
+.square{
+	height: width;
+}
 .attributeBox{
 	position: relative;
 	display: block;
@@ -42,4 +45,9 @@
 }
 .imageOverlay:hover{
 	color: white;			
+}
+.bottomRight{
+	position: absolute;
+	bottom: 0;
+	right: 0;
 }

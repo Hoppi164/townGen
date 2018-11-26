@@ -324,12 +324,20 @@
 									<div class="card-body p-0">
 										<div class="row mx-0">
 											<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.buildings[currentBuilding].inventory">
-												<b>												
-													<i ng-if="item.type == 'money'" class="fas fa-dollar-sign"></i>
-													<i ng-if="item.type == 'armor'" class="fas fa-tshirt"></i>
-												</b>
-												<label ng-bind="item.value" ng-hide="editmode"></label>
-												<textarea ng-model="item.value" class="townData" ng-show="editmode"> </textarea>
+												<!-- <b> -->
+													<i ng-if="item.type == 'money'" class="fas fa-coins fa-3x text-center w-100"></i>
+													<i ng-if="item.type == 'armor'" class="fas fa-tshirt fa-3x text-center w-100"></i>
+													<i ng-if="item.type == 'armor'" class="fas fa-tshirt fa-3x text-center w-100"></i>
+													<i ng-if="item.type == 'accommodation'" class="fas fa-bed fa-3x text-center w-100"></i>
+													<br ng-if="item.type">
+												<!-- </b> -->
+												<label ng-bind="item.name" ng-hide="editmode"></label>
+												<textarea ng-model="item.name" class="townData" ng-show="editmode"> </textarea>
+												<div class="bottomRight">
+													<label ng-bind="item.cost" ng-hide="editmode"></label>
+													<textarea ng-model="item.cost" class="townData" ng-show="editmode"> </textarea>												
+													<i class="fas fa-coins"></i>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -347,6 +355,7 @@
 		</div>
 		<span class="imageOverlay" style="z-index: 1001; position: fixed;" ng-click="toggleFullscreenImage()" ng-show="showFullScreenImage"><i class="far fa-times-circle"></i></span>
 
+		<script src="js/items.js"></script>
 		<script src="js/buildings.js"></script>
 
 		<script src="js/townData.js"></script>

@@ -75,6 +75,9 @@ function getTownBuildings(numBuildings) {
 				aliases: thisBuildingAliases,
 				index: index
 			}
+			if (thisBuilding.aliases.includes("Tavern")) {
+				thisBuilding.inventory = items.accommodation;
+			}
 			townBuildings.push(thisBuilding);
 			index++;
 		}
