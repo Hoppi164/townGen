@@ -543,17 +543,17 @@ var items = {
 	],
 	accommodation: [{
 			type: 'accommodation',
-			name: 'A Squalid place to sleep',
+			name: 'A dirty patch of floor',
 			cost: 7,
 			desc: 'The corner of a barn; Uncomfortable and pungent, but you have a roof over your head'
 		}, {
 			type: 'accommodation',
-			name: 'A Poor place to sleep',
+			name: 'A blanket to sleep on',
 			cost: 10,
 			desc: 'A place on the floor near the hearth and a flea-ridden blanket amongst the riff-raff'
 		}, {
 			type: 'accommodation',
-			name: 'A Modest bed to sleep in',
+			name: 'A bed to sleep in',
 			cost: 30,
 			desc: 'A placed on a raised bed or heated floor; with a blanket and pillow'
 		}, {
