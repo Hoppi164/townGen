@@ -1,9 +1,5 @@
 var villageClass = 'middleClass';
 var buildingTypes = [{
-	type: 'House',
-	variants: ['House', 'Shack', 'Home', 'Hut', 'Shelter', 'Farmhouse', 'Homeless Shelter', 'Shanty', 'Abode', 'Cottage', 'Villa', 'Bungalow', 'Manor', 'Mansion'],
-	percentageOfTown: 40
-}, {
 	type: 'Tavern',
 	variants: ['Tavern', 'Inn', 'Brothel', 'Lodge', 'Hostel'],
 	percentageOfTown: 15,
@@ -12,6 +8,10 @@ var buildingTypes = [{
 	type: 'Shop',
 	variants: ['Shop', 'Blacksmith', 'Barber', 'Stonemason', 'Tannery', 'Furrier', 'Butcher', 'Book store', 'Travelling Merchant', 'Merchant', 'Marketplace', 'General Store', 'Carpenter', 'Tailor', 'Cobbler', 'Bakery', 'Fishery', 'Sweets Merchant', 'Music Store'],
 	percentageOfTown: 15
+}, {
+	type: 'House',
+	variants: ['House', 'Shack', 'Home', 'Hut', 'Shelter', 'Farmhouse', 'Homeless Shelter', 'Shanty', 'Abode', 'Cottage', 'Villa', 'Bungalow', 'Manor', 'Mansion'],
+	percentageOfTown: 40
 }, {
 	type: 'Church',
 	variants: ['Church', 'Monastery', 'Shrine', 'Altar', 'Temple'],
@@ -77,6 +77,7 @@ function getTownBuildings(numBuildings) {
 			}
 			if (thisBuilding.aliases.includes("Tavern")) {
 				thisBuilding.inventory = items.accommodation;
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.drink);
 			}
 			townBuildings.push(thisBuilding);
 			index++;

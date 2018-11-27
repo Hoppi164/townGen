@@ -53,4 +53,34 @@
 	position: relative;
 	bottom: 0;
 	right: 0;
+	padding-top: 5px;
+	margin-left: -5px;
+	margin-right: -5px;
+	margin-bottom: -5px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f8f8ff+23,f8f8ff+100 */
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffffff 0%, #f8f8ff 23%, #f8f8ff 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #ffffff 0%,#f8f8ff 23%,#f8f8ff 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #ffffff 0%,#f8f8ff 23%,#f8f8ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f8f8ff',GradientType=0 ); /* IE6-9 */
+}
+.bottomRight > label{
+	line-height: 1;
+	/*margin-left: 5px;*/
+}
+.copper{
+	color: #b87333;
+	/*margin-right: 5px;*/
+}
+.silver{
+	color: silver;
+	/*margin-right: 5px;*/
+}
+.gold{
+	color: gold;
+	/*margin-right: 5px;*/
+}
+.platinum{
+	color: #6a5acd;
+	/*margin-right: 5px;*/
 }

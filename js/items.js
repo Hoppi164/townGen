@@ -291,7 +291,7 @@ var items = {
 		name: "Gnomes’ yogurt",
 		cost: 15,
 	}, {
-		name: "Deep dwarven blue cheese",
+		name: "Dwarven blue cheese",
 		cost: 11,
 	}, {
 		name: "Dragon turtle omelet",
@@ -498,7 +498,7 @@ var items = {
 		name: "Applesauce",
 		cost: 9,
 	}, {
-		name: "Wood-elven crisp cakes",
+		name: "Wood-elven cakes",
 		cost: 26,
 	}, {
 		name: "Crème brulée",
@@ -510,7 +510,7 @@ var items = {
 		name: "Honey-cake",
 		cost: 25,
 	}, {
-		name: "Spiced, stuffed pumpkin",
+		name: "Spiced pumpkin",
 		cost: 21,
 	}, {
 		name: "Chocolate torte",
@@ -523,19 +523,23 @@ var items = {
 		cost: 11,
 	}],
 	drink: [{
+			type: 'drink',
 			name: 'Mug of Ale',
 			cost: 4,
 			desc: 'A mug of bitter-sweet alcohol, it has a faint fruity aroma rising from the froth.'
 		}, {
+			type: 'drink',
 			name: 'Gallon of Ale',
 			cost: 20,
 			desc: 'A small and heavy barrel, it has a twist tap to release a torrent of bitter-sweet alcohol.'
 		}, {
-			name: 'A Pitcher of Wine',
+			type: 'drink',
+			name: 'Pitcher of Wine',
 			cost: 20,
 			desc: 'Cheap wine, but it gets you drunk just the same.'
 		}, {
-			name: 'A Bottle of Wine',
+			type: 'drink',
+			name: 'Bottle of Wine',
 			cost: 1000,
 			desc: 'Exquisite wine, imported from a far off land.'
 		}
@@ -543,22 +547,22 @@ var items = {
 	],
 	accommodation: [{
 			type: 'accommodation',
-			name: 'A dirty patch of floor',
+			name: 'Dirty patch of floor',
 			cost: 7,
 			desc: 'The corner of a barn; Uncomfortable and pungent, but you have a roof over your head'
 		}, {
 			type: 'accommodation',
-			name: 'A blanket to sleep on',
+			name: 'Blanket to sleep on',
 			cost: 10,
 			desc: 'A place on the floor near the hearth and a flea-ridden blanket amongst the riff-raff'
 		}, {
 			type: 'accommodation',
-			name: 'A bed to sleep in',
+			name: 'Bed to sleep in',
 			cost: 30,
 			desc: 'A placed on a raised bed or heated floor; with a blanket and pillow'
 		}, {
 			type: 'accommodation',
-			name: 'A Comfortable Room',
+			name: 'Comfortable Room',
 			cost: 80,
 			desc: 'A small private room with one bed, a washbasin and a covered chamber pot'
 		}

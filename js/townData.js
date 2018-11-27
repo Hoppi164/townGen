@@ -1,4 +1,9 @@
 var townApp = angular.module('townApp', []);
+townApp.filter('floor', function() {
+	return function(input) {
+		return Math.floor(input);
+	};
+});
 
 townApp.controller('townController', function($scope) {
 	$scope.townData = {

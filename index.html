@@ -329,15 +329,23 @@
 													<i ng-if="item.type == 'armor'" class="fas fa-tshirt fa-3x text-center w-100"></i>
 													<i ng-if="item.type == 'armor'" class="fas fa-tshirt fa-3x text-center w-100"></i>
 													<i ng-if="item.type == 'accommodation'" class="fas fa-bed fa-3x text-center w-100"></i>
+													<i ng-if="item.type == 'drink'" class="fas fa-beer fa-3x text-center w-100"></i>
 													<br ng-if="item.type">
 												<!-- </b> -->
 												<label ng-bind="item.name" ng-hide="editmode"></label>
 												<textarea ng-model="item.name" class="townData" ng-show="editmode"> </textarea>
-												<div class="bottomRight">
-													<br>
-													<label ng-bind="item.cost" ng-hide="editmode"></label>
+												<div class="bottomRight align-middle text-center">
+													<label ng-show="editmode">Amount in copper</label>
+													<i class="fas fa-coins copper" ng-show="editmode"></i>
 													<textarea ng-model="item.cost" class="townData" ng-show="editmode"> </textarea>												
-													<i class="fas fa-coins"></i>
+													<label ng-bind="item.cost/1000|floor" ng-hide="editmode"></label>
+													<i class="fas fa-coins platinum align-middle" ng-hide="editmode"></i>
+													<label ng-bind="item.cost%1000/100| floor" ng-hide="editmode"></label>
+													<i class="fas fa-coins gold" class="align-middle" ng-hide="editmode"></i>
+													<label ng-bind="item.cost %100/10|floor" ng-hide="editmode"></label>
+													<i class="fas fa-coins silver" class="align-middle" ng-hide="editmode"></i>
+													<label ng-bind="item.cost %10%10%10%10" ng-hide="editmode"></label>
+													<i class="fas fa-coins copper" class="align-middle" ng-hide="editmode"></i>
 												</div>
 											</div>
 										</div>
