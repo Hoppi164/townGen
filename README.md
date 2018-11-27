@@ -1,4 +1,4 @@
-# townGen
+# DND TownGen
 For when your Dungeons & Dragons Party ventures into a new town you haven't fleshed out yet.
 
 Random generator for a DND based town.
