@@ -66,21 +66,24 @@
 }
 .bottomRight > label{
 	line-height: 1;
-	/*margin-left: 5px;*/
-}
-.copper{
-	color: #b87333;
-	/*margin-right: 5px;*/
-}
-.silver{
-	color: silver;
-	/*margin-right: 5px;*/
-}
-.gold{
-	color: gold;
-	/*margin-right: 5px;*/
+	margin-left: 2px;
 }
 .platinum{
 	color: #6a5acd;
-	/*margin-right: 5px;*/
+	padding-right: 5px;
+	border-right: 1px solid lightgrey;
+}
+.gold{
+	color: gold;
+	padding-right: 5px;
+	border-right: 1px solid lightgrey;
+}
+.silver{
+	color: silver;
+	padding-right: 5px;
+	border-right: 1px solid lightgrey;
+}
+.copper{
+	color: #b87333;
+	margin-right: 2px;
 }
