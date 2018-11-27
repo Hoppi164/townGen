@@ -558,7 +558,7 @@ var items = {
 			desc: 'A placed on a raised bed or heated floor; with a blanket and pillow'
 		}, {
 			type: 'accommodation',
-			name: 'A Comfortable Private Room',
+			name: 'A Comfortable Room',
 			cost: 80,
 			desc: 'A small private room with one bed, a washbasin and a covered chamber pot'
 		}

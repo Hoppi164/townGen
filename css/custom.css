@@ -47,7 +47,10 @@
 	color: white;			
 }
 .bottomRight{
-	position: absolute;
+	/*height: 100%;*/
+	/*width: 100%;*/
+	text-align: right;
+	position: relative;
 	bottom: 0;
 	right: 0;
 }
