@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="assets/bootstrap-4.1.3-dist/css/bootstrap.css">
 		<script src="assets/bootstrap-4.1.3-dist/js/jquery331.js"></script>
-		<script src="assets/bootstrap-4.1.3-dist/js/bootstrap.js"></script>
+		<script src="assets/bootstrap-4.1.3-dist/js/bootstrap.bundle.min.js"></script>
 		<script src="js/nameLists/townNameList.js"></script>
 		<script src="j	s/nameLists/F.js"></script>
 		<script src="js/nameLists/M.js"></script>
@@ -325,11 +325,11 @@
 										<div class="row mx-0">
 											<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.buildings[currentBuilding].inventory">
 												<!-- <b> -->
-													<i ng-if="item.type == 'money'" class="fas fa-coins fa-3x text-center w-100"></i>
-													<i ng-if="item.type == 'armor'" class="fas fa-tshirt fa-3x text-center w-100"></i>
-													<i ng-if="item.type == 'armor'" class="fas fa-tshirt fa-3x text-center w-100"></i>
-													<i ng-if="item.type == 'accommodation'" class="fas fa-bed fa-3x text-center w-100"></i>
-													<i ng-if="item.type == 'drink'" class="fas fa-beer fa-3x text-center w-100"></i>
+													<i ng-if="item.type == 'armor'" role="button" tabindex="0" data-trigger="focus" data-toggle="popover" title="{{item.name}}" data-placement="top" data-content="{{item.desc}}" class="fas fa-tshirt fa-3x text-center w-100"></i>
+													<i ng-if="item.type == 'armor'" role="button" tabindex="0" data-trigger="focus" data-toggle="popover" title="{{item.name}}" data-placement="top" data-content="{{item.desc}}" class="fas fa-tshirt fa-3x text-center w-100"></i>
+													<i ng-if="item.type == 'accommodation'" role="button" tabindex="0" data-trigger="focus" data-toggle="popover" title="{{item.name}}" data-placement="top" data-content="{{item.desc}}" class="fas fa-bed fa-3x text-center w-100"></i>
+													<i ng-if="item.type == 'drink'" role="button" tabindex="0" data-trigger="focus" data-toggle="popover" title="{{item.name}}" data-placement="top" data-content="{{item.desc}}" class="fas fa-beer fa-3x text-center w-100"></i>
+
 													<br ng-if="item.type">
 												<!-- </b> -->
 												<label ng-bind="item.name" ng-hide="editmode"></label>
@@ -339,13 +339,13 @@
 													<i class="fas fa-coins copper" ng-show="editmode"></i>
 													<textarea ng-model="item.cost" class="townData" ng-show="editmode"> </textarea>												
 													<label ng-bind="item.cost/1000|floor" ng-hide="editmode"></label>
-													<i class="fas fa-coins platinum align-middle" ng-hide="editmode"></i>
+													<i role="button" tabindex="0" data-trigger="focus" class="fas fa-coins platinum" ng-hide="editmode" data-toggle="popover" title="{{townData.money.platinum.name}}" data-placement="top" data-content="{{townData.money.platinum.desc}}"></i >
 													<label ng-bind="item.cost%1000/100| floor" ng-hide="editmode"></label>
-													<i class="fas fa-coins gold" class="align-middle" ng-hide="editmode"></i>
+													<i role="button" tabindex="0" data-trigger="focus" class="fas fa-coins gold" class="align-middle" ng-hide="editmode"  data-toggle="popover" title="{{townData.money.gold.name}}" data-placement="top" data-content="{{townData.money.gold.desc}}"></i>
 													<label ng-bind="item.cost %100/10|floor" ng-hide="editmode"></label>
-													<i class="fas fa-coins silver" class="align-middle" ng-hide="editmode"></i>
+													<i role="button" tabindex="0" data-trigger="focus" class="fas fa-coins silver" class="align-middle" ng-hide="editmode"  data-toggle="popover" title="{{townData.money.silver.name}}" data-placement="top" data-content="{{townData.money.silver.desc}}"></i>
 													<label ng-bind="item.cost %10%10%10%10" ng-hide="editmode"></label>
-													<i class="fas fa-coins copper" class="align-middle" ng-hide="editmode"></i>
+													<i role="button" tabindex="0" data-trigger="focus" class="fas fa-coins copper" class="align-middle" ng-hide="editmode"  data-toggle="popover" title="{{townData.money.copper.name}}" data-placement="top" data-content="{{townData.money.copper.desc}}"></i>
 												</div>
 											</div>
 										</div>
@@ -370,5 +370,10 @@
 		<script src="js/townData.js"></script>
 		<script src="assets/leaflet/leaflet.js"></script>
 		<script src="js/zoomImages.js"></script>
+		<script>
+			$(function() {
+				$('[data-toggle="popover"]').popover()
+			})
+		</script>
 	</body>
 </html>

@@ -87,3 +87,6 @@
 	color: #b87333;
 	margin-right: 2px;
 }
+.popover {
+    z-index: 1060;
+}

@@ -1,25 +1,25 @@
 var items = {
 	money: {
 		copper: {
-			name: 'copper',
+			name: 'Copper',
 			cost: 1,
 			desc: 'A dull bronze coin; used for trading',
 			category: 'money'
 		},
 		silver: {
-			name: 'silver',
+			name: 'Silver',
 			cost: 10,
 			desc: 'A shiny triangular coin; used for trading',
 			category: 'money'
 		},
 		gold: {
-			name: 'gold',
+			name: 'Gold',
 			cost: 100,
 			desc: 'An anvil shaped gold coin, embossed with intricate engravings of animals; used for trading',
 			category: 'money'
 		},
 		platinum: {
-			name: 'platinum',
+			name: 'Platinum',
 			cost: 1000,
 			desc: 'A rare coin made from rare metal; used for trading',
 			category: 'money'

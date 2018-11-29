@@ -62,12 +62,42 @@ townApp.controller('townController', function($scope) {
 				value: 'Brass Key'
 			}]
 		}],
-		buildings: []
+		buildings: [],
+		money: {
+			copper: {
+				name: 'Copper',
+				cost: 1,
+				desc: 'A dull bronze coin; used for trading',
+				category: 'money'
+			},
+			silver: {
+				name: 'Silver',
+				cost: 10,
+				desc: 'A shiny triangular coin; used for trading',
+				category: 'money'
+			},
+			gold: {
+				name: 'Gold',
+				cost: 100,
+				desc: 'An anvil shaped gold coin, embossed with intricate engravings of animals; used for trading',
+				category: 'money'
+			},
+			platinum: {
+				name: 'Platinum',
+				cost: 1000,
+				desc: 'A rare coin made from rare metal; used for trading',
+				category: 'money'
+			}
+
+		}
 	};
 	$scope.editmode = false;
 	$scope.currentPerson = 0;
 	$scope.showFullScreenImage = false;
 	$scope.fullscreenSource = '';
+	$scope.togglePopovers = function() {
+		$('[data-toggle="popover"]').popover();
+	}
 	$scope.toggleFullscreenImage = function(url) {
 		$scope.fullscreenSource = url;
 		$scope.showFullScreenImage = !$scope.showFullScreenImage;
@@ -79,6 +109,7 @@ townApp.controller('townController', function($scope) {
 	$scope.currentBuilding = 0;
 	$scope.viewBuilding = function(arrayIndex) {
 		$scope.currentBuilding = arrayIndex;
+		$scope.togglePopovers();
 	};
 	$scope.peopleSearchInput = "";
 	$scope.buildingSearchInput = "";
@@ -127,6 +158,7 @@ townApp.controller('townController', function($scope) {
 	$scope.relevanceSort = function(item) {
 		return !item.type.toLowerCase().includes($scope.buildingSearchInput.toLowerCase());
 	};
+
 });
 
 
