@@ -546,31 +546,37 @@ var items = {
 
 	],
 	accommodation: [{
-			type: 'accommodation',
-			name: 'Dirty patch of floor',
-			cost: 7,
-			desc: 'The corner of a barn; Uncomfortable and pungent, but you have a roof over your head'
-		}, {
-			type: 'accommodation',
-			name: 'Blanket to sleep on',
-			cost: 10,
-			desc: 'A place on the floor near the hearth and a flea-ridden blanket amongst the riff-raff'
-		}, {
-			type: 'accommodation',
-			name: 'Bed to sleep in',
-			cost: 30,
-			desc: 'A placed on a raised bed or heated floor; with a blanket and pillow'
-		}, {
-			type: 'accommodation',
-			name: 'Comfortable Room',
-			cost: 80,
-			desc: 'A small private room with one bed, a washbasin and a covered chamber pot'
-		}
-		// wealthy: {
-		// 	name: 'A Large Private Room',
-		// 	cost: 200,
-		// 	desc: 'A large private room with a comfortable bed, private bath with hot water on request, food delivered to your room on request, and private chamber pot in a separate chamber'
-		// }
-	],
+		type: 'accommodation',
+		name: 'Dirty patch of floor',
+		cost: 7,
+		desc: 'The corner of a barn; Uncomfortable and pungent, but you have a roof over your head'
+	}, {
+		type: 'accommodation',
+		name: 'Blanket to sleep on',
+		cost: 10,
+		desc: 'A place on the floor near the hearth and a flea-ridden blanket amongst the riff-raff'
+	}, {
+		type: 'accommodation',
+		name: 'Bed to sleep in',
+		cost: 30,
+		desc: 'A placed on a raised bed or heated floor; with a blanket and pillow'
+	}, {
+		type: 'accommodation',
+		name: 'Comfortable Room',
+		cost: 80,
+		desc: 'A small private room with one bed, a washbasin and a covered chamber pot'
+	}],
+
+	prostitution: [{
+		type: 'Prostitue',
+		name: 'Esmarelda',
+		cost: 20,
+		desc: 'She will rock your world for only 2 Silver an hour'
+	}, {
+		type: 'Prostitue',
+		name: 'Rosmarie',
+		cost: 200,
+		desc: "A higher class lady; although her revealing gown and jewellery aren't the attire of a 'modest' woman"
+	}],
 
 }

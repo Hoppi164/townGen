@@ -73,11 +73,15 @@ function getTownBuildings(numBuildings) {
 				type: thisBuildingType,
 				name: thisBuildingName,
 				aliases: thisBuildingAliases,
-				index: index
+				index: index,
+				inventory: []
 			}
 			if (thisBuilding.aliases.includes("Tavern")) {
-				thisBuilding.inventory = items.accommodation;
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.accommodation);
 				thisBuilding.inventory = thisBuilding.inventory.concat(items.drink);
+			}
+			if (thisBuilding.type == 'Brothel') {
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.prostitution);
 			}
 			townBuildings.push(thisBuilding);
 			index++;
