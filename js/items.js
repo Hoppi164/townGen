@@ -568,15 +568,25 @@ var items = {
 	}],
 
 	prostitution: [{
-		type: 'Prostitue',
+		type: 'female prostitue',
 		name: 'Esmarelda',
 		cost: 20,
 		desc: 'She will rock your world for only 2 Silver an hour'
 	}, {
-		type: 'Prostitue',
+		type: 'female prostitue',
 		name: 'Rosmarie',
 		cost: 200,
 		desc: "A higher class lady; although her revealing gown and jewellery aren't the attire of a 'modest' woman"
+	}, {
+		type: 'male prostitue',
+		name: 'Richard',
+		cost: 20,
+		desc: 'A handsome sailor looking to please.'
+	}, {
+		type: 'male prostitue',
+		name: 'Bardock',
+		cost: 200,
+		desc: "An ex-gladiator, he has plenty of experience in battle and.. other persuits."
 	}],
 
 }

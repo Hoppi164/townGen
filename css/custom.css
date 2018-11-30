@@ -90,3 +90,28 @@
 .popover {
     z-index: 1060;
 }
+
+
+[tooltip]:hover::after {
+    content: attr(tooltip);
+    position: absolute;
+    left:50%;
+    top:1px;
+    transform: translateX(-50%)   translateY(-100%);
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    color: #fff;
+    padding:10px;
+    font-size: 12px;
+    min-width: 250px;
+    border-radius: 5px;
+    pointer-events: none;
+	left:50%;
+	z-index: 1000;
+}
+@media only screen and (max-width: 600px) {
+	[tooltip]:hover::after {
+	    font-size: 16px;
+	    min-width: 200px;
+	}
+}

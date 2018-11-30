@@ -95,9 +95,6 @@ townApp.controller('townController', function($scope) {
 	$scope.currentPerson = 0;
 	$scope.showFullScreenImage = false;
 	$scope.fullscreenSource = '';
-	$scope.togglePopovers = function() {
-		$('[data-toggle="popover"]').popover();
-	}
 	$scope.toggleFullscreenImage = function(url) {
 		$scope.fullscreenSource = url;
 		$scope.showFullScreenImage = !$scope.showFullScreenImage;
@@ -109,7 +106,6 @@ townApp.controller('townController', function($scope) {
 	$scope.currentBuilding = 0;
 	$scope.viewBuilding = function(arrayIndex) {
 		$scope.currentBuilding = arrayIndex;
-		$scope.togglePopovers();
 	};
 	$scope.peopleSearchInput = "";
 	$scope.buildingSearchInput = "";
