@@ -325,12 +325,20 @@
 										<div class="row mx-0">
 											<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.buildings[currentBuilding].inventory">
 												<!-- <b> -->
-													<i ng-if="item.type == 'armor'" tooltip="{{item.desc}}" class="fas fa-tshirt fa-3x text-center w-100"></i>
-													<i ng-if="item.type == 'armor'" tooltip="{{item.desc}}" class="fas fa-tshirt fa-3x text-center w-100"></i>
+													<i ng-if="item.type == 'clothes'" tooltip="{{item.desc}}" class="fas fa-tshirt fa-3x text-center w-100"></i>
+													<i ng-if="item.type == 'Shield'" str="{{item.str}}&#10&#10" stealth="{{item.stealth}}&#10" type="{{item.type}}&#10" ac="{{item.ac}}&#10" tooltip="{{item.desc}}" class="fas fa-shield-alt fa-3x text-center w-100"></i>
+													<i ng-if="item.type == 'Light Armor'" str="{{item.str}}&#10&#10&#10" ty" stealth="{{item.stealth}}&#10" type="{{item.type}}&#10" ac="{{item.ac}}&#10" tooltip="{{item.desc}}" class="fas fa-user-shield fa-3x text-center w-100"></i>
+													<i ng-if="item.type == 'Medium Armor'" str="{{item.str}}&#10&#10&#10" ty" stealth="{{item.stealth}}&#10" type="{{item.type}}&#10" ac="{{item.ac}}&#10" tooltip="{{item.desc}}" class="fas fa-user-shield fa-3x text-center w-100"></i>
+													<i ng-if="item.type == 'Heavy Armor'" str="{{item.str}}&#10&#10&#10" ty" stealth="{{item.stealth}}&#10" type="{{item.type}}&#10" ac="{{item.ac}}&#10" tooltip="{{item.desc}}" class="fas fa-user-shield fa-3x text-center w-100"></i>
+													<i ng-if="item.type == 'armor'" str="{{item.str}}&#10&#10&#10" ty" stealth="{{item.stealth}}&#10" type="{{item.type}}&#10" ac="{{item.ac}}&#10" tooltip="{{item.desc}}" class="fas fa-tshirt fa-3x text-center w-100"></i>
 													<i ng-if="item.type == 'accommodation'" tooltip="{{item.desc}}" class="fas fa-bed fa-3x text-center w-100"></i>
 													<i ng-if="item.type == 'drink'" tooltip="{{item.desc}}" class="fas fa-beer fa-3x text-center w-100"></i>
 													<i ng-if="item.type == 'female prostitue'" tooltip="{{item.desc}}" class="fas fa-female fa-3x text-center w-100"></i>
 													<i ng-if="item.type == 'male prostitue'" tooltip="{{item.desc}}" class="fas fa-male fa-3x text-center w-100"></i>
+													<i ng-if="item.type == 'meal'" tooltip="{{item.desc}}" class="fas fa-utensils fa-3x text-center w-100"></i>
+													<i ng-if="item.type == 'sweets'" tooltip="{{item.desc}}" class="fas fa-cookie-bite fa-3x text-center w-100"></i>
+
+
 
 													<br ng-if="item.type">
 												<!-- </b> -->

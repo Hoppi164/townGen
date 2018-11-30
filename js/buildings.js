@@ -79,25 +79,37 @@ function getTownBuildings(numBuildings) {
 			if (thisBuilding.aliases.includes("Tavern")) {
 				thisBuilding.inventory = thisBuilding.inventory.concat(items.accommodation);
 				thisBuilding.inventory = thisBuilding.inventory.concat(items.drink);
+				thisBuilding.inventory = thisBuilding.inventory.concat(getRandomMeal());
+				thisBuilding.inventory = thisBuilding.inventory.concat(getRandomMeal());
+				thisBuilding.inventory = thisBuilding.inventory.concat(getRandomMeal());
+				thisBuilding.inventory = thisBuilding.inventory.concat(getRandomMeal());
 			}
 			if (thisBuilding.type == 'Brothel') {
 				thisBuilding.inventory = thisBuilding.inventory.concat(items.prostitution);
+			}
+			if (thisBuilding.type == 'Sweets Merchant') {
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.sweets);
+			}
+			if (thisBuilding.type == 'Tailor') {
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.clothes);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.armor.paddedArmor);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.armor.leatherArmor);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.armor.hideArmor);
+			}
+			if (thisBuilding.type == 'Tannery') {
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.armor.paddedArmor);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.armor.leatherArmor);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.armor.hideArmor);
+			}
+			if (thisBuilding.type == 'Blacksmith') {
+				thisBuilding.inventory = thisBuilding.inventory.concat(Object.values(items.armor));
+			}
+			if (thisBuilding.type == 'Furrier') {
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.armor.hideArmor);
 			}
 			townBuildings.push(thisBuilding);
 			index++;
 		}
 	}
 	return townBuildings;
-}
-
-
-function getRandomBuilding() {
-	// var randomInventory getBuildingInv();
-	var randomBuilding = buildingTypes[Math.floor(Math.random() * buildingTypes.length)];
-	var newbuilding = {
-		type: randomBuilding.type,
-		aka: randomBuilding.aka
-
-	}
-	return newbuilding;
 }

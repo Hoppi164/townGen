@@ -25,6 +25,27 @@ var items = {
 			category: 'money'
 		}
 	},
+	clothes: [{
+		name: 'Shirt',
+		cost: 50,
+		desc: 'A button up shirt, made on a loom',
+		type: 'clothes'
+	}, {
+		name: 'Pants',
+		cost: 40,
+		desc: 'A pair of trousers',
+		type: 'clothes'
+	}, {
+		name: 'Under-Garments',
+		cost: 20,
+		desc: 'Silk Underwear',
+		type: 'clothes'
+	}, {
+		name: 'Business Suit',
+		cost: 15000,
+		desc: 'Cotton trim and silk lining, this suit is power and luxury',
+		type: 'clothes'
+	}],
 
 	armor: {
 		paddedArmor: {
@@ -35,7 +56,7 @@ var items = {
 			type: 'Light Armor',
 			rarity: 'Standard',
 			weight: '8 lbs',
-			stealth: 'Disadvantage',
+			stealth: 'Stealth: Disadvantage',
 			category: 'armor'
 
 		},
@@ -89,7 +110,7 @@ var items = {
 			type: 'Medium Armor',
 			rarity: 'Standard',
 			weight: '45 lbs',
-			stealth: 'Disadvantage',
+			stealth: 'Stealth: Disadvantage',
 			category: 'armor'
 		},
 		breastplate: {
@@ -110,7 +131,7 @@ var items = {
 			weight: '40 lbs',
 			type: 'Medium Armor',
 			rarity: 'Standard',
-			stealth: 'Disadvantage',
+			stealth: 'Stealth: Disadvantage',
 			category: 'armor'
 		},
 		ringMail: {
@@ -121,7 +142,7 @@ var items = {
 			weight: '40 lbs',
 			type: 'Heavy Armor',
 			rarity: 'Standard',
-			stealth: 'Disadvantage',
+			stealth: 'Stealth: Disadvantage',
 			category: 'armor'
 		},
 		chainMail: {
@@ -129,8 +150,8 @@ var items = {
 			cost: 7500,
 			desc: 'Made of interlocking metal rings, chain mail includes a layer of quilted fabric worn underneath the mail to prevent chafing and to cushion the impact of blows. The suit includes gauntlets.',
 			ac: '16',
-			str: '13',
-			stealth: 'Disadvantage',
+			str: 'Strength Required: 13',
+			stealth: 'Stealth: Disadvantage',
 			weight: '55 lbs',
 			type: 'Heavy Armor',
 			rarity: 'Standard',
@@ -141,8 +162,8 @@ var items = {
 			cost: 20000,
 			desc: 'This armor is made of narrow vertical strips of metal riveted to a backing of leather that is worn over cloth padding. Flexible Chain Mail protects the joints.',
 			ac: '17',
-			str: '15',
-			stealth: 'Disadvantage',
+			str: 'Strength Required: 15',
+			stealth: 'Stealth: Disadvantage',
 			weight: '60 lbs',
 			type: 'Heavy Armor',
 			rarity: 'Standard',
@@ -153,8 +174,8 @@ var items = {
 			cost: 150000,
 			desc: 'Plate consists of shaped, interlocking metal plates to cover the entire body. A suit of plate includes gauntlets, heavy leather boots, a visored helmet, and thick layers of padding underneath the armor. Buckles and straps distribute the weight over the body.',
 			ac: '18',
-			str: '15',
-			stealth: 'Disadvantage',
+			str: 'Strength Required: 15',
+			stealth: 'Stealth: Disadvantage',
 			weight: '65 lbs',
 			type: 'Heavy Armor',
 			rarity: 'Standard',
@@ -167,7 +188,8 @@ var items = {
 			ac: '+ 2',
 			weight: '6 lbs',
 			rarity: 'Standard',
-			category: 'shield'
+			category: 'Shield',
+			type: 'Shield'
 		}
 	},
 	food: [{
@@ -522,6 +544,112 @@ var items = {
 		name: "Vanilla fudge",
 		cost: 11,
 	}],
+	sweets: [{
+		name: "Gnomes’ yogurt",
+		cost: 15,
+		type: 'sweets',
+		desc: 'Gnomes’ yogurt'
+	}, {
+		name: "Berry pie",
+		cost: 25,
+		type: 'sweets',
+		desc: 'Berry pie'
+	}, {
+		name: "Apple pie",
+		cost: 25,
+		type: 'sweets',
+		desc: 'Apple pie'
+	}, {
+		name: "Raisin pie",
+		cost: 20,
+		type: 'sweets',
+		desc: 'Raisin pie'
+	}, {
+		name: "Pecan pie",
+		cost: 25,
+		type: 'sweets',
+		desc: 'Pecan pie'
+	}, {
+		name: "Rhubarb pie",
+		cost: 11,
+		type: 'sweets',
+		desc: 'Rhubarb pie'
+	}, {
+		name: "Plain cake",
+		cost: 12,
+		type: 'sweets',
+		desc: 'Plain cake'
+	}, {
+		name: "Walnut cake",
+		cost: 13,
+		type: 'sweets',
+		desc: 'Walnut cake'
+	}, {
+		name: "Fruitcake",
+		cost: 14,
+		type: 'sweets',
+		desc: 'Fruitcake'
+	}, {
+		name: "Spice bread",
+		cost: 15,
+		type: 'sweets',
+		desc: 'Spice bread'
+	}, {
+		name: "Custard",
+		cost: 10,
+		type: 'sweets',
+		desc: 'Custard'
+	}, {
+		name: "Plum pudding",
+		cost: 10,
+		type: 'sweets',
+		desc: 'Plum pudding'
+	}, {
+		name: "Rice pudding",
+		cost: 10,
+		type: 'sweets',
+		desc: 'Rice pudding'
+	}, {
+		name: "Applesauce",
+		cost: 9,
+		type: 'sweets',
+		desc: 'Applesauce'
+	}, {
+		name: "Wood-elven cakes",
+		cost: 26,
+		type: 'sweets',
+		desc: 'Wood-elven cakes'
+	}, {
+		name: "Crème brulée",
+		cost: 30,
+		type: 'sweets',
+		desc: 'Crème brulée'
+	}, {
+		name: "Sherbet",
+		cost: 25,
+		type: 'sweets',
+		desc: 'Sherbet'
+	}, {
+		name: "Honey-cake",
+		cost: 25,
+		type: 'sweets',
+		desc: 'Honey-cake'
+	}, {
+		name: "Chocolate torte",
+		cost: 34,
+		type: 'sweets',
+		desc: 'Chocolate torte'
+	}, {
+		name: "Toffee",
+		cost: 11,
+		type: 'sweets',
+		desc: 'Toffee'
+	}, {
+		name: "Vanilla fudge",
+		cost: 11,
+		type: 'sweets',
+		desc: 'Vanilla fudge'
+	}],
 	drink: [{
 			type: 'drink',
 			name: 'Mug of Ale',
@@ -589,4 +717,30 @@ var items = {
 		desc: "An ex-gladiator, he has plenty of experience in battle and.. other persuits."
 	}],
 
+}
+
+
+
+
+
+
+function getRandomMeal() {
+	var numFoods = Math.floor(Math.random() * 5 + 1);
+	var meal = {
+		type: 'meal',
+		cost: 0,
+		desc: ''
+	};
+	for (var i = 0; i < numFoods; i++) {
+		var thisFood = items.food[Math.floor(Math.random() * items.food.length)];
+		meal.cost += thisFood.cost;
+		meal.desc += thisFood.name;
+		if (i < numFoods - 1) {
+			meal.desc += ', ';
+		}
+		if (i == 0) {
+			meal.name = thisFood.name + ' Meal';
+		}
+	}
+	return meal;
 }

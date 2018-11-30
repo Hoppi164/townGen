@@ -93,7 +93,8 @@
 
 
 [tooltip]:hover::after {
-    content: attr(tooltip);
+    content: attr(ac) attr(type) attr(stealth) attr(str) attr(tooltip);
+    white-space: pre-wrap;
     position: absolute;
     left:50%;
     top:1px;
@@ -104,6 +105,7 @@
     padding:10px;
     font-size: 12px;
     min-width: 250px;
+    max-width: 250px;
     border-radius: 5px;
     pointer-events: none;
 	left:50%;
