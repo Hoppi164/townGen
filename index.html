@@ -325,19 +325,7 @@
 										<div class="row mx-0">
 											<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.buildings[currentBuilding].inventory">
 												<!-- <b> -->
-													<i ng-if="item.type == 'clothes'" tooltip="{{item.desc}}" class="fas fa-tshirt fa-3x text-center w-100"></i>
-													<i ng-if="item.type == 'Shield'" str="{{item.str}}&#10&#10" stealth="{{item.stealth}}&#10" type="{{item.type}}&#10" ac="{{item.ac}}&#10" tooltip="{{item.desc}}" class="fas fa-shield-alt fa-3x text-center w-100"></i>
-													<i ng-if="item.type == 'Light Armor'" str="{{item.str}}&#10&#10&#10" ty" stealth="{{item.stealth}}&#10" type="{{item.type}}&#10" ac="{{item.ac}}&#10" tooltip="{{item.desc}}" class="fas fa-user-shield fa-3x text-center w-100"></i>
-													<i ng-if="item.type == 'Medium Armor'" str="{{item.str}}&#10&#10&#10" ty" stealth="{{item.stealth}}&#10" type="{{item.type}}&#10" ac="{{item.ac}}&#10" tooltip="{{item.desc}}" class="fas fa-user-shield fa-3x text-center w-100"></i>
-													<i ng-if="item.type == 'Heavy Armor'" str="{{item.str}}&#10&#10&#10" ty" stealth="{{item.stealth}}&#10" type="{{item.type}}&#10" ac="{{item.ac}}&#10" tooltip="{{item.desc}}" class="fas fa-user-shield fa-3x text-center w-100"></i>
-													<i ng-if="item.type == 'armor'" str="{{item.str}}&#10&#10&#10" ty" stealth="{{item.stealth}}&#10" type="{{item.type}}&#10" ac="{{item.ac}}&#10" tooltip="{{item.desc}}" class="fas fa-tshirt fa-3x text-center w-100"></i>
-													<i ng-if="item.type == 'accommodation'" tooltip="{{item.desc}}" class="fas fa-bed fa-3x text-center w-100"></i>
-													<i ng-if="item.type == 'drink'" tooltip="{{item.desc}}" class="fas fa-beer fa-3x text-center w-100"></i>
-													<i ng-if="item.type == 'female prostitue'" tooltip="{{item.desc}}" class="fas fa-female fa-3x text-center w-100"></i>
-													<i ng-if="item.type == 'male prostitue'" tooltip="{{item.desc}}" class="fas fa-male fa-3x text-center w-100"></i>
-													<i ng-if="item.type == 'meal'" tooltip="{{item.desc}}" class="fas fa-utensils fa-3x text-center w-100"></i>
-													<i ng-if="item.type == 'sweets'" tooltip="{{item.desc}}" class="fas fa-cookie-bite fa-3x text-center w-100"></i>
-
+													<i ng-if="item.type" class="{{item.icon}} fa-3x text-center w-100" tooltip="{{item.desc}}" str="{{item.str}}" stealth="{{item.stealth}}" type="{{item.type}}" ac="{{item.ac}}" buffer="{{item.buffer}}"></i>
 
 
 													<br ng-if="item.type">
@@ -346,16 +334,16 @@
 												<textarea ng-model="item.name" class="townData" ng-show="editmode"> </textarea>
 												<div class="bottomRight align-middle text-center">
 													<label ng-show="editmode">Amount in copper</label>
-													<i class="fas fa-coins copper" class="align-middle" ng-show="editmode"  tooltip="{{townData.money.copper.desc}}"></i>
+													<i class="fas fa-coins copper" type="Money -- Copper" class="align-middle" ng-show="editmode"  tooltip="{{townData.money.copper.desc}}"></i>
 													<textarea ng-model="item.cost" class="townData" ng-show="editmode"> </textarea>												
 													<label ng-bind="item.cost/1000|floor" ng-hide="editmode"></label>
-													<i class="fas fa-coins platinum" ng-hide="editmode" tooltip="{{townData.money.platinum.desc}}"></i >
+													<i class="fas fa-coins platinum" type="Money -- Platinum" ng-hide="editmode" tooltip="{{townData.money.platinum.desc}}"></i >
 													<label ng-bind="item.cost%1000/100| floor" ng-hide="editmode"></label>
-													<i class="fas fa-coins gold" class="align-middle" ng-hide="editmode"  tooltip="{{townData.money.gold.desc}}"></i>
+													<i class="fas fa-coins gold" type="Money -- Gold" class="align-middle" ng-hide="editmode"  tooltip="{{townData.money.gold.desc}}"></i>
 													<label ng-bind="item.cost %100/10|floor" ng-hide="editmode"></label>
-													<i class="fas fa-coins silver" class="align-middle" ng-hide="editmode"  tooltip="{{townData.money.silver.desc}}"></i>
+													<i class="fas fa-coins silver" type="Money -- Silver" class="align-middle" ng-hide="editmode"  tooltip="{{townData.money.silver.desc}}"></i>
 													<label ng-bind="item.cost %10%10%10%10" ng-hide="editmode"></label>
-													<i class="fas fa-coins copper" class="align-middle" ng-hide="editmode"  tooltip="{{townData.money.copper.desc}}"></i>
+													<i class="fas fa-coins copper" type="Money -- Copper" class="align-middle" ng-hide="editmode"  tooltip="{{townData.money.copper.desc}}"></i>
 												</div>
 											</div>
 										</div>

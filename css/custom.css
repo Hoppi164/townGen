@@ -93,7 +93,7 @@
 
 
 [tooltip]:hover::after {
-    content: attr(ac) attr(type) attr(stealth) attr(str) attr(tooltip);
+    content: attr(ac) attr(stealth) attr(str) attr(type) "\A\A" attr(tooltip);
     white-space: pre-wrap;
     position: absolute;
     left:50%;

@@ -6,7 +6,7 @@ var buildingTypes = [{
 	names: ['The Busty Noble', 'The winking rabbit', 'Hostel Chimera', 'Elvish Bedroom', 'High Comfort', 'The lovely lady', 'The Raunchy Goblin', 'The soverign goblin', 'The Lucky Hippo', 'The wet hawk', 'Queens Comfort', 'Kings Comfort', 'The gentlemans axehead']
 }, {
 	type: 'Shop',
-	variants: ['Shop', 'Blacksmith', 'Barber', 'Stonemason', 'Tannery', 'Furrier', 'Butcher', 'Book store', 'Travelling Merchant', 'Merchant', 'Marketplace', 'General Store', 'Carpenter', 'Tailor', 'Cobbler', 'Bakery', 'Fishery', 'Sweets Merchant', 'Music Store'],
+	variants: ['Shop', 'Blacksmith', 'Barber', 'Stonemason', 'Tannery', 'Furrier', 'Butcher', 'Book store', 'Travelling Merchant', 'Merchant', 'Marketplace', 'General Store', 'Carpenter', 'Tailor', 'Bakery', 'Fishery', 'Sweets Merchant', 'Music Store'],
 	percentageOfTown: 15
 }, {
 	type: 'House',
@@ -40,21 +40,6 @@ var buildingTypes = [{
 
 
 
-// {
-// 	type: 'Tavern',
-// 	name: 'The Winking Skeever',
-// 	inventory: [{
-// 		type: 'money',
-// 		value: '95 Silver'
-// 	}, {
-// 		type: 'food',
-// 		value: 'Venison'
-// 	}, {
-// 		type: 'food',
-// 		value: 'Rabbit'
-// 	}],
-// 	description: 'A rawdy Inn, bustling with drunkards and nobodies.'
-// }
 
 
 function getTownBuildings(numBuildings) {
@@ -107,6 +92,90 @@ function getTownBuildings(numBuildings) {
 			if (thisBuilding.type == 'Furrier') {
 				thisBuilding.inventory = thisBuilding.inventory.concat(items.armor.hideArmor);
 			}
+			if (thisBuilding.type == 'Barber') {
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.otherServices.haircut);
+			}
+			if (thisBuilding.type == 'Music Store') {
+				thisBuilding.inventory = thisBuilding.inventory.concat(Object.values(items.musicalIntruments));
+			}
+			if (thisBuilding.type == 'Stonemason') {
+				thisBuilding.inventory = thisBuilding.inventory.concat(Object.values(items.tools));
+			}
+			if (thisBuilding.type == 'Carpenter') {
+				thisBuilding.inventory = thisBuilding.inventory.concat(Object.values(items.tools));
+			}
+			if (thisBuilding.type == 'Butcher') {
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Bacon);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Ham);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Beefsteak);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Smokedsausage);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Meatballs);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Porkchop);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Chickenhalf);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Legofmutton);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Rabbitstew);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Sausage);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Lambstew);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Wholeduck);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Porkliver);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Lambchop);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Dogstew);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Catcutlet);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Monkeybrain);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Owlbearchop);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Chickeneggs);
+			}
+			if (thisBuilding.type == 'Fishery') {
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Broiledcatfish);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Stuffedtrout);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Friedperch);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Wholeduck);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Froglegs);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Octopus);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Gianttoadtongue);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Sharkfilet);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Duckeggs);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Gooseeggs);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Seaweed);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Millet);
+			}
+			if (thisBuilding.type == 'Bakery') {
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Coarseryebread);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Nutbread);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Flatbread);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Oatmeal);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Spicebread);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Plumpudding);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Woodelvencakes);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Cremebrulee);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Honeycake);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Plaincake);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Walnutcake);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Fruitcake);
+			}
+			if (thisBuilding.type == 'Book store') {
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.books.map);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.books.blankLeatherBook);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.books.bookOfSpells);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.books.bookOfNecromancy);
+			}
+			if (thisBuilding.type == 'Shop' || thisBuilding.type == 'General Store' || thisBuilding.type == 'Travelling Merchant' || thisBuilding.type == 'Merchant' || thisBuilding.type == 'Marketplace') {
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.books.map);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Flatbread);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Plaincake);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Smokedsausage);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.tools.hammer);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.musicalIntruments.flute);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.food.Toffee);
+				thisBuilding.inventory = thisBuilding.inventory.concat(items.armor.paddedArmor);
+			}
+
+
+
+
+
+
+
 			townBuildings.push(thisBuilding);
 			index++;
 		}
