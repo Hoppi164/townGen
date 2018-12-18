@@ -10,63 +10,11 @@ townApp.controller('townController', function($scope) {
 
 	$scope.townData = {
 		name: 'Create a town by clicking the "New Town" button',
-		// description: 'Esphille is a quaint village on the side of a slauntering river',
-		people: [{
-			index: 1,
-			name: 'JIM JEFFREYS',
-			race: 'Dwarf',
-			age: '222',
-			job: 'Miner',
-			lng: 'Dwarven',
-			AC: 11,
-			HP: 11,
-			SP: 11,
-			STR: 11,
-			DEX: 11,
-			CON: 11,
-			INT: 11,
-			WIS: 11,
-			CHA: 11,
-			inventory: [{
-				type: 'money',
-				value: '10 Copper'
-			}, {
-				type: 'armor',
-				value: 'Leather Armor'
-			}, {
-				type: 'key',
-				value: 'Brass Key'
-			}]
-		}],
+		description: '',
+		people: [],
 		buildings: [],
-		money: {
-			copper: {
-				name: 'Copper',
-				cost: 1,
-				desc: 'A dull bronze coin; used for trading',
-				category: 'money'
-			},
-			silver: {
-				name: 'Silver',
-				cost: 10,
-				desc: 'A shiny triangular coin; used for trading',
-				category: 'money'
-			},
-			gold: {
-				name: 'Gold',
-				cost: 100,
-				desc: 'An anvil shaped gold coin, embossed with intricate engravings of animals; used for trading',
-				category: 'money'
-			},
-			platinum: {
-				name: 'Platinum',
-				cost: 1000,
-				desc: 'A rare coin made from rare metal; used for trading',
-				category: 'money'
-			}
-
-		}
 	};
+	$scope.items = getAllItems();
 	$scope.editmode = false;
 	$scope.currentPerson = 0;
 	$scope.showFullScreenImage = false;

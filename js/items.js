@@ -1436,7 +1436,9 @@ var items = {
 
 
 
-
+function getAllItems() {
+	return items;
+}
 
 
 function getRandomMeal() {

@@ -347,16 +347,16 @@
 												<textarea ng-model="item.name" class="townData" ng-show="editmode"> </textarea>
 												<div class="bottomRight align-middle text-center">
 													<label ng-show="editmode">Amount in copper</label>
-													<i class="fas fa-coins copper" type="Money -- Copper" class="align-middle" ng-show="editmode"  tooltip="{{townData.money.copper.desc}}"></i>
+													<i class="fas fa-coins copper" type="Money -- Copper" class="align-middle" ng-show="editmode"  tooltip="{{items.money.copper.desc}}"></i>
 													<textarea ng-model="item.cost" class="townData" ng-show="editmode"> </textarea>												
 													<label ng-bind="item.cost/1000|floor" ng-hide="editmode"></label>
-													<i class="fas fa-coins platinum" type="Money -- Platinum" ng-hide="editmode" tooltip="{{townData.money.platinum.desc}}"></i >
+													<i class="fas fa-coins platinum" type="Money -- Platinum" ng-hide="editmode" tooltip="{{items.money.platinum.desc}}"></i >
 													<label ng-bind="item.cost%1000/100| floor" ng-hide="editmode"></label>
-													<i class="fas fa-coins gold" type="Money -- Gold" class="align-middle" ng-hide="editmode"  tooltip="{{townData.money.gold.desc}}"></i>
+													<i class="fas fa-coins gold" type="Money -- Gold" class="align-middle" ng-hide="editmode"  tooltip="{{items.money.gold.desc}}"></i>
 													<label ng-bind="item.cost %100/10|floor" ng-hide="editmode"></label>
-													<i class="fas fa-coins silver" type="Money -- Silver" class="align-middle" ng-hide="editmode"  tooltip="{{townData.money.silver.desc}}"></i>
+													<i class="fas fa-coins silver" type="Money -- Silver" class="align-middle" ng-hide="editmode"  tooltip="{{items.money.silver.desc}}"></i>
 													<label ng-bind="item.cost %10%10%10%10" ng-hide="editmode"></label>
-													<i class="fas fa-coins copper" type="Money -- Copper" class="align-middle" ng-hide="editmode"  tooltip="{{townData.money.copper.desc}}"></i>
+													<i class="fas fa-coins copper" type="Money -- Copper" class="align-middle" ng-hide="editmode"  tooltip="{{items.money.copper.desc}}"></i>
 												</div>
 											</div>
 										</div>
