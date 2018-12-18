@@ -6,36 +6,12 @@ townApp.filter('floor', function() {
 });
 
 townApp.controller('townController', function($scope) {
+
+
 	$scope.townData = {
 		name: 'Create a town by clicking the "New Town" button',
 		// description: 'Esphille is a quaint village on the side of a slauntering river',
 		people: [{
-			index: 0,
-			name: 'Tom Timmy Bloggs',
-			race: 'Human',
-			age: '25',
-			job: 'Hunter',
-			lng: 'Common',
-			AC: 10,
-			HP: 4,
-			SP: 30,
-			STR: 10,
-			DEX: 10,
-			CON: 10,
-			INT: 10,
-			WIS: 10,
-			CHA: 10,
-			inventory: [{
-				type: 'money',
-				value: '10 Silver'
-			}, {
-				type: 'armor',
-				value: 'Helmet'
-			}, {
-				type: 'key',
-				value: 'iron Key'
-			}]
-		}, {
 			index: 1,
 			name: 'JIM JEFFREYS',
 			race: 'Dwarf',
@@ -150,6 +126,8 @@ townApp.controller('townController', function($scope) {
 		$scope.townData.buildings = [];
 		var numbuildings = Math.floor(Math.random() * 30) + 10;
 		$scope.townData.buildings = getTownBuildings(numbuildings);
+		$scope.townData.people = populateTown();
+
 	}
 	$scope.relevanceSort = function(item) {
 		return !item.type.toLowerCase().includes($scope.buildingSearchInput.toLowerCase());

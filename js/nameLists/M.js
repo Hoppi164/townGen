@@ -6288,3 +6288,10 @@ var maleNames = [
 	"Zuzen",
 	"Zwentibold"
 ]
+
+function getMaleName(index = 'random') {
+	if (index == 'random') {
+		index = Math.floor(Math.random() * maleNames.length)
+	}
+	return maleNames[index]
+}

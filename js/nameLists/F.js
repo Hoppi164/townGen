@@ -4391,3 +4391,10 @@ var femaleNames = [
 	"Zuzene",
 	"Zwaante",
 ]
+
+function getFemaleName(index = 'random') {
+	if (index == 'random') {
+		index = Math.floor(Math.random() * femaleNames.length)
+	}
+	return femaleNames[index]
+}

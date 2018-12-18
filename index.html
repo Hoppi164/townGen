@@ -8,9 +8,6 @@
 		<script src="assets/bootstrap-4.1.3-dist/js/jquery331.js"></script>
 		<script src="assets/bootstrap-4.1.3-dist/js/bootstrap.bundle.min.js"></script>
 		<script src="js/nameLists/townNameList.js"></script>
-		<script src="js/nameLists/F.js"></script>
-		<script src="js/nameLists/M.js"></script>
-		<script src="js/nameLists/S.js"></script>
 		<script src="js/map.js"></script>
 		<script src="assets/angularjs-1-7-5.js"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
@@ -74,11 +71,13 @@
 						<div class="card-body p-0">
 							<div class="row mx-0">
 								<div class="col-12 col-md-6 p-0">
-								<img class="col-12 p-0 maxHeight180" src="images/town.jpg" alt="Image of City">
+								<img class="col-12 p-0 maxHeight320" src="images/town.jpg" alt="Image of City">
 								</div>
 								<div class="col-12 col-md-6 p-0">
-								<img class="col-12 p-0 maxHeight180" src="images/town-map2.svg" alt="Map of City">
-								<span class="imageOverlay" ng-click="toggleFullscreenImage('images/town-map2.svg')"><i class="fas fa-expand"></i></span>
+								<img class="col-12 p-0 maxHeight320" src="images/town-map2.svg" alt="Map of City">
+								<a href="images/town-map2.svg" target="_blank" class="imageOverlay">
+									<i class="fas fa-expand"></i>
+								</a>
 								</div>
 							</div>
 						</div>
@@ -140,25 +139,25 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="person in townData.people | filter:peopleSearchInput" >
+									<tr ng-repeat="person in townData.people | filter:peopleSearchInput | limitTo:10" >
 										<td>
-											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#personViewModal" ng-click="viewPerson(person.index)">View</button>
+											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#personViewModal" ng-click="viewPerson(person.data.index)">View</button>
 										</td>
 										<td>
-											<label ng-bind="person.name" ng-hide="editmode"></label>
-											<textarea ng-model="person.name" class="townData" ng-show="editmode"></textarea>
+											<label ng-bind="person.data.name" ng-hide="editmode"></label>
+											<textarea ng-model="person.data.name" class="townData" ng-show="editmode"></textarea>
 										</td>
 										<td>
-											<label ng-bind="person.job" ng-hide="editmode"></label>
-											<textarea ng-model="person.job" class="townData" ng-show="editmode"></textarea>
+											<label ng-bind="person.data.job" ng-hide="editmode"></label>
+											<textarea ng-model="person.data.job" class="townData" ng-show="editmode"></textarea>
 										</td>
 										<td class="d-none d-md-table-cell">
-											<label ng-bind="person.race" ng-hide="editmode"></label>
-											<textarea ng-model="person.race" class="townData" ng-show="editmode"></textarea>
+											<label ng-bind="person.data.race" ng-hide="editmode"></label>
+											<textarea ng-model="person.data.race" class="townData" ng-show="editmode"></textarea>
 										</td>
 										<td class="d-none d-md-table-cell">
-											<label ng-bind="person.age" ng-hide="editmode"></label>
-											<textarea ng-model="person.age" class="townData" ng-show="editmode"></textarea>
+											<label ng-bind="person.data.age" ng-hide="editmode"></label>
+											<textarea ng-model="person.data.age" class="townData" ng-show="editmode"></textarea>
 										</td>
 									</tr>
 								</tbody>
@@ -188,8 +187,8 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title">
-							<label ng-bind="townData.people[currentPerson].name" ng-hide="editmode"></label>
-							<textarea ng-model="townData.people[currentPerson].name" class="townData" ng-show="editmode"></textarea>
+							<label ng-bind="townData.people[currentPerson].data.name" ng-hide="editmode"></label>
+							<textarea ng-model="townData.people[currentPerson].data.name" class="townData" ng-show="editmode"></textarea>
 						</h5>
 						<button type="button" class="close" data-dismiss="modal"> <span>&times;</span> </button>
 					</div>
@@ -202,68 +201,68 @@
 								<div class="row pl-md-3">
 									<div class="attributeBox col-6">
 										<b>Race:</b>
-										<label ng-bind="townData.people[currentPerson].race" ng-hide="editmode"></label>
-										<textarea ng-model="townData.people[currentPerson].race" class="townData" ng-show="editmode"></textarea>
+										<label ng-bind="townData.people[currentPerson].data.race" ng-hide="editmode"></label>
+										<textarea ng-model="townData.people[currentPerson].data.race" class="townData" ng-show="editmode"></textarea>
 									</div>
 									<div class="attributeBox col-6">
 											<b>Age: </b>
-											<label ng-bind="townData.people[currentPerson].age" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].age" class="townData" ng-show="editmode"></textarea>
+											<label ng-bind="townData.people[currentPerson].data.age" ng-hide="editmode"></label>
+											<textarea ng-model="townData.people[currentPerson].data.age" class="townData" ng-show="editmode"></textarea>
 									</div>
 									<div class="attributeBox col-6">
 											<b><i class="fas fa-hammer"></i> Job: </b>
-											<label ng-bind="townData.people[currentPerson].job" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].job" class="townData" ng-show="editmode"></textarea>
+											<label ng-bind="townData.people[currentPerson].data.job" ng-hide="editmode"></label>
+											<textarea ng-model="townData.people[currentPerson].data.job" class="townData" ng-show="editmode"></textarea>
 									</div>
 									<div class="attributeBox col-6">
 											<b><i class="fas fa-comment"></i> Lng: </b>
-											<label ng-bind="townData.people[currentPerson].lng" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].lng" class="townData" ng-show="editmode"></textarea>
+											<label ng-bind="townData.people[currentPerson].data.lng" ng-hide="editmode"></label>
+											<textarea ng-model="townData.people[currentPerson].data.lng" class="townData" ng-show="editmode"></textarea>
 									</div>
 									<div class="attributeBox col-4">
 											<b><i class="fas fa-shield-alt"></i> AC: </b>
-											<label ng-bind="townData.people[currentPerson].AC" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].AC" class="townData" ng-show="editmode"></textarea>
+											<label ng-bind="townData.people[currentPerson].data.AC" ng-hide="editmode"></label>
+											<textarea ng-model="townData.people[currentPerson].data.AC" class="townData" ng-show="editmode"></textarea>
 									</div>
 									<div class="attributeBox col-4">
 											<b><i class="fas fa-heart"></i> HP: </b>
-											<label ng-bind="townData.people[currentPerson].HP" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].HP" class="townData" ng-show="editmode"></textarea>
+											<label ng-bind="townData.people[currentPerson].data.HP" ng-hide="editmode"></label>
+											<textarea ng-model="townData.people[currentPerson].data.HP" class="townData" ng-show="editmode"></textarea>
 									</div>
 									<div class="attributeBox col-4">
 											<b><i class="fas fa-shoe-prints"></i> SP: </b>
-											<label ng-bind="townData.people[currentPerson].SP" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].SP" class="townData" ng-show="editmode"></textarea>
+											<label ng-bind="townData.people[currentPerson].data.SP" ng-hide="editmode"></label>
+											<textarea ng-model="townData.people[currentPerson].data.SP" class="townData" ng-show="editmode"></textarea>
 									</div>
 									<div class="attributeBox col-4">
 											<b><i class="fas fa-fist-raised"></i> STR: </b>
-											<label ng-bind="townData.people[currentPerson].STR" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].STR" class="townData" ng-show="editmode"></textarea>
+											<label ng-bind="townData.people[currentPerson].data.STR" ng-hide="editmode"></label>
+											<textarea ng-model="townData.people[currentPerson].data.STR" class="townData" ng-show="editmode"></textarea>
 									</div>
 									<div class="attributeBox col-4">
 											<b><i class="fas fa-running"></i> DEX: </b>
-											<label ng-bind="townData.people[currentPerson].DEX" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].DEX" class="townData" ng-show="editmode"></textarea>
+											<label ng-bind="townData.people[currentPerson].data.DEX" ng-hide="editmode"></label>
+											<textarea ng-model="townData.people[currentPerson].data.DEX" class="townData" ng-show="editmode"></textarea>
 									</div>
 									<div class="attributeBox col-4">
 											<b><i class="fas fa-paw"></i> CON: </b>
-											<label ng-bind="townData.people[currentPerson].CON" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].CON" class="townData" ng-show="editmode"></textarea>
+											<label ng-bind="townData.people[currentPerson].data.CON" ng-hide="editmode"></label>
+											<textarea ng-model="townData.people[currentPerson].data.CON" class="townData" ng-show="editmode"></textarea>
 									</div>
 									<div class="attributeBox col-4">
 											<b><i class="fas fa-book"></i> INT: </b>
-											<label ng-bind="townData.people[currentPerson].INT" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].INT" class="townData" ng-show="editmode"></textarea>
+											<label ng-bind="townData.people[currentPerson].data.INT" ng-hide="editmode"></label>
+											<textarea ng-model="townData.people[currentPerson].data.INT" class="townData" ng-show="editmode"></textarea>
 									</div>
 									<div class="attributeBox col-4">
 											<b><i class="fas fa-tree"></i> WIS: </b>
-											<label ng-bind="townData.people[currentPerson].WIS" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].WIS" class="townData" ng-show="editmode"></textarea>
+											<label ng-bind="townData.people[currentPerson].data.WIS" ng-hide="editmode"></label>
+											<textarea ng-model="townData.people[currentPerson].data.WIS" class="townData" ng-show="editmode"></textarea>
 									</div>
 									<div class="attributeBox col-4">
 											<b><i class="fas fa-comments"></i> CHA: </b>
-											<label ng-bind="townData.people[currentPerson].CHA" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].CHA" class="townData" ng-show="editmode"></textarea>
+											<label ng-bind="townData.people[currentPerson].data.CHA" ng-hide="editmode"></label>
+											<textarea ng-model="townData.people[currentPerson].data.CHA" class="townData" ng-show="editmode"></textarea>
 									</div>
 								</div>
 							</div>
@@ -271,12 +270,26 @@
 								<img class="img-fluid" src="images/human-woman.jpg">
 							</div>
 							<hr class="col-12">
+
+							<div class="col-12">
+								<b ng-if="townData.people[currentPerson].parents.length > 0">Parents:</b>
+								<div ng-repeat="parent in townData.people[currentPerson].parents">
+									<label ng-bind="parent.data.name"></label>
+								</div>
+								<br>
+								<b ng-if="townData.people[currentPerson].children.length > 0">Children:</b>
+								<div ng-repeat="child in townData.people[currentPerson].children">
+									<label ng-bind="child.data.name"></label>
+								</div>
+							</div>							
+
+							<hr class="col-12">
 							<div class="col-12">
 								<div class="card">
 									<div class="card-header"><h6 class="text-center"><i class="fas fa-box-open"></i> Inventory:</h6></div>
 									<div class="card-body p-0">
 										<div class="row mx-0">
-											<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.people[currentPerson].inventory">
+											<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.people[currentPerson].data.inventory">
 												<b>
 														<i ng-if="item.type == 'money'" class="fas fa-dollar-sign"></i>
 														<i ng-if="item.type == 'armor'" class="fas fa-tshirt"></i>
@@ -364,6 +377,10 @@
 
 		<script src="js/items.js"></script>
 		<script src="js/buildings.js"></script>
+		<script src="js/nameLists/F.js"></script>
+		<script src="js/nameLists/M.js"></script>
+		<script src="js/nameLists/S.js"></script>
+		<script src="js/nameLists/population.js"></script>
 
 		<script src="js/townData.js"></script>
 		<script src="assets/leaflet/leaflet.js"></script>

@@ -10445,3 +10445,10 @@ var lastNames = [
 	"Zweistra",
 	"Zylberstein"
 ]
+
+function getLastName(index = 'random') {
+	if (index == 'random') {
+		index = Math.floor(Math.random() * lastNames.length)
+	}
+	return lastNames[index]
+}
