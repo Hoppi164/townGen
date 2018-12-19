@@ -1,7 +1,34 @@
 villagePopulation = 0;
 dominantRace = 'Human';
-possibleRaces = ['Dwarf', 'Elf', 'Halfling', 'Human', 'Dragonborn', 'Gnome', 'Half-Elf', 'Half-Orc', 'Tiefling'];
-jobs = ['Hunter', 'Noble', 'Smith', 'Guard', 'Merchant', 'Craftsman', 'Tailor', 'Baker', 'Barman', 'Barmaid', 'Barber', 'Mason', 'Tanner', 'Furrier', 'Butcher', 'Fisher', 'Farmer', 'Bard', 'Adventurer', 'Prostitute', 'Laborour', 'Doctor', 'Nurse', 'Factory Worker', 'Stable Hand', 'Alchemist', 'Student', 'Monk', 'Priest']
+possibleRaces = [{
+	race: 'Dwarf',
+	maxAge: 350,
+}, {
+	race: 'Elf',
+	maxAge: 750,
+}, {
+	race: 'Halfling',
+	maxAge: 250,
+}, {
+	race: 'Human',
+	maxAge: 85,
+}, {
+	race: 'Dragonborn',
+	maxAge: 80,
+}, {
+	race: 'Gnome',
+	maxAge: 500,
+}, {
+	race: 'Half-Elf',
+	maxAge: 200,
+}, {
+	race: 'Half-Orc',
+	maxAge: 75,
+}, {
+	race: 'Tiefling',
+	maxAge: 100,
+}];
+possibleJobs = ['Hunter', 'Noble', 'Smith', 'Guard', 'Merchant', 'Craftsman', 'Tailor', 'Baker', 'Barman', 'Barmaid', 'Barber', 'Mason', 'Tanner', 'Furrier', 'Butcher', 'Fisher', 'Farmer', 'Bard', 'Adventurer', 'Prostitute', 'Laborour', 'Doctor', 'Nurse', 'Factory Worker', 'Stable Hand', 'Alchemist', 'Student', 'Monk', 'Priest']
 class Person {
 
 	constructor(data, parents = []) {
@@ -15,6 +42,21 @@ class Person {
 	}
 }
 
+function getRace(index = 'random') {
+	if (index == 'random') {
+		index = Math.floor(Math.random() * possibleRaces.length)
+	}
+	return possibleRaces[index]
+}
+
+function getJob(index = 'random') {
+	if (index == 'random') {
+		index = Math.floor(Math.random() * possibleJobs.length)
+	}
+	return possibleJobs[index]
+
+}
+
 function getGender(index = 'random') {
 	genders = ['Male', 'Female']
 	if (index == 'random') {
@@ -23,14 +65,19 @@ function getGender(index = 'random') {
 	return genders[index]
 }
 
+function randomBetween(min, max) {
+	return Math.floor(Math.random() * max) + min
+}
+
 function newPerson(personIndex, gender = getGender(), familyName = getLastName(), parents = []) {
+	race = getRace();
 	data = {
 		index: personIndex,
 		gender: gender,
 		name: (gender == 'Male' ? getMaleName() : getFemaleName()) + " " + familyName,
-		race: 'Human',
-		age: '25',
-		job: 'Hunter',
+		race: race.race,
+		age: randomBetween(0, race.maxAge),
+		job: getJob(),
 		lng: 'Common',
 		AC: 10,
 		HP: 4,
@@ -70,7 +117,7 @@ function populateTown(population = 100) {
 		var father = newPerson(personIndex++, 'Male', familyName);
 		people.push(father);
 		while (maxChildren > 0) {
-			child = newPerson(personIndex++, null, familyName, [mother, father]);
+			child = newPerson(personIndex++, null, familyName);
 			maxChildren--;
 			people.push(child)
 		}

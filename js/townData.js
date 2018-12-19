@@ -85,6 +85,7 @@ townApp.controller('townController', function($scope) {
 		var numbuildings = Math.floor(Math.random() * 30) + 10;
 		$scope.townData.buildings = getTownBuildings(numbuildings);
 		$scope.townData.people = populateTown();
+		console.log($scope.townData.people);
 
 	}
 	$scope.relevanceSort = function(item) {
