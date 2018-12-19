@@ -17,10 +17,10 @@
 	<body ng-controller="townController">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<a class="navbar-brand" href="#">Town Generator</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#togglableNavbar" aria-controls="togglableNavbar" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+			<div class="collapse navbar-collapse" id="togglableNavbar">
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					<li class="nav-item">
 						<a class="nav-link disabled" href="#">Character Sheet (Coming Soon)</a>
@@ -103,7 +103,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="building in townData.buildings | filter:buildingSearchInput|orderBy:relevanceSort|limitTo:10" >
+									<tr ng-repeat="building in townData.buildings | filter:buildingSearchInput|orderBy:relevanceSort|limitTo:maxShownBuildings" >
 										<td>
 											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#buildingViewModal" ng-click="viewBuilding(building.index)">View</button>
 										</td>
@@ -119,6 +119,13 @@
 								</tbody>
 							</table>
 						</div>
+						<div class="card-footer text-center px-0">
+							<button class="btn btn-link w-100" ng-click=toggleShowAllBuildings()>
+								<i ng-hide="maxShownBuildings == townData.buildings.length">Show All Buildings</i>
+								<i ng-show="maxShownBuildings == townData.buildings.length">Show Less Buildings</i>
+						</button>
+						</div>
+
 					</div>
 					<br>
 					<div class="card">
@@ -139,7 +146,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="person in townData.people | filter:peopleSearchInput | limitTo:10" >
+									<tr ng-repeat="person in townData.people | filter:peopleSearchInput | limitTo:maxShownPeople" >
 										<td>
 											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#personViewModal" ng-click="viewPerson(person.data.index)">View</button>
 										</td>
@@ -162,6 +169,12 @@
 									</tr>
 								</tbody>
 							</table>
+						</div>
+						<div class="card-footer text-center px-0">
+							<button class="btn btn-link w-100" ng-click=toggleShowAllPeople()>
+								<i ng-hide="maxShownPeople == townData.people.length">Show All People</i>
+								<i ng-show="maxShownPeople == townData.people.length">Show Less People</i>
+						</button>
 						</div>
 					</div>
 					<br class="d-md-none">
@@ -270,6 +283,10 @@
 								<img class="img-fluid" src="images/human-woman.jpg">
 							</div>
 							<hr class="col-12">
+
+							<div class="col-12">
+								s
+							</div>
 
 							<div class="col-12">
 								<b ng-if="townData.people[currentPerson].parents.length > 0">Parents:</b>

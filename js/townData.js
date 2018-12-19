@@ -6,14 +6,24 @@ townApp.filter('floor', function() {
 });
 
 townApp.controller('townController', function($scope) {
-
-
 	$scope.townData = {
 		name: 'Create a town by clicking the "New Town" button',
 		description: '',
 		people: [],
 		buildings: [],
 	};
+
+
+
+
+	$scope.maxShownBuildings = 10;
+	$scope.toggleShowAllBuildings = function() {
+		$scope.maxShownBuildings = ($scope.maxShownBuildings == 10 ? $scope.townData.buildings.length : 10);
+	}
+	$scope.maxShownPeople = 10;
+	$scope.toggleShowAllPeople = function() {
+		$scope.maxShownPeople = ($scope.maxShownPeople == 10 ? $scope.townData.people.length : 10);
+	}
 	$scope.items = getAllItems();
 	$scope.editmode = false;
 	$scope.currentPerson = 0;

@@ -1,7 +1,7 @@
 villagePopulation = 0;
 dominantRace = 'Human';
 possibleRaces = ['Dwarf', 'Elf', 'Halfling', 'Human', 'Dragonborn', 'Gnome', 'Half-Elf', 'Half-Orc', 'Tiefling'];
-
+jobs = ['Hunter', 'Noble', 'Smith', 'Guard', 'Merchant', 'Craftsman', 'Tailor', 'Baker', 'Barman', 'Barmaid', 'Barber', 'Mason', 'Tanner', 'Furrier', 'Butcher', 'Fisher', 'Farmer', 'Bard', 'Adventurer', 'Prostitute', 'Laborour', 'Doctor', 'Nurse', 'Factory Worker', 'Stable Hand', 'Alchemist', 'Student', 'Monk', 'Priest']
 class Person {
 
 	constructor(data, parents = []) {
