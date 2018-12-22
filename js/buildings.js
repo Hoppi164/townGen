@@ -26,7 +26,7 @@ var buildingTypes = [{
 	percentageOfTown: 5
 }, {
 	type: 'Barracks',
-	variants: ['Guard Tower', 'Watch Tower', 'Barracks', 'Guard House', 'Gate house'],
+	variants: ['Guard Tower', 'Watch Tower', 'Barracks', 'Guard House', 'Gate house', 'Castle'],
 	percentageOfTown: 5
 }, {
 	type: 'Medical Office',
@@ -38,8 +38,36 @@ var buildingTypes = [{
 	percentageOfTown: 5
 }]
 
+function getBuildingImage(buildingType) {
+	if (buildingType == 'Tavern') {
+		return 'images/buildings/tavern-' + Math.floor(Math.random() * 0) + '.jpg';
+	}
+	if (buildingType == 'Shop') {
 
+	}
+	if (buildingType == 'House') {
+		return 'images/buildings/house-' + Math.floor(Math.random() * 7) + '.jpg';
+	}
+	if (buildingType == 'Church') {
+		return 'images/buildings/church-' + Math.floor(Math.random() * 2) + '.jpg';
+	}
+	if (buildingType == 'Storage Yard') {
 
+	}
+	if (buildingType == 'Factory') {
+
+	}
+	if (buildingType == 'Castle') {
+		return 'images/buildings/castle-' + Math.floor(Math.random() * 6) + '.jpg';
+	}
+	if (buildingType == 'Medical Office') {
+
+	}
+	if (buildingType == 'Prison') {
+		return 'images/buildings/prison-' + Math.floor(Math.random() * 0) + '.jpg';
+	}
+	return '';
+}
 
 
 function getTownBuildings(numBuildings) {
@@ -61,6 +89,9 @@ function getTownBuildings(numBuildings) {
 				index: index,
 				inventory: []
 			}
+			if (thisBuilding.aliases.includes("House")) {
+				thisBuilding.image = getBuildingImage('House');
+			}
 			if (thisBuilding.aliases.includes("Tavern")) {
 				thisBuilding.inventory = thisBuilding.inventory.concat(items.accommodation);
 				thisBuilding.inventory = thisBuilding.inventory.concat(items.drink);
@@ -68,6 +99,7 @@ function getTownBuildings(numBuildings) {
 				thisBuilding.inventory = thisBuilding.inventory.concat(getRandomMeal());
 				thisBuilding.inventory = thisBuilding.inventory.concat(getRandomMeal());
 				thisBuilding.inventory = thisBuilding.inventory.concat(getRandomMeal());
+				thisBuilding.image = getBuildingImage('Tavern')
 			}
 			if (thisBuilding.type == 'Brothel') {
 				thisBuilding.inventory = thisBuilding.inventory.concat(items.prostitution);
@@ -88,6 +120,15 @@ function getTownBuildings(numBuildings) {
 			}
 			if (thisBuilding.type == 'Blacksmith') {
 				thisBuilding.inventory = thisBuilding.inventory.concat(Object.values(items.armor));
+			}
+			if (thisBuilding.aliases.includes("Church")) {
+				thisBuilding.image = getBuildingImage('Church');
+			}
+			if (thisBuilding.type == 'Prison') {
+				thisBuilding.image = getBuildingImage('Prison');
+			}
+			if (thisBuilding.type == 'Castle') {
+				thisBuilding.image = getBuildingImage('Castle');
 			}
 			if (thisBuilding.type == 'Furrier') {
 				thisBuilding.inventory = thisBuilding.inventory.concat(items.armor.hideArmor);

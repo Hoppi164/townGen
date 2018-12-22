@@ -8,6 +8,9 @@ townApp.filter('floor', function() {
 townApp.controller('townController', function($scope) {
 	$scope.townData = {
 		name: 'Create a town by clicking the "New Town" button',
+		townImage: '',
+		townMap: '',
+		size: '',
 		description: '',
 		people: [],
 		buildings: [],
@@ -80,7 +83,8 @@ townApp.controller('townController', function($scope) {
 	$scope.newTown = function() {
 		$scope.townData.name = getRandomTownName();
 		$scope.townData.description = $scope.townData.name + ' is ' + getTownShortDesc() + ' ' + getTownLocation();
-
+		$scope.townData.townImage = getTownImage();
+		$scope.townData.townMap = getTownMap();
 		$scope.townData.buildings = [];
 		var numbuildings = Math.floor(Math.random() * 30) + 10;
 		$scope.townData.buildings = getTownBuildings(numbuildings);
@@ -94,6 +98,16 @@ townApp.controller('townController', function($scope) {
 
 });
 
+
+
+
+function getTownImage() {
+	return 'images/buildings/village-' + Math.floor(Math.random() * 6) + '.jpg'
+}
+
+function getTownMap(size = 'small') {
+	return 'images/maps/' + size + '-' + Math.floor(Math.random() * 21) + '.svg'
+}
 
 function loadFile() {
 	var checkbox = document.getElementById('triggerLoadFileCheckbox');

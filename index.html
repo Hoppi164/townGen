@@ -71,11 +71,11 @@
 						<div class="card-body p-0">
 							<div class="row mx-0">
 								<div class="col-12 col-md-6 p-0">
-								<img class="col-12 p-0 maxHeight320" src="images/town.jpg" alt="Image of City">
+								<img class="col-12 p-0 maxHeight280" src="{{townData.townImage}}" alt="Image of City">
 								</div>
 								<div class="col-12 col-md-6 p-0">
-								<img class="col-12 p-0 maxHeight320" src="images/town-map2.svg" alt="Map of City">
-								<a href="images/town-map2.svg" target="_blank" class="imageOverlay">
+								<img class="col-12 p-0 maxHeight280" src="{{townData.townMap}}" alt="Map of City">
+								<a href="{{townData.townMap}}" target="_blank" class="imageOverlay">
 									<i class="fas fa-expand"></i>
 								</a>
 								</div>
@@ -339,7 +339,7 @@
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-12">
-								<img class="img-fluid" src="images/tavern.jpg">
+								<img class="img-fluid" src="{{townData.buildings[currentBuilding].image}}">
 							</div>
 							<label ng-bind="townData.buildings[currentBuilding].description" class="text-center w-100" ng-hide="editmode"></label>
 							<textarea ng-model="townData.buildings[currentBuilding].description" class="townData text-center" ng-show="editmode"> </textarea>

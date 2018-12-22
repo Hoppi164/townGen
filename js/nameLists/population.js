@@ -108,21 +108,21 @@ var nonFamilyRelationshops = ['Secret Lover', 'Business Partner', 'Friend', 'Wor
 function populateTown(population = 100) {
 	var personIndex = 0
 	var people = [];
-	for (var familyNum = 0; familyNum < population / 5; familyNum++) {
-		var familyName = getLastName();
-		var maxChildren = Math.floor(Math.random() * 3) + 1; //Between 1 and 3
+	// for (var familyNum = 0; familyNum < population / 5; familyNum++) {
+	// 	var familyName = getLastName();
+	// 	var maxChildren = Math.floor(Math.random() * 3) + 1; //Between 1 and 3
 
-		var mother = newPerson(personIndex++, 'Female', familyName);
-		people.push(mother);
-		var father = newPerson(personIndex++, 'Male', familyName);
-		people.push(father);
-		while (maxChildren > 0) {
-			child = newPerson(personIndex++, null, familyName);
-			maxChildren--;
-			people.push(child)
-		}
+	// 	var mother = newPerson(personIndex++, 'Female', familyName);
+	// 	people.push(mother);
+	// 	var father = newPerson(personIndex++, 'Male', familyName);
+	// 	people.push(father);
+	// 	while (maxChildren > 0) {
+	// 		child = newPerson(personIndex++, null, familyName);
+	// 		maxChildren--;
+	// 		people.push(child)
+	// 	}
+	// }
 
-	}
 	while (personIndex < population) {
 		people.push(newPerson(personIndex++));
 	}
