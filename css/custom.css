@@ -4,30 +4,36 @@
 	/*border: 1px solid #ccc;*/
 	/*margin-bottom: 10px;*/
 }
-.maxHeight280{
+
+.maxHeight280 {
 	max-height: 280px;
 }
-.square{
+
+.square {
 	height: width;
 }
-.attributeBox{
+
+.attributeBox {
 	position: relative;
 	display: block;
-	padding:5px;
+	padding: 5px;
 	margin-bottom: -1px;
 	background-color: #fff;
 	border: 1px solid rgba(0, 0, 0, 0.125);
 }
-.townData{
+
+.townData {
 	width: 100% !important;
 	max-height: 100% !important;
 	border-radius: 0.25rem !important;
 	border: 2px solid #17a2b8 !important;
 }
-.smallText{
+
+.smallText {
 	font-size: 0.8rem;
 }
-#mapofcity{
+
+#mapofcity {
 	position: fixed;
 	z-index: 1000;
 	top: 0px;
@@ -35,7 +41,8 @@
 	width: 100vw;
 	height: 100vh;
 }
-.imageOverlay{
+
+.imageOverlay {
 	position: absolute;
 	right: 5px;
 	top: 2px;
@@ -43,10 +50,12 @@
 	color: black;
 	transition: color 0.5s;
 }
-.imageOverlay:hover{
-	color: white;			
+
+.imageOverlay:hover {
+	color: white;
 }
-.bottomRight{
+
+.bottomRight {
 	/*height: 100%;*/
 	/*width: 100%;*/
 	text-align: right;
@@ -58,62 +67,77 @@
 	margin-right: -5px;
 	margin-bottom: -5px;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f8f8ff+23,f8f8ff+100 */
-	background: #ffffff; /* Old browsers */
-	background: -moz-linear-gradient(top, #ffffff 0%, #f8f8ff 23%, #f8f8ff 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, #ffffff 0%,#f8f8ff 23%,#f8f8ff 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, #ffffff 0%,#f8f8ff 23%,#f8f8ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f8f8ff',GradientType=0 ); /* IE6-9 */
+	background: #ffffff;
+	/* Old browsers */
+	background: -moz-linear-gradient(top, #ffffff 0%, #f8f8ff 23%, #f8f8ff 100%);
+	/* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #ffffff 0%, #f8f8ff 23%, #f8f8ff 100%);
+	/* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #ffffff 0%, #f8f8ff 23%, #f8f8ff 100%);
+	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8ff', GradientType=0);
+	/* IE6-9 */
 }
-.bottomRight > label{
+
+.bottomRight > label {
 	line-height: 1;
 	margin-left: 2px;
 }
-.platinum{
+
+.platinum {
 	color: #6a5acd;
 	padding-right: 5px;
 	border-right: 1px solid lightgrey;
 }
-.gold{
+
+.gold {
 	color: gold;
 	padding-right: 5px;
 	border-right: 1px solid lightgrey;
 }
-.silver{
+
+.silver {
 	color: silver;
 	padding-right: 5px;
 	border-right: 1px solid lightgrey;
 }
-.copper{
+
+.copper {
 	color: #b87333;
 	margin-right: 2px;
 }
+
 .popover {
-    z-index: 1060;
+	z-index: 1060;
 }
 
+input {
+	max-width: 100%;
+}
 
 [tooltip]:hover::after {
-    content: attr(ac) attr(stealth) attr(str) attr(type) "\A\A" attr(tooltip);
-    white-space: pre-wrap;
-    position: absolute;
-    left:50%;
-    top:1px;
-    transform: translateX(-50%)   translateY(-100%);
-    background: rgba(0,0,0,0.7);
-    text-align: center;
-    color: #fff;
-    padding:10px;
-    font-size: 12px;
-    min-width: 250px;
-    max-width: 250px;
-    border-radius: 5px;
-    pointer-events: none;
-	left:50%;
+	content: attr(ac) attr(stealth) attr(str) attr(type) "\A\A"attr(tooltip);
+	white-space: pre-wrap;
+	position: absolute;
+	left: 50%;
+	top: 1px;
+	transform: translateX(-50%) translateY(-100%);
+	background: rgba(0, 0, 0, 0.7);
+	text-align: center;
+	color: #fff;
+	padding: 10px;
+	font-size: 12px;
+	min-width: 250px;
+	max-width: 250px;
+	border-radius: 5px;
+	pointer-events: none;
+	left: 50%;
 	z-index: 1000;
 }
+
 @media only screen and (max-width: 600px) {
 	[tooltip]:hover::after {
-	    font-size: 16px;
-	    min-width: 200px;
+		font-size: 16px;
+		min-width: 200px;
 	}
 }

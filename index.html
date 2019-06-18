@@ -2,313 +2,385 @@
 <!-- This is how they 'save' and 'load' their towndata -->
 <html ng-app="townApp">
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="stylesheet" href="assets/bootstrap-4.1.3-dist/css/bootstrap.css">
-		<script src="assets/bootstrap-4.1.3-dist/js/jquery331.js"></script>
-		<script src="assets/bootstrap-4.1.3-dist/js/bootstrap.bundle.min.js"></script>
-		<script src="js/nameLists/townNameList.js"></script>
-		<script src="js/map.js"></script>
-		<script src="assets/angularjs-1-7-5.js"></script>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
-		<link rel="stylesheet" href="assets/leaflet/leaflet.css">
-		<link rel="stylesheet" href="css/custom.css">
-	</head>
-	<body ng-controller="townController">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="#">Town Generator</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#togglableNavbar" aria-controls="togglableNavbar" aria-expanded="false" aria-label="Toggle navigation">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="assets/bootstrap-4.1.3-dist/css/bootstrap.css">
+	<script src="assets/bootstrap-4.1.3-dist/js/jquery331.js"></script>
+	<script src="assets/bootstrap-4.1.3-dist/js/bootstrap.bundle.min.js"></script>
+	<script src="js/nameLists/townNameList.js"></script>
+	<script src="js/map.js"></script>
+	<script src="assets/angularjs-1-7-5.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/leaflet/leaflet.css">
+	<link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body ng-controller="townController">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Town Generator</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#togglableNavbar" aria-controls="togglableNavbar" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="togglableNavbar">
-				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-					<li class="nav-item">
-						<a class="nav-link disabled" href="#">Character Sheet (Coming Soon)</a>
-					</li>
-					<li class="nav-item mt-1 mt-md-0 ml-0 ml-md-1">
-						<button class="btn btn-info w-100" ng-click="saveFile()">Save <i class="fas fa-download"></i></button>
-					</li>
-					<li class="nav-item mt-1 mt-md-0 ml-0 ml-md-1">
-						<label class="btn btn-info mb-0 w-100">
-							Load <i class="fas fa-upload"></i></i>
-							<input type="file" class="d-none" onchange="loadFile()" id="fileUpload">
-							<input type="checkbox" class="d-none" id="triggerLoadFileCheckbox" ng-change="loadFile()" ng-model="triggerLoadFile">
-						</label>
-					</li>
-					<li class="nav-item mt-1 mt-md-0 ml-0 ml-md-1">
-						<button class="btn btn-info w-100" ng-click="toggleEdit()">Edit Town<i class="fas fa-edit px-2"></i></button>
-					</li>
-					<li class="nav-item mt-1 mt-md-0 ml-0 ml-md-1">
-						<button class="btn btn-info w-100" ng-click="newTown()">New Town<i class="fas fa-sync px-2"></i></button>
-					</li>
-				</ul>
-			</div>
-		</nav>
-		<br>
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-2 d-none d-md-block">
-					<div class="card">
-						<div class="card-body">
-							ADVERTISEMENT PC
-						</div>
+		</button>
+		<div class="collapse navbar-collapse" id="togglableNavbar">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#">Character Sheet (Coming Soon)</a>
+				</li>
+				<li class="nav-item mt-1 mt-md-0 ml-0 ml-md-1">
+					<button class="btn btn-info w-100" ng-click="saveFile()">Save <i class="fas fa-download"></i></button>
+				</li>
+				<li class="nav-item mt-1 mt-md-0 ml-0 ml-md-1">
+					<label class="btn btn-info mb-0 w-100">
+						Load <i class="fas fa-upload"></i></i>
+						<input type="file" class="d-none" onchange="loadFile()" id="fileUpload">
+						<input type="checkbox" class="d-none" id="triggerLoadFileCheckbox" ng-change="loadFile()" ng-model="triggerLoadFile">
+					</label>
+				</li>
+				<li class="nav-item mt-1 mt-md-0 ml-0 ml-md-1">
+					<button class="btn btn-info w-100" ng-click="newTown()">New Town<i class="fas fa-sync px-2"></i></button>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<br>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-2 d-none d-md-block">
+				<div class="card">
+					<div class="card-body">
+						ADVERTISEMENT PC
 					</div>
 				</div>
-				<div class="col-12 col-md-8">
-					<div class="card d-md-none">
-						<div class="card-body">
-							ADVERTISEMENT MOBILE
-						</div>
+			</div>
+			<div class="col-12 col-md-8">
+				<div class="card d-md-none">
+					<div class="card-body">
+						ADVERTISEMENT MOBILE
 					</div>
-					<br class="d-md-none">
-					<div class="card">
-						<div class="card-header">
-							<h3 class="text-center m-0">
-							<label ng-bind="townData.name" class="text-center w-100" ng-hide="editmode"></label>
-							<textarea ng-model="townData.name" class="townData text-center" ng-show="editmode"></textarea>
-							</h3>
-						</div>
-						<div class="card-body p-0">
-							<div class="row mx-0">
-								<div class="col-12 col-md-6 p-0">
+				</div>
+				<br class="d-md-none">
+				<div class="card">
+					<div class="card-header">
+						<h3 class="text-center m-0">
+							<input ng-model="townData.name" class="text-center w-100">
+						</h3>
+					</div>
+					<div class="card-body p-0">
+						<div class="row mx-0">
+							<div class="col-12 col-md-6 p-0">
 								<img class="col-12 p-0 maxHeight280" src="{{townData.townImage}}" alt="Image of City">
-								</div>
-								<div class="col-12 col-md-6 p-0">
+							</div>
+							<div class="col-12 col-md-6 p-0">
 								<img class="col-12 p-0 maxHeight280" src="{{townData.townMap}}" alt="Map of City">
 								<a href="{{townData.townMap}}" target="_blank" class="imageOverlay">
 									<i class="fas fa-expand"></i>
 								</a>
-								</div>
 							</div>
 						</div>
-						<div class="card-footer">
-							<label ng-bind="townData.description" class="text-center w-100" ng-hide="editmode"></label>
-							<textarea ng-model="townData.description" class="townData text-center" ng-show="editmode"></textarea>
-						</div>
 					</div>
-					<br>
-					<div class="card">
-						<div class="card-header">
-							<h5 class="text-center">Buildings</h5>
-						</div>
-						<div class="card-body">
-							<input type="search" class="form-control" placeholder="Search for building types. EG: (House, Tavern, Shop, Church, Storage, Factory, Barracks, Medical, School)"ng-model="buildingSearchInput">
-							<br>
-							<table class="table">
-								<thead>
-									<tr>
-										<td><b>#</b></td>
-										<td><b>Building</b></td>
-										<td><b>Name</b></td>
-									</tr>
-								</thead>
-								<tbody>
-									<tr ng-repeat="building in townData.buildings | filter:buildingSearchInput|orderBy:relevanceSort|limitTo:maxShownBuildings" >
-										<td>
-											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#buildingViewModal" ng-click="viewBuilding(building.index)">View</button>
-										</td>
-										<td>
-											<label ng-bind="building.type" ng-hide="editmode"></label>
-											<textarea ng-model="building.type" class="townData" ng-show="editmode"></textarea>
-										</td>
-										<td>
-											<label ng-bind="building.name" ng-hide="editmode"></label>
-											<textarea ng-model="building.name" class="townData" ng-show="editmode"></textarea>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="card-footer text-center px-0">
-							<button class="btn btn-link w-100" ng-click=toggleShowAllBuildings()>
-								<i ng-hide="maxShownBuildings == townData.buildings.length">Show All Buildings</i>
-								<i ng-show="maxShownBuildings == townData.buildings.length">Show Less Buildings</i>
-						</button>
-						</div>
-
-					</div>
-					<br>
-					<div class="card">
-						<div class="card-header">
-							<h5 class="text-center">People:</h5>
-						</div>
-						<div class="card-body">
-							<input type="search" class="form-control" placeholder="Search for person" ng-model="peopleSearchInput">
-							<br>
-							<table class="table">
-								<thead>
-									<tr>
-										<th><b>#</b></th>
-										<th><b>Name</b></th>
-										<th><b>Occupation</b></th>
-										<th class="d-none d-md-table-cell"><b>Race</b></th>
-										<th class="d-none d-md-table-cell"><b>Age</b></th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr ng-repeat="person in townData.people | filter:peopleSearchInput | limitTo:maxShownPeople" >
-										<td>
-											<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#personViewModal" ng-click="viewPerson(person.data.index)">View</button>
-										</td>
-										<td>
-											<label ng-bind="person.data.name" ng-hide="editmode"></label>
-											<textarea ng-model="person.data.name" class="townData" ng-show="editmode"></textarea>
-										</td>
-										<td>
-											<label ng-bind="person.data.job" ng-hide="editmode"></label>
-											<textarea ng-model="person.data.job" class="townData" ng-show="editmode"></textarea>
-										</td>
-										<td class="d-none d-md-table-cell">
-											<label ng-bind="person.data.race" ng-hide="editmode"></label>
-											<textarea ng-model="person.data.race" class="townData" ng-show="editmode"></textarea>
-										</td>
-										<td class="d-none d-md-table-cell">
-											<label ng-bind="person.data.age" ng-hide="editmode"></label>
-											<textarea ng-model="person.data.age" class="townData" ng-show="editmode"></textarea>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="card-footer text-center px-0">
-							<button class="btn btn-link w-100" ng-click=toggleShowAllPeople()>
-								<i ng-hide="maxShownPeople == townData.people.length">Show All People</i>
-								<i ng-show="maxShownPeople == townData.people.length">Show Less People</i>
-						</button>
-						</div>
-					</div>
-					<br class="d-md-none">
-					<div class="card d-md-none">
-						<div class="card-body">
-							ADVERTISEMENT MOBILE
-						</div>
+					<div class="card-footer">
+						<input ng-model="townData.description" class="text-center w-100">
 					</div>
 				</div>
-				<div class="col-2 d-none d-md-block">
-					<div class="card">
-						<div class="card-body">
-							ADVERTISEMENT PC
-						</div>
+				<br>
+				<div class="card">
+					<div class="card-header">
+						<h5 class="text-center">Buildings</h5>
+					</div>
+					<div class="card-body">
+						<input type="search" class="form-control" placeholder="Search for building types. EG: (House, Tavern, Shop, Church, Storage, Factory, Barracks, Medical, School)" ng-model="buildingSearchInput">
+						<br>
+						<table class="table">
+							<thead>
+								<tr>
+									<td><b>#</b></td>
+									<td><b>Building</b></td>
+									<td><b>Name</b></td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="building in townData.buildings | filter:buildingSearchInput|orderBy:relevanceSort|limitTo:maxShownBuildings">
+									<td>
+										<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#buildingViewModal" ng-click="viewBuilding(building.index)">View</button>
+									</td>
+									<td>
+										<input ng-model="building.type"></label>
+									</td>
+									<td>
+										<input ng-model="building.name"></label>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="card-footer text-center px-0">
+						<button class="btn btn-link w-100" ng-click=toggleShowAllBuildings()>
+							<i ng-hide="maxShownBuildings == townData.buildings.length">Show All Buildings</i>
+							<i ng-show="maxShownBuildings == townData.buildings.length">Show Less Buildings</i>
+						</button>
+					</div>
+
+				</div>
+				<br>
+				<div class="card">
+					<div class="card-header">
+						<h5 class="text-center">People:</h5>
+					</div>
+					<div class="card-body">
+						<input type="search" class="form-control" placeholder="Search for person" ng-model="peopleSearchInput">
+						<br>
+						<table class="table">
+							<thead>
+								<tr>
+									<th><b>#</b></th>
+									<th><b>Name</b></th>
+									<th><b>Occupation</b></th>
+									<th class="d-none d-md-table-cell"><b>Race</b></th>
+									<th class="d-none d-md-table-cell"><b>Age</b></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="person in townData.people | filter:peopleSearchInput | limitTo:maxShownPeople">
+									<td>
+										<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#personViewModal" ng-click="viewPerson(person.data.index)">View</button>
+									</td>
+									<td>
+										<input ng-model="person.data.name">
+									</td>
+									<td>
+										<input ng-model="person.data.job">
+									</td>
+									<td class="d-none d-md-table-cell">
+										<input ng-model="person.data.race">
+									</td>
+									<td class="d-none d-md-table-cell">
+										<input ng-model="person.data.age">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="card-footer text-center px-0">
+						<button class="btn btn-link w-100" ng-click=toggleShowAllPeople()>
+							<i ng-hide="maxShownPeople == townData.people.length">Show All People</i>
+							<i ng-show="maxShownPeople == townData.people.length">Show Less People</i>
+						</button>
+					</div>
+				</div>
+				<br class="d-md-none">
+				<div class="card d-md-none">
+					<div class="card-body">
+						ADVERTISEMENT MOBILE
 					</div>
 				</div>
 			</div>
-			<br><br><br>
-		</div>
-		<!-- PEOPLE Modal -->
-		<div class="modal fade" id="personViewModal" tabindex="-1" role="dialog">
-			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">
-							<label ng-bind="townData.people[currentPerson].data.name" ng-hide="editmode"></label>
-							<textarea ng-model="townData.people[currentPerson].data.name" class="townData" ng-show="editmode"></textarea>
-						</h5>
-						<button type="button" class="close" data-dismiss="modal"> <span>&times;</span> </button>
+			<div class="col-2 d-none d-md-block">
+				<div class="card">
+					<div class="card-body">
+						ADVERTISEMENT PC
 					</div>
-					<div class="modal-body">
-						<div class="row">
-							<div class="col-12 d-md-none">
-								<img class="img-fluid" src="images/human-woman.jpg">
-							</div>
-							<div class="col-12 col-md-6">
-								<div class="row pl-md-3">
-									<div class="attributeBox col-6">
-										<b>Race:</b>
-										<label ng-bind="townData.people[currentPerson].data.race" ng-hide="editmode"></label>
-										<textarea ng-model="townData.people[currentPerson].data.race" class="townData" ng-show="editmode"></textarea>
-									</div>
-									<div class="attributeBox col-6">
-											<b>Age: </b>
-											<label ng-bind="townData.people[currentPerson].data.age" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].data.age" class="townData" ng-show="editmode"></textarea>
-									</div>
-									<div class="attributeBox col-6">
-											<b><i class="fas fa-hammer"></i> Job: </b>
-											<label ng-bind="townData.people[currentPerson].data.job" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].data.job" class="townData" ng-show="editmode"></textarea>
-									</div>
-									<div class="attributeBox col-6">
-											<b><i class="fas fa-comment"></i> Lng: </b>
-											<label ng-bind="townData.people[currentPerson].data.lng" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].data.lng" class="townData" ng-show="editmode"></textarea>
-									</div>
-									<div class="attributeBox col-4">
-											<b><i class="fas fa-shield-alt"></i> AC: </b>
-											<label ng-bind="townData.people[currentPerson].data.AC" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].data.AC" class="townData" ng-show="editmode"></textarea>
-									</div>
-									<div class="attributeBox col-4">
-											<b><i class="fas fa-heart"></i> HP: </b>
-											<label ng-bind="townData.people[currentPerson].data.HP" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].data.HP" class="townData" ng-show="editmode"></textarea>
-									</div>
-									<div class="attributeBox col-4">
-											<b><i class="fas fa-shoe-prints"></i> SP: </b>
-											<label ng-bind="townData.people[currentPerson].data.SP" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].data.SP" class="townData" ng-show="editmode"></textarea>
-									</div>
-									<div class="attributeBox col-4">
-											<b><i class="fas fa-fist-raised"></i> STR: </b>
-											<label ng-bind="townData.people[currentPerson].data.STR" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].data.STR" class="townData" ng-show="editmode"></textarea>
-									</div>
-									<div class="attributeBox col-4">
-											<b><i class="fas fa-running"></i> DEX: </b>
-											<label ng-bind="townData.people[currentPerson].data.DEX" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].data.DEX" class="townData" ng-show="editmode"></textarea>
-									</div>
-									<div class="attributeBox col-4">
-											<b><i class="fas fa-paw"></i> CON: </b>
-											<label ng-bind="townData.people[currentPerson].data.CON" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].data.CON" class="townData" ng-show="editmode"></textarea>
-									</div>
-									<div class="attributeBox col-4">
-											<b><i class="fas fa-book"></i> INT: </b>
-											<label ng-bind="townData.people[currentPerson].data.INT" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].data.INT" class="townData" ng-show="editmode"></textarea>
-									</div>
-									<div class="attributeBox col-4">
-											<b><i class="fas fa-tree"></i> WIS: </b>
-											<label ng-bind="townData.people[currentPerson].data.WIS" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].data.WIS" class="townData" ng-show="editmode"></textarea>
-									</div>
-									<div class="attributeBox col-4">
-											<b><i class="fas fa-comments"></i> CHA: </b>
-											<label ng-bind="townData.people[currentPerson].data.CHA" ng-hide="editmode"></label>
-											<textarea ng-model="townData.people[currentPerson].data.CHA" class="townData" ng-show="editmode"></textarea>
-									</div>
-								</div>
-							</div>
-							<div class="col-6 d-none d-md-inline">
-								<img class="img-fluid" src="images/human-woman.jpg">
-							</div>
-							<hr class="col-12">
+				</div>
+			</div>
+		</div>
+		<br><br><br>
+	</div>
+	<!-- PEOPLE Modal -->
+	<div class="modal fade" id="personViewModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">
+						<input ng-model="townData.people[currentPerson].data.name">
+					</h5>
+					<button type="button" class="close" data-dismiss="modal"> <span>&times;</span> </button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-12 d-md-none">
+							<img class="img-fluid" src="images/human-woman.jpg">
+						</div>
+						<div class="col-12 col-md-6">
+							<div class="row pl-md-3">
+								<div class="attributeBox col-6">
+									<div class="row">
 
-							<div class="col-12">
-								<b ng-if="townData.people[currentPerson].parents.length > 0">Parents:</b>
-								<div ng-repeat="parent in townData.people[currentPerson].parents">
-									<label ng-bind="parent.data.name"></label>
+										<b class="col-3">Race:</b>
+										<input class="col-9" ng-model="townData.people[currentPerson].data.race">
+									</div>
 								</div>
-								<br>
-								<b ng-if="townData.people[currentPerson].children.length > 0">Children:</b>
-								<div ng-repeat="child in townData.people[currentPerson].children">
-									<label ng-bind="child.data.name"></label>
-								</div>
-							</div>							
+								<div class="attributeBox col-6">
+									<div class="row">
 
-							<hr class="col-12">
-							<div class="col-12">
-								<div class="card">
-									<div class="card-header"><h6 class="text-center"><i class="fas fa-box-open"></i> Inventory:</h6></div>
-									<div class="card-body p-0">
-										<div class="row mx-0">
-											<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.people[currentPerson].data.inventory">
-												<b>
-														<i ng-if="item.type == 'money'" class="fas fa-dollar-sign"></i>
-														<i ng-if="item.type == 'armor'" class="fas fa-tshirt"></i>
-												</b>
-														<label ng-bind="item.value" ng-hide="editmode"></label>
-														<textarea ng-model="item.value" class="townData" ng-show="editmode"> </textarea>
+										<b class="col-sm-4">Age: </b>
+										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.age">
+									</div>
+								</div>
+								<div class="attributeBox col-6">
+									<div class="row">
+
+										<b class="col-sm-4"><i class="fas fa-hammer"></i> Job: </b>
+										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.job">
+									</div>
+								</div>
+								<div class="attributeBox col-6">
+									<div class="row">
+
+										<b class="col-sm-4"><i class="fas fa-comment"></i> Lng: </b>
+										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.lng">
+									</div>
+								</div>
+								<div class="attributeBox col-4">
+									<div class="row">
+
+										<b class="col-sm-4"><i class="fas fa-shield-alt"></i> AC: </b>
+										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.AC">
+									</div>
+								</div>
+								<div class="attributeBox col-4">
+									<div class="row">
+
+										<b class="col-sm-4"><i class="fas fa-heart"></i> HP: </b>
+										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.HP">
+									</div>
+								</div>
+								<div class="attributeBox col-4">
+									<div class="row">
+
+										<b class="col-sm-4"><i class="fas fa-shoe-prints"></i> SP: </b>
+										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.SP">
+									</div>
+								</div>
+								<div class="attributeBox col-4">
+									<div class="row">
+
+										<b class="col-sm-4"><i class="fas fa-fist-raised"></i> STR: </b>
+										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.STR">
+									</div>
+								</div>
+								<div class="attributeBox col-4">
+									<div class="row">
+
+										<b class="col-sm-4"><i class="fas fa-running"></i> DEX: </b>
+										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.DEX">
+									</div>
+								</div>
+								<div class="attributeBox col-4">
+									<div class="row">
+
+										<b class="col-sm-4"><i class="fas fa-paw"></i> CON: </b>
+										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.CON">
+									</div>
+								</div>
+								<div class="attributeBox col-4">
+									<div class="row">
+
+										<b class="col-sm-4"><i class="fas fa-book"></i> INT: </b>
+										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.INT">
+									</div>
+								</div>
+								<div class="attributeBox col-4">
+									<div class="row">
+
+										<b class="col-sm-4"><i class="fas fa-tree"></i> WIS: </b>
+										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.WIS">
+									</div>
+								</div>
+								<div class="attributeBox col-4">
+									<div class="row">
+
+										<b class="col-sm-4"><i class="fas fa-comments"></i> CHA: </b>
+										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.CHA">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-6 d-none d-md-inline">
+							<img class="img-fluid" src="images/human-woman.jpg">
+						</div>
+						<hr class="col-12">
+
+						<div class="col-12">
+							<b ng-if="townData.people[currentPerson].parents.length > 0">Parents:</b>
+							<div ng-repeat="parent in townData.people[currentPerson].parents">
+								<label ng-model="parent.data.name"></label>
+							</div>
+							<br>
+							<b ng-if="townData.people[currentPerson].children.length > 0">Children:</b>
+							<div ng-repeat="child in townData.people[currentPerson].children">
+								<label ng-model="child.data.name"></label>
+							</div>
+						</div>
+
+						<hr class="col-12">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-header">
+									<h6 class="text-center"><i class="fas fa-box-open"></i> Inventory:</h6>
+								</div>
+								<div class="card-body p-0">
+									<div class="row mx-0">
+										<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.people[currentPerson].data.inventory">
+											<b>
+												<i ng-if="item.type == 'money'" class="fas fa-dollar-sign"></i>
+												<i ng-if="item.type == 'armor'" class="fas fa-tshirt"></i>
+											</b>
+											<input ng-model="item.value">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- BUILDING Modal -->
+	<div class="modal fade" id="buildingViewModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">
+						<input ng-model="townData.buildings[currentBuilding].type">
+						<b ng-show="townData.buildings[currentBuilding].name"> -- </b>
+						<input ng-model="townData.buildings[currentBuilding].name">
+					</h5>
+					<button type="button" class="close" data-dismiss="modal"> <span>&times;</span> </button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-12">
+							<img class="img-fluid" src="{{townData.buildings[currentBuilding].image}}">
+						</div>
+						<input ng-model="townData.buildings[currentBuilding].description" class="text-center w-100">
+						<hr class="col-12">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-header">
+									<h6 class="text-center"><i class="fas fa-box-open"></i> Inventory:</h6>
+								</div>
+								<div class="card-body p-0">
+									<div class="row mx-0">
+										<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.buildings[currentBuilding].inventory">
+											<!-- <b> -->
+											<i ng-if="item.type" class="{{item.icon}} fa-3x text-center w-100" tooltip="{{item.desc}}" str="{{item.str}}" stealth="{{item.stealth}}" type="{{item.type}}" ac="{{item.ac}}" buffer="{{item.buffer}}"></i>
+
+
+											<br ng-if="item.type">
+											<!-- </b> -->
+											<input ng-model="item.name">
+											<div class="bottomRight align-middle text-center">
+												<input ng-model="item.cost/1000|floor">
+												<i class="fas fa-coins platinum" type="Money -- Platinum" tooltip="{{items.money.platinum.desc}}"></i>
+												<input ng-model="item.cost%1000/100| floor">
+												<i class="fas fa-coins gold" type="Money -- Gold" class="align-middle" tooltip="{{items.money.gold.desc}}"></i>
+												<input ng-model="item.cost %100/10|floor">
+												<i class="fas fa-coins silver" type="Money -- Silver" class="align-middle" tooltip="{{items.money.silver.desc}}"></i>
+												<input ng-model="item.cost %10%10%10%10">
+												<i class="fas fa-coins copper" type="Money -- Copper" class="align-middle" tooltip="{{items.money.copper.desc}}"></i>
 											</div>
 										</div>
 									</div>
@@ -316,87 +388,25 @@
 							</div>
 						</div>
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
-		<!-- BUILDING Modal -->
-		<div class="modal fade" id="buildingViewModal" tabindex="-1" role="dialog">
-			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">
-							<label ng-bind="townData.buildings[currentBuilding].type" ng-hide="editmode"></label>
-							<textarea ng-model="townData.buildings[currentBuilding].type" class="townData" ng-show="editmode"> </textarea>								
-							<b ng-show="townData.buildings[currentBuilding].name"> -- </b>
-							<label ng-bind="townData.buildings[currentBuilding].name" ng-hide="editmode"></label>
-							<textarea ng-model="townData.buildings[currentBuilding].name" class="townData" ng-show="editmode"> </textarea>
-						</h5>
-						<button type="button" class="close" data-dismiss="modal"> <span>&times;</span> </button>
-					</div>
-					<div class="modal-body">
-						<div class="row">
-							<div class="col-12">
-								<img class="img-fluid" src="{{townData.buildings[currentBuilding].image}}">
-							</div>
-							<label ng-bind="townData.buildings[currentBuilding].description" class="text-center w-100" ng-hide="editmode"></label>
-							<textarea ng-model="townData.buildings[currentBuilding].description" class="townData text-center" ng-show="editmode"> </textarea>
-							<hr class="col-12">
-							<div class="col-12">
-								<div class="card">
-									<div class="card-header"><h6 class="text-center"><i class="fas fa-box-open"></i> Inventory:</h6></div>
-									<div class="card-body p-0">
-										<div class="row mx-0">
-											<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.buildings[currentBuilding].inventory">
-												<!-- <b> -->
-													<i ng-if="item.type" class="{{item.icon}} fa-3x text-center w-100" tooltip="{{item.desc}}" str="{{item.str}}" stealth="{{item.stealth}}" type="{{item.type}}" ac="{{item.ac}}" buffer="{{item.buffer}}"></i>
+	</div>
+	<div id="mapofcity" value="{{fullscreenSource}}" class="zoomableImage" alt="Map of City" ng-show="showFullScreenImage">
+	</div>
+	<span class="imageOverlay" style="z-index: 1001; position: fixed;" ng-click="toggleFullscreenImage()" ng-show="showFullScreenImage"><i class="far fa-times-circle"></i></span>
 
+	<script src="js/items.js"></script>
+	<script src="js/buildings.js"></script>
+	<script src="js/nameLists/F.js"></script>
+	<script src="js/nameLists/M.js"></script>
+	<script src="js/nameLists/S.js"></script>
+	<script src="js/nameLists/population.js"></script>
 
-													<br ng-if="item.type">
-												<!-- </b> -->
-												<label ng-bind="item.name" ng-hide="editmode"></label>
-												<textarea ng-model="item.name" class="townData" ng-show="editmode"> </textarea>
-												<div class="bottomRight align-middle text-center">
-													<label ng-show="editmode">Amount in copper</label>
-													<i class="fas fa-coins copper" type="Money -- Copper" class="align-middle" ng-show="editmode"  tooltip="{{items.money.copper.desc}}"></i>
-													<textarea ng-model="item.cost" class="townData" ng-show="editmode"> </textarea>												
-													<label ng-bind="item.cost/1000|floor" ng-hide="editmode"></label>
-													<i class="fas fa-coins platinum" type="Money -- Platinum" ng-hide="editmode" tooltip="{{items.money.platinum.desc}}"></i >
-													<label ng-bind="item.cost%1000/100| floor" ng-hide="editmode"></label>
-													<i class="fas fa-coins gold" type="Money -- Gold" class="align-middle" ng-hide="editmode"  tooltip="{{items.money.gold.desc}}"></i>
-													<label ng-bind="item.cost %100/10|floor" ng-hide="editmode"></label>
-													<i class="fas fa-coins silver" type="Money -- Silver" class="align-middle" ng-hide="editmode"  tooltip="{{items.money.silver.desc}}"></i>
-													<label ng-bind="item.cost %10%10%10%10" ng-hide="editmode"></label>
-													<i class="fas fa-coins copper" type="Money -- Copper" class="align-middle" ng-hide="editmode"  tooltip="{{items.money.copper.desc}}"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="mapofcity" value="{{fullscreenSource}}" class="zoomableImage" alt="Map of City" ng-show="showFullScreenImage">
-		</div>
-		<span class="imageOverlay" style="z-index: 1001; position: fixed;" ng-click="toggleFullscreenImage()" ng-show="showFullScreenImage"><i class="far fa-times-circle"></i></span>
-
-		<script src="js/items.js"></script>
-		<script src="js/buildings.js"></script>
-		<script src="js/nameLists/F.js"></script>
-		<script src="js/nameLists/M.js"></script>
-		<script src="js/nameLists/S.js"></script>
-		<script src="js/nameLists/population.js"></script>
-
-		<script src="js/townData.js"></script>
-		<script src="assets/leaflet/leaflet.js"></script>
-		<script src="js/zoomImages.js"></script>
-	</body>
-</html>
+	<script src="js/townData.js"></script>
+	<script src="assets/leaflet/leaflet.js"></script>
+	<script src="js/zoomImages.js"></script>
+</body></html>
