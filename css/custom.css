@@ -112,7 +112,12 @@
 }
 
 input {
-	max-width: 100%;
+	width: 100%;
+	max-width: 100% !important;
+}
+
+.person-modal table tr td {
+	text-align: center;
 }
 
 [tooltip]:hover::after {

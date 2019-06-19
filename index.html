@@ -194,110 +194,60 @@
 					</h5>
 					<button type="button" class="close" data-dismiss="modal"> <span>&times;</span> </button>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body person-modal">
 					<div class="row">
-						<div class="col-12 d-md-none">
-							<img class="img-fluid" src="images/human-woman.jpg">
+						<div class="col-12 col-md-6">
+
+
+							<table>
+								<tbody>
+									<tr>
+										<td>Race:</td>
+										<td><input class="col-9" ng-model="townData.people[currentPerson].data.race"></td>
+										<td>Age:</td>
+										<td><input class="col-sm-8" ng-model="townData.people[currentPerson].data.age"></td>
+									</tr>
+									<tr>
+										<td><i class="fas fa-hammer"></i> Job:</td>
+										<td><input class="col-sm-8" ng-model="townData.people[currentPerson].data.job"></td>
+										<td><i class="fas fa-comment"></i> Lng:</td>
+										<td><input class="col-sm-8" ng-model="townData.people[currentPerson].data.lng"></td>
+									</tr>
+								</tbody>
+							</table>
+							<table>
+								<tbody>
+									<tr>
+										<td><i class="fas fa-shield-alt"></i> AC:</td>
+										<td><input class="col-sm-8" ng-model="townData.people[currentPerson].data.AC"></td>
+										<td><i class="fas fa-heart"></i> HP:</td>
+										<td><input class="col-sm-8" ng-model="townData.people[currentPerson].data.HP"></td>
+										<td><i class="fas fa-shoe-prints"></i> SP:</td>
+										<td><input class="col-sm-8" ng-model="townData.people[currentPerson].data.SP"></td>
+									</tr>
+									<tr>
+										<td><i class="fas fa-fist-raised"></i> STR:</td>
+										<td><input class="col-sm-8" ng-model="townData.people[currentPerson].data.STR"></td>
+										<td><i class="fas fa-running"></i> DEX:</td>
+										<td><input class="col-sm-8" ng-model="townData.people[currentPerson].data.DEX"></td>
+										<td><i class="fas fa-paw"></i> CON:</td>
+										<td><input class="col-sm-8" ng-model="townData.people[currentPerson].data.CON"></td>
+									</tr>
+									<tr>
+										<td><i class="fas fa-book"></i> INT:</td>
+										<td><input class="col-sm-8" ng-model="townData.people[currentPerson].data.INT"></td>
+										<td><i class="fas fa-tree"></i> WIS:</td>
+										<td><input class="col-sm-8" ng-model="townData.people[currentPerson].data.WIS"></td>
+										<td><i class="fas fa-comments"></i> CHA:</td>
+										<td><input class="col-sm-8" ng-model="townData.people[currentPerson].data.CHA"></td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 						<div class="col-12 col-md-6">
-							<div class="row pl-md-3">
-								<div class="attributeBox col-6">
-									<div class="row">
-
-										<b class="col-3">Race:</b>
-										<input class="col-9" ng-model="townData.people[currentPerson].data.race">
-									</div>
-								</div>
-								<div class="attributeBox col-6">
-									<div class="row">
-
-										<b class="col-sm-4">Age: </b>
-										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.age">
-									</div>
-								</div>
-								<div class="attributeBox col-6">
-									<div class="row">
-
-										<b class="col-sm-4"><i class="fas fa-hammer"></i> Job: </b>
-										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.job">
-									</div>
-								</div>
-								<div class="attributeBox col-6">
-									<div class="row">
-
-										<b class="col-sm-4"><i class="fas fa-comment"></i> Lng: </b>
-										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.lng">
-									</div>
-								</div>
-								<div class="attributeBox col-4">
-									<div class="row">
-
-										<b class="col-sm-4"><i class="fas fa-shield-alt"></i> AC: </b>
-										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.AC">
-									</div>
-								</div>
-								<div class="attributeBox col-4">
-									<div class="row">
-
-										<b class="col-sm-4"><i class="fas fa-heart"></i> HP: </b>
-										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.HP">
-									</div>
-								</div>
-								<div class="attributeBox col-4">
-									<div class="row">
-
-										<b class="col-sm-4"><i class="fas fa-shoe-prints"></i> SP: </b>
-										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.SP">
-									</div>
-								</div>
-								<div class="attributeBox col-4">
-									<div class="row">
-
-										<b class="col-sm-4"><i class="fas fa-fist-raised"></i> STR: </b>
-										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.STR">
-									</div>
-								</div>
-								<div class="attributeBox col-4">
-									<div class="row">
-
-										<b class="col-sm-4"><i class="fas fa-running"></i> DEX: </b>
-										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.DEX">
-									</div>
-								</div>
-								<div class="attributeBox col-4">
-									<div class="row">
-
-										<b class="col-sm-4"><i class="fas fa-paw"></i> CON: </b>
-										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.CON">
-									</div>
-								</div>
-								<div class="attributeBox col-4">
-									<div class="row">
-
-										<b class="col-sm-4"><i class="fas fa-book"></i> INT: </b>
-										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.INT">
-									</div>
-								</div>
-								<div class="attributeBox col-4">
-									<div class="row">
-
-										<b class="col-sm-4"><i class="fas fa-tree"></i> WIS: </b>
-										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.WIS">
-									</div>
-								</div>
-								<div class="attributeBox col-4">
-									<div class="row">
-
-										<b class="col-sm-4"><i class="fas fa-comments"></i> CHA: </b>
-										<input class="col-sm-8" ng-model="townData.people[currentPerson].data.CHA">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-6 d-none d-md-inline">
 							<img class="img-fluid" src="images/human-woman.jpg">
 						</div>
-						<hr class="col-12">
+
 
 						<div class="col-12">
 							<b ng-if="townData.people[currentPerson].parents.length > 0">Parents:</b>
@@ -331,56 +281,56 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- BUILDING Modal -->
-	<div class="modal fade" id="buildingViewModal" tabindex="-1" role="dialog">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">
-						<input ng-model="townData.buildings[currentBuilding].type">
-						<b ng-show="townData.buildings[currentBuilding].name"> -- </b>
-						<input ng-model="townData.buildings[currentBuilding].name">
-					</h5>
-					<button type="button" class="close" data-dismiss="modal"> <span>&times;</span> </button>
-				</div>
-				<div class="modal-body">
-					<div class="row">
-						<div class="col-12">
-							<img class="img-fluid" src="{{townData.buildings[currentBuilding].image}}">
-						</div>
-						<input ng-model="townData.buildings[currentBuilding].description" class="text-center w-100">
-						<hr class="col-12">
-						<div class="col-12">
-							<div class="card">
-								<div class="card-header">
-									<h6 class="text-center"><i class="fas fa-box-open"></i> Inventory:</h6>
-								</div>
-								<div class="card-body p-0">
-									<div class="row mx-0">
-										<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.buildings[currentBuilding].inventory">
-											<!-- <b> -->
-											<i ng-if="item.type" class="{{item.icon}} fa-3x text-center w-100" tooltip="{{item.desc}}" str="{{item.str}}" stealth="{{item.stealth}}" type="{{item.type}}" ac="{{item.ac}}" buffer="{{item.buffer}}"></i>
+		<!-- BUILDING Modal -->
+		<div class="modal fade" id="buildingViewModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">
+							<input ng-model="townData.buildings[currentBuilding].type">
+							<b ng-show="townData.buildings[currentBuilding].name"> -- </b>
+							<input ng-model="townData.buildings[currentBuilding].name">
+						</h5>
+						<button type="button" class="close" data-dismiss="modal"> <span>&times;</span> </button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-12">
+								<img class="img-fluid" src="{{townData.buildings[currentBuilding].image}}">
+							</div>
+							<input ng-model="townData.buildings[currentBuilding].description" class="text-center w-100">
+							<hr class="col-12">
+							<div class="col-12">
+								<div class="card">
+									<div class="card-header">
+										<h6 class="text-center"><i class="fas fa-box-open"></i> Inventory:</h6>
+									</div>
+									<div class="card-body p-0">
+										<div class="row mx-0">
+											<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.buildings[currentBuilding].inventory">
+												<!-- <b> -->
+												<i ng-if="item.type" class="{{item.icon}} fa-3x text-center w-100" tooltip="{{item.desc}}" str="{{item.str}}" stealth="{{item.stealth}}" type="{{item.type}}" ac="{{item.ac}}" buffer="{{item.buffer}}"></i>
 
 
-											<br ng-if="item.type">
-											<!-- </b> -->
-											<input ng-model="item.name">
-											<div class="bottomRight align-middle text-center">
-												<input ng-model="item.cost/1000|floor">
-												<i class="fas fa-coins platinum" type="Money -- Platinum" tooltip="{{items.money.platinum.desc}}"></i>
-												<input ng-model="item.cost%1000/100| floor">
-												<i class="fas fa-coins gold" type="Money -- Gold" class="align-middle" tooltip="{{items.money.gold.desc}}"></i>
-												<input ng-model="item.cost %100/10|floor">
-												<i class="fas fa-coins silver" type="Money -- Silver" class="align-middle" tooltip="{{items.money.silver.desc}}"></i>
-												<input ng-model="item.cost %10%10%10%10">
-												<i class="fas fa-coins copper" type="Money -- Copper" class="align-middle" tooltip="{{items.money.copper.desc}}"></i>
+												<br ng-if="item.type">
+												<!-- </b> -->
+												<input ng-model="item.name">
+												<div class="bottomRight align-middle text-center">
+													<input ng-model="item.cost/1000|floor">
+													<i class="fas fa-coins platinum" type="Money -- Platinum" tooltip="{{items.money.platinum.desc}}"></i>
+													<input ng-model="item.cost%1000/100| floor">
+													<i class="fas fa-coins gold" type="Money -- Gold" class="align-middle" tooltip="{{items.money.gold.desc}}"></i>
+													<input ng-model="item.cost %100/10|floor">
+													<i class="fas fa-coins silver" type="Money -- Silver" class="align-middle" tooltip="{{items.money.silver.desc}}"></i>
+													<input ng-model="item.cost %10%10%10%10">
+													<i class="fas fa-coins copper" type="Money -- Copper" class="align-middle" tooltip="{{items.money.copper.desc}}"></i>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -388,25 +338,24 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div id="mapofcity" value="{{fullscreenSource}}" class="zoomableImage" alt="Map of City" ng-show="showFullScreenImage">
-	</div>
-	<span class="imageOverlay" style="z-index: 1001; position: fixed;" ng-click="toggleFullscreenImage()" ng-show="showFullScreenImage"><i class="far fa-times-circle"></i></span>
+		<div id="mapofcity" value="{{fullscreenSource}}" class="zoomableImage" alt="Map of City" ng-show="showFullScreenImage">
+		</div>
+		<span class="imageOverlay" style="z-index: 1001; position: fixed;" ng-click="toggleFullscreenImage()" ng-show="showFullScreenImage"><i class="far fa-times-circle"></i></span>
 
-	<script src="js/items.js"></script>
-	<script src="js/buildings.js"></script>
-	<script src="js/nameLists/F.js"></script>
-	<script src="js/nameLists/M.js"></script>
-	<script src="js/nameLists/S.js"></script>
-	<script src="js/nameLists/population.js"></script>
+		<script src="js/items.js"></script>
+		<script src="js/buildings.js"></script>
+		<script src="js/nameLists/F.js"></script>
+		<script src="js/nameLists/M.js"></script>
+		<script src="js/nameLists/S.js"></script>
+		<script src="js/nameLists/population.js"></script>
 
-	<script src="js/townData.js"></script>
-	<script src="assets/leaflet/leaflet.js"></script>
-	<script src="js/zoomImages.js"></script>
+		<script src="js/townData.js"></script>
+		<script src="assets/leaflet/leaflet.js"></script>
+		<script src="js/zoomImages.js"></script>
 </body></html>
