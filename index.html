@@ -1,11 +1,13 @@
 <!-- NOTE TO SELF: HAVE USER DOWNLOAD JSON FILE OF SCOPE -->
 <!-- This is how they 'save' and 'load' their towndata -->
 <html ng-app="townApp">
-	<head>
+
+<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="assets/bootstrap-4.1.3-dist/css/bootstrap.css">
 	<script src="assets/bootstrap-4.1.3-dist/js/jquery331.js"></script>
+	<script src="js/textarea_autoresize.js"></script>
 	<script src="assets/bootstrap-4.1.3-dist/js/bootstrap.bundle.min.js"></script>
 	<script src="js/nameLists/townNameList.js"></script>
 	<script src="js/map.js"></script>
@@ -15,7 +17,7 @@
 	<link rel="stylesheet" href="css/custom.css">
 </head>
 
-<body ng-controller="townController">
+<body ng-controller="townController" data-ng-init="newTown()">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">Town Generator</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#togglableNavbar" aria-controls="togglableNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,6 +28,10 @@
 				<li class="nav-item">
 					<a class="nav-link disabled" href="#">Character Sheet (Coming Soon)</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#">Encounter Tracker (Coming Soon)</a>
+				</li>
+
 				<li class="nav-item mt-1 mt-md-0 ml-0 ml-md-1">
 					<button class="btn btn-info w-100" ng-click="saveFile()">Save <i class="fas fa-download"></i></button>
 				</li>
@@ -79,7 +85,7 @@
 						</div>
 					</div>
 					<div class="card-footer">
-						<input ng-model="townData.description" class="text-center w-100">
+						<textarea ng-model="townData.description" class="text-center w-100"></textarea>
 					</div>
 				</div>
 				<br>
@@ -93,9 +99,9 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<td><b>#</b></td>
-									<td><b>Building</b></td>
-									<td><b>Name</b></td>
+									<th><b>#</b></th>
+									<th><b>Building</b></th>
+									<th><b>Name</b></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -211,10 +217,11 @@
 										<td><i class="fas fa-hammer"></i> Job:</td>
 										<td><input class="col-sm-8" ng-model="townData.people[currentPerson].data.job"></td>
 										<td><i class="fas fa-comment"></i> Lng:</td>
-										<td><input class="col-sm-8" ng-model="townData.people[currentPerson].data.lng"></td>
+										<td><textarea class="col-sm-8" ng-model="townData.people[currentPerson].data.lng"></textarea></td>
 									</tr>
 								</tbody>
 							</table>
+							<hr>
 							<table>
 								<tbody>
 									<tr>
@@ -287,75 +294,100 @@
 				</div>
 			</div>
 		</div>
-		<!-- BUILDING Modal -->
-		<div class="modal fade" id="buildingViewModal" tabindex="-1" role="dialog">
-			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">
-							<input ng-model="townData.buildings[currentBuilding].type">
-							<b ng-show="townData.buildings[currentBuilding].name"> -- </b>
-							<input ng-model="townData.buildings[currentBuilding].name">
-						</h5>
-						<button type="button" class="close" data-dismiss="modal"> <span>&times;</span> </button>
-					</div>
-					<div class="modal-body">
-						<div class="row">
-							<div class="col-12">
-								<img class="img-fluid" src="{{townData.buildings[currentBuilding].image}}">
-							</div>
-							<input ng-model="townData.buildings[currentBuilding].description" class="text-center w-100">
-							<hr class="col-12">
-							<div class="col-12">
-								<div class="card">
-									<div class="card-header">
-										<h6 class="text-center"><i class="fas fa-box-open"></i> Inventory:</h6>
-									</div>
-									<div class="card-body p-0">
-										<div class="row mx-0">
-											<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.buildings[currentBuilding].inventory">
-												<!-- <b> -->
-												<i ng-if="item.type" class="{{item.icon}} fa-3x text-center w-100" tooltip="{{item.desc}}" str="{{item.str}}" stealth="{{item.stealth}}" type="{{item.type}}" ac="{{item.ac}}" buffer="{{item.buffer}}"></i>
+	</div>
+	<!-- BUILDING Modal -->
+	<div class="modal fade" id="buildingViewModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">
+						<input ng-model="townData.buildings[currentBuilding].type">
+						<b ng-show="townData.buildings[currentBuilding].name"> -- </b>
+						<input ng-model="townData.buildings[currentBuilding].name">
+					</h5>
+					<button type="button" class="close" data-dismiss="modal"> <span>&times;</span> </button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-12">
+							<img class="img-fluid" src="{{townData.buildings[currentBuilding].image}}">
+						</div>
+						<input ng-model="townData.buildings[currentBuilding].description" class="text-center w-100">
+						<hr class="col-12">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-header">
+									<h6 class="text-center"><i class="fas fa-box-open"></i> Inventory:</h6>
+								</div>
+								<div class="card-body p-0">
+									<div class="row mx-0">
+										<div class="col-6 col-md-3 attributeBox" ng-repeat="item in townData.buildings[currentBuilding].inventory">
 
+											<!-- <b> -->
 
-												<br ng-if="item.type">
-												<!-- </b> -->
-												<input ng-model="item.name">
-												<div class="bottomRight align-middle text-center">
-													<input ng-model="item.cost/1000|floor">
-													<i class="fas fa-coins platinum" type="Money -- Platinum" tooltip="{{items.money.platinum.desc}}"></i>
-													<input ng-model="item.cost%1000/100| floor">
-													<i class="fas fa-coins gold" type="Money -- Gold" class="align-middle" tooltip="{{items.money.gold.desc}}"></i>
-													<input ng-model="item.cost %100/10|floor">
-													<i class="fas fa-coins silver" type="Money -- Silver" class="align-middle" tooltip="{{items.money.silver.desc}}"></i>
-													<input ng-model="item.cost %10%10%10%10">
-													<i class="fas fa-coins copper" type="Money -- Copper" class="align-middle" tooltip="{{items.money.copper.desc}}"></i>
-												</div>
-											</div>
+											<i ng-if="item.type" class="{{item.icon}} fa-3x text-center w-100" tooltip="{{item.desc}}" str="{{item.str}}" stealth="{{item.stealth}}" type="{{item.type}}" ac="{{item.ac}}" buffer="{{item.buffer}}"></i>
+
+											<br ng-if="item.type">
+											<!-- </b> -->
+											<input ng-model="item.name">
+											<table>
+												<tbody>
+													<tr>
+														<td>
+															<label class="">{{item.cost/1000|floor}}</label>
+															<i class="fas fa-coins platinum" type="Money -- Platinum" tooltip="{{items.money.platinum.desc}}"></i>
+														</td>
+														<td>
+															<label class="">{{item.cost%1000/100| floor}}</label>
+															<i class="fas fa-coins gold" type="Money -- Gold" class="align-middle" tooltip="{{items.money.gold.desc}}"></i>
+														</td>
+														<td>
+															<label class="">{{item.cost %100/10|floor}}</label>
+															<i class="fas fa-coins silver" type="Money -- Silver" class="align-middle" tooltip="{{items.money.silver.desc}}"></i>
+														</td>
+														<td>
+															<label class="">{{item.cost %10%10%10%10}}</label>
+															<i class="fas fa-coins copper" type="Money -- Copper" class="align-middle" tooltip="{{items.money.copper.desc}}"></i>
+														</td>
+														<td>
+															<input class="input_centered" ng-model="item.cost">
+															<i class="fas fa-coins copper" type="Total in -- Copper" class="align-middle" tooltip="{{items.money.copper.desc}}"></i>
+														</td>
+
+													</tr>
+												</tbody>
+											</table>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
-		<div id="mapofcity" value="{{fullscreenSource}}" class="zoomableImage" alt="Map of City" ng-show="showFullScreenImage">
-		</div>
-		<span class="imageOverlay" style="z-index: 1001; position: fixed;" ng-click="toggleFullscreenImage()" ng-show="showFullScreenImage"><i class="far fa-times-circle"></i></span>
+	</div>
+	<div id="mapofcity" value="{{fullscreenSource}}" class="zoomableImage" alt="Map of City" ng-show="showFullScreenImage">
+	</div>
+	<span class="imageOverlay" style="z-index: 1001; position: fixed;" ng-click="toggleFullscreenImage()" ng-show="showFullScreenImage"><i class="far fa-times-circle"></i></span>
 
-		<script src="js/items.js"></script>
-		<script src="js/buildings.js"></script>
-		<script src="js/nameLists/F.js"></script>
-		<script src="js/nameLists/M.js"></script>
-		<script src="js/nameLists/S.js"></script>
-		<script src="js/nameLists/population.js"></script>
+	<script src="js/items.js"></script>
+	<script src="js/buildings.js"></script>
+	<script src="js/nameLists/F.js"></script>
+	<script src="js/nameLists/M.js"></script>
+	<script src="js/nameLists/S.js"></script>
+	<script src="js/nameLists/population.js"></script>
 
-		<script src="js/townData.js"></script>
-		<script src="assets/leaflet/leaflet.js"></script>
-		<script src="js/zoomImages.js"></script>
-</body></html>
+	<script src="js/townData.js"></script>
+	<script src="assets/leaflet/leaflet.js"></script>
+	<script src="js/zoomImages.js"></script>
+</body>
+<script>
+	$('textarea').autoResize();
+
+</script>
+
+</html>

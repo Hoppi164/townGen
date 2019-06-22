@@ -1,11 +1,11 @@
 var townApp = angular.module('townApp', []);
-townApp.filter('floor', function() {
-	return function(input) {
+townApp.filter('floor', function () {
+	return function (input) {
 		return Math.floor(input);
 	};
 });
 
-townApp.controller('townController', function($scope) {
+townApp.controller('townController', function ($scope) {
 	$scope.townData = {
 		name: 'Create a town by clicking the "New Town" button',
 		townImage: '',
@@ -20,11 +20,11 @@ townApp.controller('townController', function($scope) {
 
 
 	$scope.maxShownBuildings = 10;
-	$scope.toggleShowAllBuildings = function() {
+	$scope.toggleShowAllBuildings = function () {
 		$scope.maxShownBuildings = ($scope.maxShownBuildings == 10 ? $scope.townData.buildings.length : 10);
 	}
 	$scope.maxShownPeople = 10;
-	$scope.toggleShowAllPeople = function() {
+	$scope.toggleShowAllPeople = function () {
 		$scope.maxShownPeople = ($scope.maxShownPeople == 10 ? $scope.townData.people.length : 10);
 	}
 	$scope.items = getAllItems();
@@ -32,23 +32,23 @@ townApp.controller('townController', function($scope) {
 	$scope.currentPerson = 0;
 	$scope.showFullScreenImage = false;
 	$scope.fullscreenSource = '';
-	$scope.toggleFullscreenImage = function(url) {
+	$scope.toggleFullscreenImage = function (url) {
 		$scope.fullscreenSource = url;
 		$scope.showFullScreenImage = !$scope.showFullScreenImage;
 	};
 
-	$scope.viewPerson = function(arrayIndex) {
+	$scope.viewPerson = function (arrayIndex) {
 		$scope.currentPerson = arrayIndex;
 	};
 	$scope.currentBuilding = 0;
-	$scope.viewBuilding = function(arrayIndex) {
+	$scope.viewBuilding = function (arrayIndex) {
 		$scope.currentBuilding = arrayIndex;
 	};
 	$scope.peopleSearchInput = "";
 	$scope.buildingSearchInput = "";
 	$scope.townDataDownload = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify($scope.townData));
 	$scope.triggerLoadFile = false;
-	$scope.saveFile = function() {
+	$scope.saveFile = function () {
 		var exportName = $scope.townData.name;
 		var exportObj = $scope.townData;
 		var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
@@ -59,7 +59,7 @@ townApp.controller('townController', function($scope) {
 		downloadAnchorNode.click();
 		downloadAnchorNode.remove();
 	};
-	$scope.loadFile = function() {
+	$scope.loadFile = function () {
 		var files = document.getElementById('fileUpload').files;
 		if (files.length <= 0) {
 			return false;
@@ -67,7 +67,7 @@ townApp.controller('townController', function($scope) {
 
 		var fr = new FileReader();
 
-		fr.onload = function(e) {
+		fr.onload = function (e) {
 			var result = JSON.parse(e.target.result);
 			$scope.townData = result;
 			$scope.$apply();
@@ -76,11 +76,11 @@ townApp.controller('townController', function($scope) {
 		fr.readAsText(files.item(0));
 	}
 
-	$scope.toggleEdit = function() {
+	$scope.toggleEdit = function () {
 		$scope.editmode = !$scope.editmode;
 	}
 
-	$scope.newTown = function() {
+	$scope.newTown = function () {
 		$scope.townData.name = getRandomTownName();
 		$scope.townData.description = $scope.townData.name + ' is ' + getTownShortDesc() + ' ' + getTownLocation();
 		$scope.townData.townImage = getTownImage();
@@ -92,13 +92,11 @@ townApp.controller('townController', function($scope) {
 		console.log($scope.townData.people);
 
 	}
-	$scope.relevanceSort = function(item) {
+	$scope.relevanceSort = function (item) {
 		return !item.type.toLowerCase().includes($scope.buildingSearchInput.toLowerCase());
 	};
 
 });
-
-
 
 
 function getTownImage() {
